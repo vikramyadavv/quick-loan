@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -450,6 +449,355 @@ body{
         font-size:15px;
     }
 }
+
+/* PAYMENT MODAL */
+.pay-now{
+    margin-top:20px;
+    border:0;
+    background:#2563eb;
+    color:white;
+    padding:13px 24px;
+    border-radius:10px;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.payment-modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(15,23,42,.65);
+    z-index:999;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.payment-modal.show{
+    display:flex;
+}
+
+.payment-box{
+    width:100%;
+    max-width:430px;
+    background:white;
+    border-radius:18px;
+    padding:25px;
+    position:relative;
+    box-shadow:0 20px 60px rgba(0,0,0,.25);
+}
+
+.payment-close{
+    position:absolute;
+    right:15px;
+    top:12px;
+    width:34px;
+    height:34px;
+    border:0;
+    border-radius:50%;
+    background:#f1f5f9;
+    cursor:pointer;
+    font-size:20px;
+}
+
+.payment-box h2{
+    margin-bottom:6px;
+}
+
+.payment-box p{
+    color:#64748b;
+    font-size:13px;
+    margin-bottom:18px;
+}
+
+.payment-method{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    width:100%;
+    padding:13px;
+    margin:10px 0;
+    border:1px solid #e2e8f0;
+    border-radius:12px;
+    background:white;
+    cursor:pointer;
+    text-align:left;
+}
+
+.payment-method:hover{
+    border-color:#2563eb;
+    background:#f8fbff;
+}
+
+.payment-logo{
+    width:52px;
+    height:52px;
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:900;
+    flex-shrink:0;
+}
+
+.phonepe-logo{
+    background:#5f259f;
+    color:#fff;
+    font-size:23px;
+}
+
+.gpay-logo{
+    background:#fff;
+    border:1px solid #e5e7eb;
+    font-size:18px;
+}
+
+.gpay-logo .g{
+    color:#4285f4;
+}
+
+.gpay-logo .pay{
+    color:#34a853;
+    margin-left:2px;
+}
+
+.paytm-logo{
+    background:#00baf2;
+    color:#fff;
+    font-size:15px;
+    letter-spacing:-.7px;
+}
+
+.payment-method strong{
+    display:block;
+    font-size:14px;
+}
+
+.payment-method span{
+    display:block;
+    color:#64748b;
+    font-size:12px;
+    margin-top:3px;
+}
+
+/* LOAN PROGRESS */
+.loan-progress{
+    background:white;
+    border-radius:16px;
+    padding:20px 24px;
+    margin-bottom:20px;
+    box-shadow:0 4px 18px rgba(15,23,42,.05);
+}
+
+.progress-head,
+.progress-foot{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+}
+
+.progress-head strong{
+    font-size:14px;
+}
+
+.progress-head span{
+    display:block;
+    color:#64748b;
+    font-size:12px;
+    margin-top:4px;
+}
+
+.progress-track{
+    height:9px;
+    background:#e2e8f0;
+    border-radius:20px;
+    overflow:hidden;
+    margin:15px 0 8px;
+}
+
+.progress-fill{
+    width:4.6%;
+    height:100%;
+    background:#2563eb;
+    border-radius:20px;
+}
+
+.progress-foot{
+    color:#64748b;
+    font-size:11px;
+}
+
+/* TRANSACTION */
+.transaction{
+    display:flex;
+    align-items:center;
+    gap:13px;
+    padding:14px 0;
+}
+
+.transaction-icon{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    background:#dcfce7;
+    color:#16a34a;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+}
+
+.transaction-info{
+    flex:1;
+}
+
+.transaction-info h3{
+    font-size:14px;
+    margin-bottom:4px;
+}
+
+.transaction-info p{
+    font-size:12px;
+    color:#64748b;
+}
+
+.transaction-right{
+    text-align:right;
+}
+
+.transaction-right strong{
+    display:block;
+    font-size:15px;
+}
+
+.receipt-btn{
+    margin-top:5px;
+    border:0;
+    background:none;
+    color:#2563eb;
+    font-size:11px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+/* NOTIFICATIONS */
+.notification{
+    display:flex;
+    gap:11px;
+    padding:12px 0;
+    border-bottom:1px solid #edf0f4;
+}
+
+.notification:last-child{
+    border-bottom:0;
+}
+
+.notification-dot{
+    width:9px;
+    height:9px;
+    border-radius:50%;
+    background:#2563eb;
+    margin-top:5px;
+    flex-shrink:0;
+}
+
+.notification strong{
+    font-size:13px;
+}
+
+.notification p{
+    color:#64748b;
+    font-size:12px;
+    margin-top:4px;
+    line-height:1.45;
+}
+
+/* RECEIPT */
+.receipt-modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(15,23,42,.65);
+    z-index:1000;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.receipt-modal.show{
+    display:flex;
+}
+
+.receipt-box{
+    width:100%;
+    max-width:390px;
+    background:white;
+    border-radius:18px;
+    padding:26px;
+    box-shadow:0 20px 60px rgba(0,0,0,.25);
+}
+
+.receipt-box h2{
+    margin-bottom:4px;
+}
+
+.receipt-sub{
+    color:#64748b;
+    font-size:12px;
+    margin-bottom:20px;
+}
+
+.receipt-row{
+    display:flex;
+    justify-content:space-between;
+    padding:11px 0;
+    border-bottom:1px solid #edf0f4;
+    font-size:13px;
+}
+
+.receipt-actions{
+    display:flex;
+    gap:10px;
+    margin-top:20px;
+}
+
+.receipt-actions button{
+    flex:1;
+    padding:11px;
+    border:0;
+    border-radius:9px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.receipt-close{
+    background:#f1f5f9;
+}
+
+.receipt-print{
+    background:#2563eb;
+    color:white;
+}
+
+@media(max-width:550px){
+
+    .pay-now{
+        width:100%;
+    }
+
+    .progress-foot{
+        font-size:10px;
+    }
+
+    .transaction-right strong{
+        font-size:14px;
+    }
+
+    .receipt-actions{
+        flex-direction:column;
+    }
+}
 </style>
 </head>
 
@@ -501,6 +849,13 @@ body{
             </a>
         </li>
 
+        <li>
+            <a href="#notifications">
+                <span class="icon">●</span>
+                Notifications
+            </a>
+        </li>
+
     </ul>
 
 </aside>
@@ -513,7 +868,7 @@ body{
     <div class="header">
 
         <div>
-            <h1>Good afternoon, Vikram</h1>
+            <h1 id="greeting">Good Evening, Vikram</h1>
             <p>Here's your loan account overview.</p>
         </div>
 
@@ -531,6 +886,7 @@ body{
         <div class="hero-top">
 
             <div>
+
                 <div class="hero-label">
                     Total Outstanding
                 </div>
@@ -542,12 +898,43 @@ body{
                 <div class="hero-note">
                     ₹1,03,600 remaining after today's ₹5,000 payment
                 </div>
+
+                <button class="pay-now" onclick="openPayment()">
+                    Pay Now
+                </button>
+
             </div>
 
             <div class="loan-status">
                 ACTIVE
             </div>
 
+        </div>
+
+    </section>
+
+
+    <!-- LOAN PROGRESS -->
+    <section class="loan-progress">
+
+        <div class="progress-head">
+
+            <div>
+                <strong>Loan Progress</strong>
+                <span>₹5,000 paid today</span>
+            </div>
+
+            <strong>4.6% paid</strong>
+
+        </div>
+
+        <div class="progress-track">
+            <div class="progress-fill"></div>
+        </div>
+
+        <div class="progress-foot">
+            <span>Paid: ₹5,000</span>
+            <span>Remaining: ₹1,03,600</span>
         </div>
 
     </section>
@@ -598,6 +985,7 @@ body{
                     <div class="payment-info">
                         <h3>Payment Made</h3>
                         <p>5 October 2026</p>
+
                         <div class="payment-status green">
                             PAID TODAY
                         </div>
@@ -619,6 +1007,7 @@ body{
                     <div class="payment-info">
                         <h3>Upcoming Payment</h3>
                         <p>7 October 2026</p>
+
                         <div class="payment-status orange">
                             DUE ON 7 OCTOBER
                         </div>
@@ -640,6 +1029,7 @@ body{
                     <div class="payment-info">
                         <h3>Upcoming Payment</h3>
                         <p>10 October 2026</p>
+
                         <div class="payment-status orange">
                             DUE ON 10 OCTOBER
                         </div>
@@ -647,6 +1037,46 @@ body{
 
                     <div class="payment-amount">
                         ₹22,000
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- TRANSACTION HISTORY -->
+            <section class="card" id="history">
+
+                <h2>Transaction History</h2>
+
+                <div class="transaction">
+
+                    <div class="transaction-icon">
+                        ✓
+                    </div>
+
+                    <div class="transaction-info">
+
+                        <h3>Payment Received</h3>
+
+                        <p>
+                            5 October 2026 • Loan payment
+                        </p>
+
+                    </div>
+
+                    <div class="transaction-right">
+
+                        <strong>
+                            ₹5,000
+                        </strong>
+
+                        <button
+                            class="receipt-btn"
+                            onclick="showReceipt()">
+                            View Receipt
+                        </button>
+
                     </div>
 
                 </div>
@@ -662,23 +1092,54 @@ body{
                 <div class="details">
 
                     <div class="detail">
-                        <span>Loan ID</span>
-                        <strong>QL-2026-001</strong>
+
+                        <span>
+                            Loan ID
+                        </span>
+
+                        <strong>
+                            QL-2026-001
+                        </strong>
+
                     </div>
 
-                    <div class="detail">
-                        <span>Total Outstanding</span>
-                        <strong>₹1,08,600</strong>
-                    </div>
 
                     <div class="detail">
-                        <span>Today's Payment</span>
-                        <strong>₹5,000</strong>
+
+                        <span>
+                            Total Outstanding
+                        </span>
+
+                        <strong>
+                            ₹1,08,600
+                        </strong>
+
                     </div>
 
+
                     <div class="detail">
-                        <span>Upcoming Total</span>
-                        <strong>₹33,000</strong>
+
+                        <span>
+                            Today's Payment
+                        </span>
+
+                        <strong>
+                            ₹5,000
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <span>
+                            Upcoming Total
+                        </span>
+
+                        <strong>
+                            ₹33,000
+                        </strong>
+
                     </div>
 
                 </div>
@@ -689,7 +1150,9 @@ body{
             <!-- FORECLOSE -->
             <section class="card" id="foreclose">
 
-                <h2>Foreclose Loan</h2>
+                <h2>
+                    Foreclose Loan
+                </h2>
 
                 <div class="foreclose-box">
 
@@ -701,9 +1164,12 @@ body{
                         ₹1,08,600
                     </div>
 
-                    <button class="button"
-                    onclick="alert('No real payment or foreclosure processing is connected.')">
+                    <button
+                        class="button"
+                        onclick="alert('No real payment or foreclosure processing is connected.')">
+
                         View Foreclosure Details
+
                     </button>
 
                 </div>
@@ -719,26 +1185,106 @@ body{
             <!-- PROFILE -->
             <section class="card" id="profile">
 
-                <h2>My Profile</h2>
+                <h2>
+                    My Profile
+                </h2>
 
                 <div class="profile-row">
-                    <span>Full Name</span>
-                    <strong>Vikram Yadav</strong>
+
+                    <span>
+                        Full Name
+                    </span>
+
+                    <strong>
+                        Vikram Yadav
+                    </strong>
+
                 </div>
 
-                <div class="profile-row">
-                    <span>Phone Number</span>
-                    <strong>90146XX138</strong>
-                </div>
 
                 <div class="profile-row">
-                    <span>PAN Number</span>
-                    <strong>CDXPTXX22</strong>
+
+                    <span>
+                        Phone Number
+                    </span>
+
+                    <strong>
+                        90146XX138
+                    </strong>
+
                 </div>
 
+
                 <div class="profile-row">
-                    <span>Customer Type</span>
-                    <strong>Personal</strong>
+
+                    <span>
+                        PAN Number
+                    </span>
+
+                    <strong>
+                        CDXPTXX22
+                    </strong>
+
+                </div>
+
+
+                <div class="profile-row">
+
+                    <span>
+                        Customer Type
+                    </span>
+
+                    <strong>
+                        Personal
+                    </strong>
+
+                </div>
+
+            </section>
+
+
+            <!-- NOTIFICATIONS -->
+            <section class="card" id="notifications">
+
+                <h2>
+                    Notifications
+                </h2>
+
+                <div class="notification">
+
+                    <div class="notification-dot"></div>
+
+                    <div>
+
+                        <strong>
+                            Upcoming payment
+                        </strong>
+
+                        <p>
+                            ₹11,000 due on 7 October 2026.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="notification">
+
+                    <div class="notification-dot"></div>
+
+                    <div>
+
+                        <strong>
+                            Next payment
+                        </strong>
+
+                        <p>
+                            ₹22,000 due on 10 October 2026.
+                        </p>
+
+                    </div>
+
                 </div>
 
             </section>
@@ -747,16 +1293,33 @@ body{
             <!-- ACCOUNT -->
             <section class="card">
 
-                <h2>Account</h2>
+                <h2>
+                    Account
+                </h2>
 
                 <div class="profile-row">
-                    <span>Account Status</span>
-                    <strong style="color:#16a34a;">Active</strong>
+
+                    <span>
+                        Account Status
+                    </span>
+
+                    <strong style="color:#16a34a;">
+                        Active
+                    </strong>
+
                 </div>
 
+
                 <div class="profile-row">
-                    <span>Loan Status</span>
-                    <strong>Running</strong>
+
+                    <span>
+                        Loan Status
+                    </span>
+
+                    <strong>
+                        Running
+                    </strong>
+
                 </div>
 
             </section>
@@ -766,7 +1329,9 @@ body{
             <section class="card">
 
                 <div class="notice">
+
                     Personal account dashboard. It is not connected to any real financial institution, loan account, or payment system.
+
                 </div>
 
             </section>
@@ -782,6 +1347,403 @@ body{
 
 </main>
 
+
+<!-- PAYMENT METHODS -->
+<div class="payment-modal" id="paymentModal">
+
+    <div class="payment-box">
+
+        <button
+            class="payment-close"
+            onclick="closePayment()">
+            ×
+        </button>
+
+        <h2>
+            Choose Payment Method
+        </h2>
+
+        <p>
+            Select a payment app.
+        </p>
+
+
+        <!-- PHONEPE -->
+        <button
+            class="payment-method"
+            onclick="paymentSelected('PhonePe')">
+
+            <div class="payment-logo phonepe-logo">
+                पे
+            </div>
+
+            <div>
+
+                <strong>
+                    PhonePe
+                </strong>
+
+                <span>
+                    UPI payment
+                </span>
+
+            </div>
+
+        </button>
+
+
+        <!-- GOOGLE PAY -->
+        <button
+            class="payment-method"
+            onclick="paymentSelected('Google Pay')">
+
+            <div class="payment-logo gpay-logo">
+
+                <span class="g">
+                    G
+                </span>
+
+                <span class="pay">
+                    Pay
+                </span>
+
+            </div>
+
+            <div>
+
+                <strong>
+                    Google Pay
+                </strong>
+
+                <span>
+                    UPI payment
+                </span>
+
+            </div>
+
+        </button>
+
+
+        <!-- PAYTM -->
+        <button
+            class="payment-method"
+            onclick="paymentSelected('Paytm')">
+
+            <div class="payment-logo paytm-logo">
+                paytm
+            </div>
+
+            <div>
+
+                <strong>
+                    Paytm
+                </strong>
+
+                <span>
+                    UPI payment
+                </span>
+
+            </div>
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+function openPayment(){
+
+    document
+        .getElementById("paymentModal")
+        .classList.add("show");
+
+}
+
+
+function closePayment(){
+
+    document
+        .getElementById("paymentModal")
+        .classList.remove("show");
+
+}
+
+
+function paymentSelected(app){
+
+    closePayment();
+
+    alert(
+        app +
+        " selected.\n\n" +
+        "No payment is processed from this page."
+    );
+
+}
+
+
+document
+    .getElementById("paymentModal")
+    .addEventListener("click", function(e){
+
+        if(e.target === this){
+
+            closePayment();
+
+        }
+
+    });
+
+</script>
+
+
+<!-- RECEIPT -->
+<div
+    class="receipt-modal"
+    id="receiptModal">
+
+    <div
+        class="receipt-box"
+        id="receiptContent">
+
+        <h2>
+            Payment Receipt
+        </h2>
+
+        <div class="receipt-sub">
+            QuickLoan • Payment record
+        </div>
+
+
+        <div class="receipt-row">
+
+            <span>
+                Payment Date
+            </span>
+
+            <strong>
+                5 October 2026
+            </strong>
+
+        </div>
+
+
+        <div class="receipt-row">
+
+            <span>
+                Amount Paid
+            </span>
+
+            <strong>
+                ₹5,000
+            </strong>
+
+        </div>
+
+
+        <div class="receipt-row">
+
+            <span>
+                Loan ID
+            </span>
+
+            <strong>
+                QL-2026-001
+            </strong>
+
+        </div>
+
+
+        <div class="receipt-row">
+
+            <span>
+                Status
+            </span>
+
+            <strong style="color:#16a34a;">
+                PAID
+            </strong>
+
+        </div>
+
+
+        <div class="receipt-actions">
+
+            <button
+                class="receipt-close"
+                onclick="closeReceipt()">
+
+                Close
+
+            </button>
+
+
+            <button
+                class="receipt-print"
+                onclick="printReceipt()">
+
+                Print Receipt
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+(function(){
+
+    const hour = new Date().getHours();
+
+    let greeting = "Good Evening";
+
+    if(hour >= 5 && hour < 12){
+
+        greeting = "Good Morning";
+
+    }
+    else if(hour >= 12 && hour < 17){
+
+        greeting = "Good Afternoon";
+
+    }
+    else if(hour >= 17 && hour < 21){
+
+        greeting = "Good Evening";
+
+    }
+    else{
+
+        greeting = "Good Night";
+
+    }
+
+    const el =
+        document.getElementById("greeting");
+
+    if(el){
+
+        el.textContent =
+            greeting + ", Vikram";
+
+    }
+
+})();
+
+
+function showReceipt(){
+
+    document
+        .getElementById("receiptModal")
+        .classList.add("show");
+
+}
+
+
+function closeReceipt(){
+
+    document
+        .getElementById("receiptModal")
+        .classList.remove("show");
+
+}
+
+
+function printReceipt(){
+
+    const content =
+        document.getElementById("receiptContent").innerHTML;
+
+    const w =
+        window.open(
+            "",
+            "_blank",
+            "width=500,height=650"
+        );
+
+    w.document.write(`
+
+        <html>
+
+        <head>
+
+            <title>
+                Payment Receipt
+            </title>
+
+            <style>
+
+                body{
+                    font-family:Arial,sans-serif;
+                    padding:35px;
+                    color:#172033;
+                }
+
+                h2{
+                    margin-bottom:5px;
+                }
+
+                .receipt-sub{
+                    color:#64748b;
+                    font-size:12px;
+                    margin-bottom:20px;
+                }
+
+                .receipt-row{
+                    display:flex;
+                    justify-content:space-between;
+                    padding:12px 0;
+                    border-bottom:1px solid #ddd;
+                    font-size:14px;
+                }
+
+                .receipt-actions{
+                    display:none;
+                }
+
+            </style>
+
+        </head>
+
+        <body>
+
+            ${content}
+
+        </body>
+
+        </html>
+
+    `);
+
+    w.document.close();
+
+    w.focus();
+
+    w.print();
+
+}
+
+
+document
+    .getElementById("receiptModal")
+    .addEventListener("click", function(e){
+
+        if(e.target === this){
+
+            closeReceipt();
+
+        }
+
+    });
+
+</script>
+
 </body>
 </html>
-```
