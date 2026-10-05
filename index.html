@@ -1,685 +1,246 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>QuickLoan - Personal Dashboard</title>
 
 <style>
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f4f6fa;
-    color: #172033;
+    background: #f4f6f8;
+    color: #1f2937;
 }
 
-/* HEADER */
-
 .header {
-    height: 70px;
-    background: #ffffff;
-    border-bottom: 1px solid #e5e7eb;
+    background: #111827;
+    color: white;
+    padding: 22px 20px;
+}
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 0 7%;
+.header-content {
+    max-width: 900px;
+    margin: auto;
 }
 
 .logo {
     font-size: 25px;
-    font-weight: 800;
-}
-
-.logo span {
-    color: #2457ff;
-}
-
-.demo {
-    font-size: 11px;
     font-weight: bold;
-    color: #666;
-    background: #f1f3f7;
-    padding: 7px 10px;
-    border-radius: 20px;
 }
 
-/* MAIN */
+.subtitle {
+    margin-top: 5px;
+    color: #cbd5e1;
+    font-size: 14px;
+}
 
 .container {
-    max-width: 1050px;
-    margin: auto;
-    padding: 45px 20px;
-}
-
-/* WELCOME */
-
-.welcome {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 25px;
-}
-
-.small {
-    color: #707887;
-    font-size: 14px;
-}
-
-.welcome h1 {
-    margin-top: 5px;
-    font-size: 32px;
-}
-
-.status {
-    background: #fff3d9;
-    color: #9b6100;
-    padding: 9px 16px;
-    border-radius: 30px;
-    font-size: 13px;
-    font-weight: bold;
-}
-
-/* AMOUNT CARD */
-
-.amount-card {
-    background: linear-gradient(
-        135deg,
-        #151d30,
-        #25304a
-    );
-
-    color: white;
-
-    border-radius: 23px;
-    padding: 38px;
-
-    text-align: center;
-
-    box-shadow:
-        0 20px 45px rgba(20,30,50,0.15);
-}
-
-.amount-label {
-    color: #b7c0d0;
-    font-size: 14px;
-}
-
-.amount {
-    font-size: 54px;
-    font-weight: 800;
-    margin: 12px 0;
-}
-
-.due {
-    color: #c9d0dc;
-    font-size: 14px;
-}
-
-.pay {
-    margin-top: 25px;
-
-    border: none;
-
-    background: white;
-    color: #172033;
-
-    padding: 14px 42px;
-
-    border-radius: 9px;
-
-    font-size: 15px;
-    font-weight: bold;
-
-    cursor: pointer;
-}
-
-.pay:hover {
-    transform: translateY(-1px);
-}
-
-/* SUMMARY CARDS */
-
-.cards {
-    display: grid;
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 18px;
-
-    margin-top: 20px;
+    max-width: 900px;
+    margin: 25px auto;
+    padding: 0 16px;
 }
 
 .card {
     background: white;
-
-    border: 1px solid #e5e7eb;
-
-    border-radius: 16px;
-
-    padding: 25px;
+    border-radius: 14px;
+    padding: 22px;
+    margin-bottom: 18px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
 }
 
-.card-title {
-    color: #737b89;
-    font-size: 13px;
-    margin-bottom: 10px;
-}
-
-.card-value {
-    font-size: 24px;
-    font-weight: 750;
-}
-
-/* DETAILS */
-
-.details {
-    background: white;
-
-    border: 1px solid #e5e7eb;
-
-    border-radius: 18px;
-
-    padding: 28px;
-
-    margin-top: 20px;
-}
-
-.details h2 {
-    font-size: 20px;
-    margin-bottom: 8px;
-}
-
-.row {
+.customer {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
 
-    padding: 17px 0;
+.customer h2 {
+    font-size: 22px;
+}
 
-    border-bottom:
-        1px solid #edf0f4;
+.loan-id {
+    color: #6b7280;
+    font-size: 13px;
+    margin-top: 6px;
+}
 
+.status {
+    background: #fff7ed;
+    color: #c2410c;
+    padding: 8px 13px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.main-amount {
+    text-align: center;
+    padding: 10px 0 5px;
+}
+
+.main-amount .label {
+    color: #6b7280;
     font-size: 14px;
 }
 
-.row:last-child {
-    border-bottom: none;
+.main-amount .amount {
+    font-size: 42px;
+    font-weight: bold;
+    margin-top: 8px;
 }
 
-.row span {
-    color: #727b89;
+.after-payment {
+    text-align: center;
+    color: #64748b;
+    font-size: 14px;
+    margin-top: 5px;
 }
 
-/* NOTICE */
+.payment-paid {
+    border-left: 5px solid #16a34a;
+}
+
+.payment-due {
+    border-left: 5px solid #f97316;
+}
+
+.payment-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.payment-info h3 {
+    font-size: 17px;
+    margin-bottom: 5px;
+}
+
+.payment-info p {
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.payment-amount {
+    font-size: 21px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.paid-label {
+    color: #16a34a;
+    font-size: 13px;
+    font-weight: bold;
+    margin-top: 4px;
+}
+
+.due-label {
+    color: #ea580c;
+    font-size: 13px;
+    font-weight: bold;
+    margin-top: 4px;
+}
+
+.details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.detail-box {
+    background: #f8fafc;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.detail-box span {
+    display: block;
+    color: #64748b;
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+.detail-box strong {
+    font-size: 16px;
+}
 
 .notice {
-    margin-top: 20px;
-
-    background: #eef4ff;
-
-    border: 1px solid #d7e4ff;
-
-    color: #31579b;
-
-    padding: 16px;
-
-    border-radius: 12px;
-
+    background: #eff6ff;
+    color: #1e40af;
+    padding: 15px;
+    border-radius: 10px;
     font-size: 13px;
-
     line-height: 1.5;
 }
 
-/* FOOTER */
-
-footer {
+.footer {
     text-align: center;
-
-    padding: 35px 20px;
-
-    color: #8a909b;
-
+    color: #94a3b8;
     font-size: 12px;
+    padding: 20px;
 }
 
-/* MOBILE */
-
-@media(max-width:700px) {
-
-    .header {
-        padding: 0 20px;
-    }
-
-    .container {
-        padding:
-            30px 15px;
-    }
-
-    .welcome {
+@media (max-width: 600px) {
+    .customer {
         align-items: flex-start;
-
         flex-direction: column;
-
-        gap: 15px;
     }
 
-    .welcome h1 {
-        font-size: 27px;
+    .main-amount .amount {
+        font-size: 34px;
     }
 
-    .amount-card {
-        padding: 32px 20px;
+    .payment-row {
+        align-items: flex-start;
     }
 
-    .amount {
-        font-size: 42px;
-    }
-
-    .cards {
-        grid-template-columns: 1fr;
+    .payment-amount {
+        font-size: 18px;
     }
 
     .details {
-        padding: 22px;
-    }
-
-    .row {
-        gap: 20px;
+        grid-template-columns: 1fr;
     }
 }
 </style>
 </head>
 
-
 <body>
 
-<!-- HEADER -->
-
 <header class="header">
-
-    <div class="logo">
-        Quick<span>Loan</span>
+    <div class="header-content">
+        <div class="logo">QuickLoan</div>
+        <div class="subtitle">Personal Loan Dashboard</div>
     </div>
-
-    <div class="demo">
-        PERSONAL DASHBOARD
-    </div>
-
 </header>
-
-
-<!-- MAIN -->
 
 <main class="container">
 
-
-    <!-- WELCOME -->
-
-    <section class="welcome">
-
+    <!-- Customer -->
+    <section class="card customer">
         <div>
-
-            <p class="small">
-                Welcome back
-            </p>
-
-            <h1 id="customerName">
-                Your Name
-            </h1>
-
+            <h2>Vikram</h2>
+            <div class="loan-id">Loan ID: QL-2026-001</div>
         </div>
 
-
-        <div class="status">
-            PAYMENT DUE
-        </div>
-
+        <div class="status">PAYMENT SCHEDULED</div>
     </section>
 
-
-    <!-- AMOUNT -->
-
-    <section class="amount-card">
-
-        <p class="amount-label">
-            Amount Due
-        </p>
-
-        <div
-            id="amountDue"
-            class="amount"
-        >
-            ₹70,000
-        </div>
-
-        <p
-            id="dueDate"
-            class="due"
-        >
-            Due on 15 October 2026
-        </p>
-
-        <button
-            class="pay"
-            onclick="showMessage()"
-        >
-            View Payment Details
-        </button>
-
-        <p
-            id="message"
-            style="
-                margin-top:15px;
-                color:#b8f2c8;
-                font-size:13px;
-            "
-        ></p>
-
-    </section>
-
-
-    <!-- SUMMARY -->
-
-    <section class="cards">
-
-
-        <div class="card">
-
-            <div class="card-title">
-                Loan Amount
+    <!-- Outstanding -->
+    <section class="card">
+        <div class="main-amount">
+            <div class="label">Total Outstanding</div>
+            <div class="amount">₹1,08,600</div>
+            <div class="after-payment">
+                ₹1,03,600 remaining after today's ₹5,000 payment
             </div>
-
-            <div
-                id="loanAmount"
-                class="card-value"
-            >
-                ₹70,000
-            </div>
-
         </div>
-
-
-        <div class="card">
-
-            <div class="card-title">
-                Interest & Charges
-            </div>
-
-            <div
-                id="charges"
-                class="card-value"
-            >
-                ₹0
-            </div>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="card-title">
-                Outstanding
-            </div>
-
-            <div
-                id="outstanding"
-                class="card-value"
-            >
-                ₹70,000
-            </div>
-
-        </div>
-
-
-    </section>
-
-
-    <!-- DETAILS -->
-
-    <section class="details">
-
-        <h2>
-            Loan Details
-        </h2>
-
-        <p class="small">
-            Personal account information
-        </p>
-
-
-        <div class="row">
-
-            <span>
-                Customer
-            </span>
-
-            <strong id="customerName2">
-                Your Name
-            </strong>
-
-        </div>
-
-
-        <div class="row">
-
-            <span>
-                Loan ID
-            </span>
-
-            <strong id="loanId">
-                QL-2026-001
-            </strong>
-
-        </div>
-
-
-        <div class="row">
-
-            <span>
-                Loan Amount
-            </span>
-
-            <strong id="loanAmount2">
-                ₹70,000
-            </strong>
-
-        </div>
-
-
-        <div class="row">
-
-            <span>
-                Due Date
-            </span>
-
-            <strong id="dueDate2">
-                15 October 2026
-            </strong>
-
-        </div>
-
-
-        <div class="row">
-
-            <span>
-                Account Status
-            </span>
-
-            <strong>
-                Active
-            </strong>
-
-        </div>
-
-    </section>
-
-
-    <!-- NOTICE -->
-
-    <div class="notice">
-
-        <strong>Personal dashboard</strong><br>
-
-        This page is a private personal/demo dashboard.
-        Payment processing is not connected to this page.
-
-    </div>
-
-
-</main>
-
-
-<footer>
-
-    © 2026 QuickLoan — Personal Dashboard
-
-</footer>
-
-
-<script>
-
-/*
-====================================================
-EDIT YOUR DETAILS HERE
-====================================================
-*/
-
-const customer = {
-
-    name: "Vikram",
-
-    loanAmount: 70000,
-
-    charges: 0,
-
-    dueDate: "15 October 2026",
-
-    loanId: "QL-2026-001"
-
-};
-
-
-/*
-====================================================
-CALCULATE TOTAL
-====================================================
-*/
-
-const total =
-    customer.loanAmount +
-    customer.charges;
-
-
-/*
-====================================================
-DISPLAY DETAILS
-====================================================
-*/
-
-document
-.getElementById("customerName")
-.textContent =
-    customer.name;
-
-
-document
-.getElementById("customerName2")
-.textContent =
-    customer.name;
-
-
-document
-.getElementById("loanAmount")
-.textContent =
-    money(customer.loanAmount);
-
-
-document
-.getElementById("loanAmount2")
-.textContent =
-    money(customer.loanAmount);
-
-
-document
-.getElementById("charges")
-.textContent =
-    money(customer.charges);
-
-
-document
-.getElementById("outstanding")
-.textContent =
-    money(total);
-
-
-document
-.getElementById("amountDue")
-.textContent =
-    money(total);
-
-
-document
-.getElementById("dueDate")
-.textContent =
-    "Due on " +
-    customer.dueDate;
-
-
-document
-.getElementById("dueDate2")
-.textContent =
-    customer.dueDate;
-
-
-document
-.getElementById("loanId")
-.textContent =
-    customer.loanId;
-
-
-/*
-====================================================
-RUPEE FORMAT
-====================================================
-*/
-
-function money(amount) {
-
-    return new Intl.NumberFormat(
-        "en-IN",
-        {
-            style: "currency",
-            currency: "INR",
-            maximumFractionDigits: 0
-        }
-    ).format(amount);
-
-}
-
-
-/*
-====================================================
-BUTTON
-====================================================
-*/
-
-function showMessage() {
-
-    document
-    .getElementById("message")
-    .textContent =
-        "Payment details can be added here.";
-
-}
-
-</script>
-
-</body>
-</html>
+    </
