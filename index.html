@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,6 +11,10 @@
     padding:0;
     box-sizing:border-box;
     font-family:Inter,Arial,sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
 }
 
 body{
@@ -325,6 +328,7 @@ body{
     border-radius:9px;
     font-weight:bold;
     cursor:pointer;
+    transition:.2s;
 }
 
 .button:hover{
@@ -368,6 +372,123 @@ body{
     color:#94a3b8;
     font-size:11px;
     padding:10px;
+}
+
+/* DEMO PAYMENT POPUP */
+.pay-modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(15,23,42,.65);
+    z-index:999;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.pay-modal.show{
+    display:flex;
+}
+
+.pay-box{
+    width:100%;
+    max-width:410px;
+    background:white;
+    border-radius:20px;
+    padding:26px;
+    box-shadow:0 25px 70px rgba(0,0,0,.3);
+    animation:popup .2s ease;
+}
+
+@keyframes popup{
+    from{
+        transform:scale(.94);
+        opacity:0;
+    }
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+.pay-box h2{
+    text-align:center;
+    font-size:21px;
+    margin-bottom:7px;
+}
+
+.pay-box > p{
+    text-align:center;
+    color:#64748b;
+    font-size:13px;
+    margin-bottom:22px;
+}
+
+.pay-options{
+    display:grid;
+    gap:12px;
+}
+
+.pay-option{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    width:100%;
+    border:1px solid #e5e7eb;
+    background:#f8fafc;
+    border-radius:13px;
+    padding:13px 15px;
+    cursor:pointer;
+    text-align:left;
+    transition:.2s;
+}
+
+.pay-option:hover{
+    background:#f1f5f9;
+    transform:translateY(-1px);
+}
+
+.pay-logo{
+    width:50px;
+    height:50px;
+    border-radius:12px;
+    background:white;
+    border:1px solid #e5e7eb;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    flex-shrink:0;
+}
+
+.pay-logo img{
+    width:38px;
+    height:38px;
+    object-fit:contain;
+}
+
+.pay-name{
+    font-weight:700;
+    font-size:15px;
+    color:#172033;
+}
+
+.pay-demo{
+    font-size:11px;
+    color:#94a3b8;
+    margin-top:4px;
+}
+
+.close-pay{
+    display:block;
+    margin:20px auto 0;
+    border:0;
+    background:#e5e7eb;
+    color:#334155;
+    padding:10px 22px;
+    border-radius:9px;
+    cursor:pointer;
+    font-weight:600;
 }
 
 /* MOBILE */
@@ -531,6 +652,7 @@ body{
         <div class="hero-top">
 
             <div>
+
                 <div class="hero-label">
                     Total Outstanding
                 </div>
@@ -542,6 +664,7 @@ body{
                 <div class="hero-note">
                     ₹1,03,600 remaining after today's ₹5,000 payment
                 </div>
+
             </div>
 
             <div class="loan-status">
@@ -551,6 +674,16 @@ body{
         </div>
 
     </section>
+
+
+    <!-- PAY NOW -->
+    <div style="margin-bottom:20px;">
+        <button class="button"
+                onclick="openPaymentModal()"
+                style="max-width:220px;">
+            Pay Now
+        </button>
+    </div>
 
 
     <!-- SUMMARY -->
@@ -596,11 +729,15 @@ body{
                     </div>
 
                     <div class="payment-info">
+
                         <h3>Payment Made</h3>
+
                         <p>5 October 2026</p>
+
                         <div class="payment-status green">
                             PAID TODAY
                         </div>
+
                     </div>
 
                     <div class="payment-amount">
@@ -617,11 +754,15 @@ body{
                     </div>
 
                     <div class="payment-info">
+
                         <h3>Upcoming Payment</h3>
+
                         <p>7 October 2026</p>
+
                         <div class="payment-status orange">
                             DUE ON 7 OCTOBER
                         </div>
+
                     </div>
 
                     <div class="payment-amount">
@@ -638,11 +779,15 @@ body{
                     </div>
 
                     <div class="payment-info">
+
                         <h3>Upcoming Payment</h3>
+
                         <p>10 October 2026</p>
+
                         <div class="payment-status orange">
                             DUE ON 10 OCTOBER
                         </div>
+
                     </div>
 
                     <div class="payment-amount">
@@ -702,7 +847,7 @@ body{
                     </div>
 
                     <button class="button"
-                    onclick="alert('Personal demonstration only. No real payment or foreclosure processing is connected.')">
+                            onclick="alert('Personal demonstration only. No real payment or foreclosure processing is connected.')">
                         View Foreclosure Details
                     </button>
 
@@ -751,12 +896,16 @@ body{
 
                 <div class="profile-row">
                     <span>Account Status</span>
-                    <strong style="color:#16a34a;">Active</strong>
+                    <strong style="color:#16a34a;">
+                        Active
+                    </strong>
                 </div>
 
                 <div class="profile-row">
                     <span>Loan Status</span>
-                    <strong>Running</strong>
+                    <strong>
+                        Running
+                    </strong>
                 </div>
 
             </section>
@@ -766,7 +915,9 @@ body{
             <section class="card">
 
                 <div class="notice">
-                    This is a personal demonstration dashboard. It is not connected to any real financial institution, loan account, or payment system.
+                    This is a personal demonstration dashboard.
+                    It is not connected to any real financial
+                    institution, loan account, or payment system.
                 </div>
 
             </section>
@@ -782,6 +933,151 @@ body{
 
 </main>
 
+
+<!-- DEMO PAYMENT POPUP -->
+<div class="pay-modal"
+     id="payModal"
+     onclick="closePaymentModal(event)">
+
+    <div class="pay-box"
+         onclick="event.stopPropagation()">
+
+        <h2>Choose Payment App</h2>
+
+        <p>
+            Demo only — no real payment is processed.
+        </p>
+
+
+        <!-- PAYMENT OPTIONS -->
+        <div class="pay-options">
+
+            <!-- PHONEPE -->
+            <div class="pay-option"
+                 onclick="demoPayment('PhonePe')">
+
+                <div class="pay-logo">
+
+                    <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/7/71/PhonePe_Logo.svg"
+                        alt="PhonePe">
+
+                </div>
+
+                <div>
+
+                    <div class="pay-name">
+                        PhonePe
+                    </div>
+
+                    <div class="pay-demo">
+                        Demo option
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- GOOGLE PAY -->
+            <div class="pay-option"
+                 onclick="demoPayment('Google Pay')">
+
+                <div class="pay-logo">
+
+                    <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Google_Pay_Logo.svg"
+                        alt="Google Pay">
+
+                </div>
+
+                <div>
+
+                    <div class="pay-name">
+                        Google Pay
+                    </div>
+
+                    <div class="pay-demo">
+                        Demo option
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <button class="close-pay"
+                onclick="closePaymentModal()">
+            Close
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* OPEN PAYMENT POPUP */
+function openPaymentModal(){
+
+    document
+        .getElementById("payModal")
+        .classList
+        .add("show");
+
+}
+
+
+/* CLOSE PAYMENT POPUP */
+function closePaymentModal(event){
+
+    if(
+        !event ||
+        event.target.id === "payModal"
+    ){
+
+        document
+            .getElementById("payModal")
+            .classList
+            .remove("show");
+
+    }
+
+}
+
+
+/* DEMO PAYMENT */
+function demoPayment(app){
+
+    alert(
+        app +
+        " selected — Demo only. No real payment is processed."
+    );
+
+}
+
+
+/* ESC KEY CLOSE */
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Escape"){
+
+            document
+                .getElementById("payModal")
+                .classList
+                .remove("show");
+
+        }
+
+    }
+);
+
+</script>
+
 </body>
 </html>
-```
