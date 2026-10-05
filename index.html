@@ -4,47 +4,41 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>QuickLoan - Personal Dashboard</title>
+
+<title>QuickLoan</title>
 
 <style>
 * {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
 }
 
 body {
-    background: #f4f6f8;
-    color: #1f2937;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f3f4f6;
+    color: #111827;
 }
 
 .header {
     background: #111827;
     color: white;
-    padding: 22px 20px;
+    padding: 22px;
 }
 
-.header-content {
-    max-width: 900px;
-    margin: auto;
-}
-
-.logo {
+.header h1 {
+    margin: 0;
     font-size: 25px;
-    font-weight: bold;
 }
 
-.subtitle {
-    margin-top: 5px;
+.header p {
+    margin: 6px 0 0;
     color: #cbd5e1;
-    font-size: 14px;
 }
 
 .container {
-    max-width: 900px;
+    max-width: 700px;
     margin: 25px auto;
-    padding: 0 16px;
+    padding: 0 15px;
 }
 
 .card {
@@ -52,124 +46,105 @@ body {
     border-radius: 14px;
     padding: 22px;
     margin-bottom: 18px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
 }
 
-.customer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 15px;
+.name {
+    font-size: 23px;
+    font-weight: bold;
 }
 
-.customer h2 {
-    font-size: 22px;
-}
-
-.loan-id {
+.loanid {
     color: #6b7280;
-    font-size: 13px;
-    margin-top: 6px;
+    margin-top: 5px;
 }
 
 .status {
+    display: inline-block;
+    margin-top: 15px;
     background: #fff7ed;
     color: #c2410c;
-    padding: 8px 13px;
+    padding: 7px 12px;
     border-radius: 20px;
     font-size: 13px;
     font-weight: bold;
 }
 
-.main-amount {
-    text-align: center;
-    padding: 10px 0 5px;
-}
-
-.main-amount .label {
-    color: #6b7280;
+.title {
+    color: #64748b;
     font-size: 14px;
 }
 
-.main-amount .amount {
-    font-size: 42px;
+.amount {
+    font-size: 40px;
     font-weight: bold;
     margin-top: 8px;
 }
 
-.after-payment {
-    text-align: center;
+.remaining {
     color: #64748b;
+    margin-top: 6px;
     font-size: 14px;
-    margin-top: 5px;
 }
 
-.payment-paid {
-    border-left: 5px solid #16a34a;
-}
-
-.payment-due {
-    border-left: 5px solid #f97316;
-}
-
-.payment-row {
+.payment {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 15px;
 }
 
-.payment-info h3 {
-    font-size: 17px;
-    margin-bottom: 5px;
+.payment h3 {
+    margin: 0 0 7px;
 }
 
-.payment-info p {
-    color: #6b7280;
-    font-size: 14px;
+.payment p {
+    margin: 0;
+    color: #64748b;
 }
 
 .payment-amount {
-    font-size: 21px;
+    font-size: 22px;
     font-weight: bold;
-    white-space: nowrap;
 }
 
-.paid-label {
-    color: #16a34a;
-    font-size: 13px;
-    font-weight: bold;
-    margin-top: 4px;
+.paid {
+    border-left: 5px solid #16a34a;
 }
 
-.due-label {
-    color: #ea580c;
+.due {
+    border-left: 5px solid #f97316;
+}
+
+.paid-text {
+    color: #16a34a !important;
     font-size: 13px;
     font-weight: bold;
-    margin-top: 4px;
+    margin-top: 6px !important;
+}
+
+.due-text {
+    color: #ea580c !important;
+    font-size: 13px;
+    font-weight: bold;
+    margin-top: 6px !important;
 }
 
 .details {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
 }
 
-.detail-box {
+.detail {
     background: #f8fafc;
     padding: 15px;
     border-radius: 10px;
 }
 
-.detail-box span {
+.detail small {
     display: block;
     color: #64748b;
-    font-size: 13px;
     margin-bottom: 5px;
-}
-
-.detail-box strong {
-    font-size: 16px;
 }
 
 .notice {
@@ -188,22 +163,18 @@ body {
     padding: 20px;
 }
 
-@media (max-width: 600px) {
-    .customer {
-        align-items: flex-start;
-        flex-direction: column;
-    }
+@media(max-width:600px) {
 
-    .main-amount .amount {
+    .amount {
         font-size: 34px;
     }
 
-    .payment-row {
+    .payment {
         align-items: flex-start;
     }
 
     .payment-amount {
-        font-size: 18px;
+        font-size: 19px;
     }
 
     .details {
@@ -215,121 +186,132 @@ body {
 
 <body>
 
-<header class="header">
-    <div class="header-content">
-        <div class="logo">QuickLoan</div>
-        <div class="subtitle">Personal Loan Dashboard</div>
+<div class="header">
+    <h1>QuickLoan</h1>
+    <p>Personal Loan Dashboard</p>
+</div>
+
+<div class="container">
+
+    <!-- CUSTOMER -->
+    <div class="card">
+        <div class="name">Vikram</div>
+        <div class="loanid">Loan ID: QL-2026-001</div>
+
+        <div class="status">
+            PAYMENT SCHEDULED
+        </div>
     </div>
-</header>
 
-<main class="container">
+    <!-- OUTSTANDING -->
+    <div class="card">
+        <div class="title">Total Outstanding</div>
 
-    <!-- Customer -->
-    <section class="card customer">
-        <div>
-            <h2>Vikram</h2>
-            <div class="loan-id">Loan ID: QL-2026-001</div>
+        <div class="amount">
+            ₹1,08,600
         </div>
 
-        <div class="status">PAYMENT SCHEDULED</div>
-    </section>
-
-    <!-- Outstanding -->
-    <section class="card">
-        <div class="main-amount">
-            <div class="label">Total Outstanding</div>
-            <div class="amount">₹1,08,600</div>
-            <div class="after-payment">
-                ₹1,03,600 remaining after today's ₹5,000 payment
-            </div>
+        <div class="remaining">
+            ₹1,03,600 remaining after today's ₹5,000 payment
         </div>
-    </section>
+    </div>
 
-    <!-- Today's Payment -->
-    <section class="card payment-paid">
-        <div class="payment-row">
-            <div class="payment-info">
+    <!-- PAID TODAY -->
+    <div class="card paid">
+        <div class="payment">
+
+            <div>
                 <h3>Payment Made</h3>
                 <p>5 October 2026</p>
-                <div class="paid-label">✓ PAID TODAY</div>
+                <p class="paid-text">✓ PAID TODAY</p>
             </div>
 
             <div class="payment-amount">
                 ₹5,000
             </div>
-        </div>
-    </section>
 
-    <!-- October 7 -->
-    <section class="card payment-due">
-        <div class="payment-row">
-            <div class="payment-info">
+        </div>
+    </div>
+
+    <!-- OCTOBER 7 -->
+    <div class="card due">
+        <div class="payment">
+
+            <div>
                 <h3>Upcoming Payment</h3>
                 <p>7 October 2026</p>
-                <div class="due-label">DUE ON 7 OCTOBER</div>
+                <p class="due-text">DUE ON 7 OCTOBER</p>
             </div>
 
             <div class="payment-amount">
                 ₹11,000
             </div>
-        </div>
-    </section>
 
-    <!-- October 10 -->
-    <section class="card payment-due">
-        <div class="payment-row">
-            <div class="payment-info">
+        </div>
+    </div>
+
+    <!-- OCTOBER 10 -->
+    <div class="card due">
+        <div class="payment">
+
+            <div>
                 <h3>Upcoming Payment</h3>
                 <p>10 October 2026</p>
-                <div class="due-label">DUE ON 10 OCTOBER</div>
+                <p class="due-text">DUE ON 10 OCTOBER</p>
             </div>
 
             <div class="payment-amount">
                 ₹22,000
             </div>
-        </div>
-    </section>
 
-    <!-- Loan Details -->
-    <section class="card">
-        <h3 style="margin-bottom:15px;">Loan Details</h3>
+        </div>
+    </div>
+
+    <!-- DETAILS -->
+    <div class="card">
+
+        <h3>Loan Details</h3>
 
         <div class="details">
-            <div class="detail-box">
-                <span>Total Outstanding</span>
+
+            <div class="detail">
+                <small>Total Outstanding</small>
                 <strong>₹1,08,600</strong>
             </div>
 
-            <div class="detail-box">
-                <span>Today's Payment</span>
+            <div class="detail">
+                <small>Paid Today</small>
                 <strong>₹5,000</strong>
             </div>
 
-            <div class="detail-box">
-                <span>Upcoming Due</span>
-                <strong>₹33,000</strong>
+            <div class="detail">
+                <small>7 October Due</small>
+                <strong>₹11,000</strong>
             </div>
 
-            <div class="detail-box">
-                <span>Remaining After Payment</span>
-                <strong>₹1,03,600</strong>
+            <div class="detail">
+                <small>10 October Due</small>
+                <strong>₹22,000</strong>
             </div>
+
         </div>
-    </section>
 
-    <!-- Notice -->
-    <section class="card">
+    </div>
+
+    <!-- NOTICE -->
+    <div class="card">
+
         <div class="notice">
-            This is a personal demonstration dashboard created for display purposes.
-            It is not connected to any real financial institution or payment system.
+            Personal demonstration dashboard. Not connected to any real financial institution or payment system.
         </div>
-    </section>
 
-</main>
+    </div>
 
-<footer class="footer">
+</div>
+
+<div class="footer">
     © 2026 QuickLoan — Personal Dashboard
-</footer>
+</div>
 
 </body>
 </html>
