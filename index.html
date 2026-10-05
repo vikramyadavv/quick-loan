@@ -4,8 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>QuickLoan</title>
+<title>QuickLoan - Personal Dashboard</title>
 
 <style>
 * {
@@ -15,136 +14,217 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #f3f4f6;
-    color: #111827;
+    background: #f4f6f8;
+    color: #172033;
 }
 
-.header {
+/* SIDEBAR */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 235px;
+    height: 100vh;
     background: #111827;
     color: white;
-    padding: 22px;
+    padding: 25px 15px;
 }
 
-.header h1 {
-    margin: 0;
+.logo {
     font-size: 25px;
+    font-weight: bold;
+    padding: 0 12px 30px;
 }
 
-.header p {
-    margin: 6px 0 0;
+.logo span {
+    color: #60a5fa;
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu li {
+    margin: 7px 0;
+}
+
+.menu a {
+    display: block;
+    padding: 13px 14px;
     color: #cbd5e1;
+    text-decoration: none;
+    border-radius: 9px;
+    font-size: 15px;
 }
 
-.container {
-    max-width: 700px;
-    margin: 25px auto;
-    padding: 0 15px;
+.menu a:hover,
+.menu a.active {
+    background: #1e3a8a;
+    color: white;
 }
 
+/* MAIN */
+.main {
+    margin-left: 235px;
+    padding: 30px;
+    max-width: 1100px;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.topbar h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+.user {
+    color: #64748b;
+}
+
+/* CARDS */
 .card {
     background: white;
     border-radius: 14px;
     padding: 22px;
     margin-bottom: 18px;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.06);
 }
 
-.name {
-    font-size: 23px;
-    font-weight: bold;
+.balance-card {
+    background: #111827;
+    color: white;
 }
 
-.loanid {
-    color: #6b7280;
-    margin-top: 5px;
-}
-
-.status {
-    display: inline-block;
-    margin-top: 15px;
-    background: #fff7ed;
-    color: #c2410c;
-    padding: 7px 12px;
-    border-radius: 20px;
-    font-size: 13px;
-    font-weight: bold;
-}
-
-.title {
-    color: #64748b;
+.balance-label {
+    color: #cbd5e1;
     font-size: 14px;
 }
 
-.amount {
-    font-size: 40px;
+.balance {
+    font-size: 42px;
     font-weight: bold;
     margin-top: 8px;
 }
 
-.remaining {
-    color: #64748b;
-    margin-top: 6px;
+.balance-note {
+    color: #cbd5e1;
+    margin-top: 8px;
     font-size: 14px;
 }
 
+/* GRID */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.small-card {
+    background: white;
+    border-radius: 13px;
+    padding: 20px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+}
+
+.small-card span {
+    display: block;
+    color: #64748b;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+.small-card strong {
+    font-size: 21px;
+}
+
+/* PAYMENTS */
 .payment {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 18px 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.payment:last-child {
+    border-bottom: none;
 }
 
 .payment h3 {
-    margin: 0 0 7px;
+    margin: 0 0 6px;
+    font-size: 16px;
 }
 
 .payment p {
     margin: 0;
     color: #64748b;
+    font-size: 14px;
 }
 
-.payment-amount {
-    font-size: 22px;
+.amount {
+    font-size: 20px;
     font-weight: bold;
 }
 
 .paid {
-    border-left: 5px solid #16a34a;
+    color: #16a34a;
+    font-size: 13px !important;
+    font-weight: bold;
+    margin-top: 5px !important;
 }
 
 .due {
-    border-left: 5px solid #f97316;
-}
-
-.paid-text {
-    color: #16a34a !important;
-    font-size: 13px;
+    color: #ea580c;
+    font-size: 13px !important;
     font-weight: bold;
-    margin-top: 6px !important;
+    margin-top: 5px !important;
 }
 
-.due-text {
-    color: #ea580c !important;
-    font-size: 13px;
-    font-weight: bold;
-    margin-top: 6px !important;
-}
-
-.details {
+/* PROFILE */
+.profile-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 12px;
+    gap: 15px;
 }
 
-.detail {
+.profile-item {
     background: #f8fafc;
-    padding: 15px;
+    padding: 16px;
     border-radius: 10px;
 }
 
-.detail small {
+.profile-item span {
     display: block;
     color: #64748b;
-    margin-bottom: 5px;
+    font-size: 13px;
+    margin-bottom: 6px;
+}
+
+.profile-item strong {
+    font-size: 16px;
+}
+
+/* BUTTON */
+.foreclose-btn {
+    display: inline-block;
+    background: #1d4ed8;
+    color: white;
+    padding: 13px 20px;
+    border-radius: 8px;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.foreclose-btn:hover {
+    background: #1e40af;
 }
 
 .notice {
@@ -160,25 +240,52 @@ body {
     text-align: center;
     color: #94a3b8;
     font-size: 12px;
-    padding: 20px;
+    margin-top: 30px;
 }
 
-@media(max-width:600px) {
+/* MOBILE */
+@media(max-width: 750px) {
 
-    .amount {
-        font-size: 34px;
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 15px;
     }
 
-    .payment {
-        align-items: flex-start;
+    .logo {
+        padding: 5px 10px 15px;
     }
 
-    .payment-amount {
-        font-size: 19px;
+    .menu {
+        display: flex;
+        overflow-x: auto;
+        gap: 5px;
     }
 
-    .details {
+    .menu li {
+        min-width: max-content;
+    }
+
+    .main {
+        margin-left: 0;
+        padding: 18px;
+    }
+
+    .topbar {
+        display: block;
+    }
+
+    .grid {
         grid-template-columns: 1fr;
+    }
+
+    .profile-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .balance {
+        font-size: 34px;
     }
 }
 </style>
@@ -186,132 +293,249 @@ body {
 
 <body>
 
-<div class="header">
-    <h1>QuickLoan</h1>
-    <p>Personal Loan Dashboard</p>
-</div>
+<!-- SIDEBAR -->
+<aside class="sidebar">
 
-<div class="container">
+    <div class="logo">
+        Quick<span>Loan</span>
+    </div>
 
-    <!-- CUSTOMER -->
-    <div class="card">
-        <div class="name">Vikram</div>
-        <div class="loanid">Loan ID: QL-2026-001</div>
+    <ul class="menu">
 
-        <div class="status">
-            PAYMENT SCHEDULED
+        <li>
+            <a href="#dashboard" class="active">
+                🏠 Dashboard
+            </a>
+        </li>
+
+        <li>
+            <a href="#loan">
+                💳 Loan Details
+            </a>
+        </li>
+
+        <li>
+            <a href="#foreclose">
+                📄 Foreclose Loan
+            </a>
+        </li>
+
+        <li>
+            <a href="#profile">
+                👤 My Profile
+            </a>
+        </li>
+
+    </ul>
+
+</aside>
+
+
+<!-- MAIN CONTENT -->
+<main class="main">
+
+    <div class="topbar" id="dashboard">
+        <div>
+            <h1>Dashboard</h1>
+            <div class="user">
+                Welcome back, Vikram Yadav
+            </div>
         </div>
     </div>
 
-    <!-- OUTSTANDING -->
-    <div class="card">
-        <div class="title">Total Outstanding</div>
 
-        <div class="amount">
+    <!-- BALANCE -->
+    <div class="card balance-card">
+
+        <div class="balance-label">
+            Total Outstanding
+        </div>
+
+        <div class="balance">
             ₹1,08,600
         </div>
 
-        <div class="remaining">
+        <div class="balance-note">
             ₹1,03,600 remaining after today's ₹5,000 payment
         </div>
+
     </div>
 
-    <!-- PAID TODAY -->
-    <div class="card paid">
+
+    <!-- SUMMARY -->
+    <div class="grid">
+
+        <div class="small-card">
+            <span>Today's Payment</span>
+            <strong>₹5,000</strong>
+        </div>
+
+        <div class="small-card">
+            <span>7 October Due</span>
+            <strong>₹11,000</strong>
+        </div>
+
+        <div class="small-card">
+            <span>10 October Due</span>
+            <strong>₹22,000</strong>
+        </div>
+
+    </div>
+
+
+    <!-- PAYMENT SCHEDULE -->
+    <div class="card" id="loan">
+
+        <h2>Payment Schedule</h2>
+
         <div class="payment">
 
             <div>
                 <h3>Payment Made</h3>
                 <p>5 October 2026</p>
-                <p class="paid-text">✓ PAID TODAY</p>
+                <p class="paid">✓ PAID</p>
             </div>
 
-            <div class="payment-amount">
+            <div class="amount">
                 ₹5,000
             </div>
 
         </div>
-    </div>
 
-    <!-- OCTOBER 7 -->
-    <div class="card due">
+
         <div class="payment">
 
             <div>
                 <h3>Upcoming Payment</h3>
                 <p>7 October 2026</p>
-                <p class="due-text">DUE ON 7 OCTOBER</p>
+                <p class="due">DUE</p>
             </div>
 
-            <div class="payment-amount">
+            <div class="amount">
                 ₹11,000
             </div>
 
         </div>
-    </div>
 
-    <!-- OCTOBER 10 -->
-    <div class="card due">
+
         <div class="payment">
 
             <div>
                 <h3>Upcoming Payment</h3>
                 <p>10 October 2026</p>
-                <p class="due-text">DUE ON 10 OCTOBER</p>
+                <p class="due">DUE</p>
             </div>
 
-            <div class="payment-amount">
+            <div class="amount">
                 ₹22,000
             </div>
 
         </div>
+
     </div>
 
-    <!-- DETAILS -->
+
+    <!-- LOAN DETAILS -->
     <div class="card">
 
-        <h3>Loan Details</h3>
+        <h2>Loan Details</h2>
 
-        <div class="details">
+        <div class="profile-grid">
 
-            <div class="detail">
-                <small>Total Outstanding</small>
+            <div class="profile-item">
+                <span>Loan ID</span>
+                <strong>QL-2026-001</strong>
+            </div>
+
+            <div class="profile-item">
+                <span>Total Outstanding</span>
                 <strong>₹1,08,600</strong>
             </div>
 
-            <div class="detail">
-                <small>Paid Today</small>
+            <div class="profile-item">
+                <span>Today's Payment</span>
                 <strong>₹5,000</strong>
             </div>
 
-            <div class="detail">
-                <small>7 October Due</small>
-                <strong>₹11,000</strong>
-            </div>
-
-            <div class="detail">
-                <small>10 October Due</small>
-                <strong>₹22,000</strong>
+            <div class="profile-item">
+                <span>Upcoming Payments</span>
+                <strong>₹33,000</strong>
             </div>
 
         </div>
 
     </div>
+
+
+    <!-- FORECLOSE -->
+    <div class="card" id="foreclose">
+
+        <h2>Foreclose Loan</h2>
+
+        <p style="color:#64748b;">
+            Current amount required to close the loan:
+        </p>
+
+        <div style="font-size:32px;font-weight:bold;margin:15px 0;">
+            ₹1,08,600
+        </div>
+
+        <button class="foreclose-btn"
+        onclick="alert('This is a personal demonstration dashboard. Foreclosure is not connected to a real payment system.')">
+            View Foreclosure Details
+        </button>
+
+    </div>
+
+
+    <!-- PROFILE -->
+    <div class="card" id="profile">
+
+        <h2>My Profile</h2>
+
+        <div class="profile-grid">
+
+            <div class="profile-item">
+                <span>Full Name</span>
+                <strong>Vikram Yadav</strong>
+            </div>
+
+            <div class="profile-item">
+                <span>Phone Number</span>
+                <strong>90146XX138</strong>
+            </div>
+
+            <div class="profile-item">
+                <span>PAN Number</span>
+                <strong>CDXPTXX22</strong>
+            </div>
+
+            <div class="profile-item">
+                <span>Customer Type</span>
+                <strong>Personal</strong>
+            </div>
+
+        </div>
+
+    </div>
+
 
     <!-- NOTICE -->
     <div class="card">
 
         <div class="notice">
-            Personal demonstration dashboard. Not connected to any real financial institution or payment system.
+            Personal demonstration dashboard. This page is not connected
+            to any real financial institution, loan account, or payment system.
         </div>
 
     </div>
 
-</div>
 
-<div class="footer">
-    © 2026 QuickLoan — Personal Dashboard
-</div>
+    <div class="footer">
+        © 2026 QuickLoan — Personal Dashboard
+    </div>
+
+</main>
 
 </body>
 </html>
