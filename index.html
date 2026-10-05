@@ -3,228 +3,515 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>QuickLoan - Personal Dashboard</title>
+<title>QuickLoan — Personal Dashboard</title>
 
 <style>
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial,Helvetica,sans-serif;
+    font-family:Inter,Arial,Helvetica,sans-serif;
 }
+
+html{scroll-behavior:smooth}
 
 body{
-    background:#f4f7fb;
-    color:#182230;
+    background:#f5f7fb;
+    color:#172033;
 }
 
-/* SIDEBAR */
+/* ================= PIN SCREEN ================= */
+
+.pin-screen{
+    position:fixed;
+    inset:0;
+    background:linear-gradient(135deg,#101827,#1d4ed8);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:99999;
+    padding:20px;
+}
+
+.pin-box{
+    width:100%;
+    max-width:390px;
+    background:white;
+    border-radius:22px;
+    padding:35px;
+    text-align:center;
+    box-shadow:0 25px 70px rgba(0,0,0,.3);
+}
+
+.pin-logo{
+    font-size:28px;
+    font-weight:850;
+    color:#2563eb;
+    margin-bottom:8px;
+}
+
+.pin-sub{
+    color:#718096;
+    font-size:13px;
+    margin-bottom:25px;
+}
+
+.pin-input{
+    width:100%;
+    padding:15px;
+    border:1px solid #dbe3ee;
+    border-radius:11px;
+    text-align:center;
+    font-size:22px;
+    letter-spacing:8px;
+    outline:none;
+}
+
+.pin-button{
+    width:100%;
+    border:0;
+    margin-top:15px;
+    padding:14px;
+    border-radius:11px;
+    background:#2563eb;
+    color:white;
+    font-weight:800;
+    cursor:pointer;
+    font-size:15px;
+}
+
+.pin-error{
+    color:#dc2626;
+    font-size:12px;
+    margin-top:12px;
+    min-height:16px;
+}
+
+.pin-demo{
+    color:#94a3b8;
+    font-size:10px;
+    margin-top:18px;
+}
+
+/* ================= SIDEBAR ================= */
+
 .sidebar{
     position:fixed;
     left:0;
     top:0;
-    width:250px;
+    width:255px;
     height:100vh;
-    background:#111827;
+    background:#101827;
     color:white;
-    padding:25px 18px;
-    z-index:100;
+    padding:25px 17px;
+    z-index:1000;
 }
 
 .logo{
-    font-size:25px;
+    font-size:26px;
     font-weight:800;
+    padding:0 12px;
     margin-bottom:35px;
-    padding-left:12px;
 }
 
-.logo span{
-    color:#4f8cff;
-}
+.logo span{color:#4f8cff}
 
 .menu a{
-    display:block;
-    color:#cbd5e1;
+    display:flex;
+    align-items:center;
+    gap:12px;
     text-decoration:none;
+    color:#aeb9c9;
     padding:14px 15px;
     margin:5px 0;
-    border-radius:10px;
-    font-size:15px;
+    border-radius:11px;
+    transition:.2s;
 }
 
 .menu a:hover,
 .menu a.active{
     background:#1d4ed8;
-    color:white;
+    color:#fff;
 }
 
-/* MAIN */
+.sidebar-bottom{
+    position:absolute;
+    left:18px;
+    right:18px;
+    bottom:25px;
+}
+
+.demo-label{
+    background:#1e293b;
+    color:#94a3b8;
+    padding:11px;
+    border-radius:10px;
+    text-align:center;
+    font-size:11px;
+}
+
+/* ================= MAIN ================= */
+
 .main{
-    margin-left:250px;
-    padding:30px;
-    max-width:1500px;
+    margin-left:255px;
+    padding:28px;
+    max-width:1550px;
 }
 
 .topbar{
     display:flex;
-    justify-content:space-between;
     align-items:center;
+    justify-content:space-between;
     margin-bottom:25px;
 }
 
-.topbar h1{
-    font-size:26px;
+.greeting{
+    font-size:28px;
+    font-weight:800;
 }
 
-.user{
+.greeting-sub{
+    color:#718096;
+    margin-top:5px;
+    font-size:14px;
+}
+
+.profile-mini{
+    display:flex;
+    align-items:center;
+    gap:12px;
     background:white;
-    padding:10px 16px;
-    border-radius:12px;
-    box-shadow:0 3px 12px rgba(0,0,0,.06);
+    padding:9px 14px;
+    border-radius:14px;
+    box-shadow:0 4px 15px rgba(0,0,0,.05);
 }
 
-/* HERO */
+.avatar{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#2563eb;
+    color:white;
+    font-weight:800;
+}
+
+/* ================= HERO ================= */
+
 .hero{
     background:linear-gradient(135deg,#2563eb,#4f46e5);
     color:white;
+    border-radius:22px;
     padding:30px;
-    border-radius:20px;
-    box-shadow:0 12px 30px rgba(37,99,235,.22);
-    margin-bottom:25px;
+    margin-bottom:22px;
+    box-shadow:0 15px 35px rgba(37,99,235,.22);
 }
 
-.hero-top{
+.hero-header{
     display:flex;
     justify-content:space-between;
     gap:20px;
 }
 
-.hero small{
-    opacity:.85;
+.hero-label{
+    opacity:.8;
+    font-size:14px;
 }
 
 .amount{
-    font-size:42px;
-    font-weight:800;
-    margin:10px 0;
+    font-size:44px;
+    font-weight:850;
+    margin:8px 0;
 }
 
-.remaining{
-    font-size:15px;
-    opacity:.92;
+.hero-small{
+    font-size:14px;
+    opacity:.9;
 }
 
-.status{
+.active-status{
     background:#16a34a;
-    display:inline-block;
-    padding:8px 15px;
+    padding:8px 14px;
     border-radius:30px;
-    font-size:13px;
+    height:max-content;
+    font-size:12px;
     font-weight:bold;
-    margin-top:15px;
 }
 
-/* PAY BUTTON */
-.pay-area{
+/* ================= PROGRESS ================= */
+
+.progress-area{
     margin-top:25px;
 }
+
+.progress-text{
+    display:flex;
+    justify-content:space-between;
+    font-size:13px;
+    margin-bottom:8px;
+}
+
+.progress-bg{
+    width:100%;
+    height:9px;
+    background:rgba(255,255,255,.22);
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress-fill{
+    width:36%;
+    height:100%;
+    background:white;
+    border-radius:20px;
+}
+
+/* ================= PAY ================= */
+
+.pay-area{margin-top:25px}
 
 .pay-btn{
     border:0;
     background:white;
     color:#1d4ed8;
-    padding:15px 35px;
+    padding:14px 30px;
     border-radius:12px;
-    font-size:17px;
+    font-size:16px;
     font-weight:800;
     cursor:pointer;
-    box-shadow:0 5px 15px rgba(0,0,0,.18);
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+    transition:.2s;
 }
 
-.pay-btn:hover{
-    transform:translateY(-2px);
-    box-shadow:0 8px 20px rgba(0,0,0,.22);
-}
+.pay-btn:hover{transform:translateY(-2px)}
 
-/* CARDS */
-.grid{
+/* ================= CARDS ================= */
+
+.cards{
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    gap:18px;
-    margin-bottom:25px;
+    gap:17px;
+    margin-bottom:23px;
 }
 
 .card{
     background:white;
+    padding:21px;
     border-radius:16px;
-    padding:22px;
-    box-shadow:0 4px 15px rgba(0,0,0,.06);
+    box-shadow:0 4px 15px rgba(0,0,0,.05);
+}
+
+.card-icon{
+    font-size:22px;
+    margin-bottom:12px;
 }
 
 .card-title{
-    color:#64748b;
     font-size:13px;
-    margin-bottom:10px;
+    color:#718096;
 }
 
 .card-value{
     font-size:23px;
     font-weight:800;
+    margin-top:7px;
 }
 
-/* SECTIONS */
+/* ================= SECTIONS ================= */
+
 .section{
     background:white;
     border-radius:18px;
-    padding:25px;
-    margin-bottom:25px;
-    box-shadow:0 4px 15px rgba(0,0,0,.06);
+    padding:24px;
+    margin-bottom:23px;
+    box-shadow:0 4px 15px rgba(0,0,0,.05);
 }
 
-.section h2{
-    font-size:20px;
-    margin-bottom:20px;
+.section-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:18px;
 }
 
-/* TABLE */
+.section h2{font-size:20px}
+
+.section-link{
+    color:#2563eb;
+    font-size:13px;
+}
+
+/* ================= CHART ================= */
+
+.chart-wrap{
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+    gap:70px;
+    height:220px;
+    padding:25px 20px 5px;
+}
+
+.chart-column{
+    width:100px;
+    height:180px;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    align-items:center;
+}
+
+.chart-bar{
+    width:70px;
+    border-radius:10px 10px 4px 4px;
+    transition:.6s;
+}
+
+.chart-paid{
+    height:63px;
+    background:#22c55e;
+}
+
+.chart-remaining{
+    height:117px;
+    background:#2563eb;
+}
+
+.chart-value{
+    font-size:14px;
+    font-weight:800;
+    margin-bottom:8px;
+}
+
+.chart-label{
+    margin-top:9px;
+    color:#64748b;
+    font-size:13px;
+}
+
+.chart-legend{
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    margin-top:12px;
+    font-size:12px;
+    color:#64748b;
+}
+
+.legend-item{
+    display:flex;
+    align-items:center;
+    gap:7px;
+}
+
+.legend-dot{
+    width:10px;
+    height:10px;
+    border-radius:50%;
+}
+
+.legend-paid{background:#22c55e}
+.legend-remaining{background:#2563eb}
+
+/* ================= TIMELINE ================= */
+
+.timeline{position:relative}
+
+.timeline-item{
+    display:flex;
+    gap:15px;
+    position:relative;
+    padding-bottom:23px;
+}
+
+.timeline-item:last-child{padding-bottom:0}
+
+.timeline-line{
+    position:absolute;
+    left:10px;
+    top:22px;
+    width:2px;
+    height:calc(100% - 10px);
+    background:#e2e8f0;
+}
+
+.timeline-dot{
+    width:21px;
+    height:21px;
+    min-width:21px;
+    border-radius:50%;
+    background:#16a34a;
+    border:4px solid #dcfce7;
+    z-index:2;
+}
+
+.timeline-dot.upcoming{
+    background:#f59e0b;
+    border-color:#fef3c7;
+}
+
+.timeline-content{flex:1}
+
+.timeline-title{font-weight:800}
+
+.timeline-date{
+    color:#718096;
+    font-size:13px;
+    margin-top:4px;
+}
+
+.timeline-amount{
+    font-weight:800;
+    float:right;
+}
+
+/* ================= TABLE ================= */
+
+.table-wrap{overflow-x:auto}
+
 table{
     width:100%;
     border-collapse:collapse;
 }
 
 th,td{
-    padding:15px 12px;
-    border-bottom:1px solid #e5e7eb;
+    padding:14px 12px;
     text-align:left;
+    border-bottom:1px solid #edf0f4;
+    white-space:nowrap;
 }
 
 th{
-    color:#64748b;
-    font-size:13px;
+    color:#718096;
+    font-size:12px;
 }
+
+td{font-size:14px}
 
 .badge{
-    display:inline-block;
     padding:6px 10px;
     border-radius:20px;
-    font-size:12px;
-    font-weight:bold;
+    font-size:11px;
+    font-weight:800;
 }
 
-.paid{
+.badge-paid{
     background:#dcfce7;
     color:#15803d;
 }
 
-.due{
+.badge-upcoming{
     background:#fef3c7;
     color:#92400e;
 }
 
-/* DETAILS */
+/* ================= DETAILS ================= */
+
 .details{
     display:grid;
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:repeat(3,1fr);
     gap:15px;
 }
 
@@ -236,173 +523,278 @@ th{
 
 .detail label{
     display:block;
-    color:#64748b;
-    font-size:13px;
+    color:#718096;
+    font-size:12px;
     margin-bottom:7px;
 }
 
-.detail strong{
-    font-size:17px;
+.detail strong{font-size:16px}
+
+/* ================= FORECLOSE ================= */
+
+.foreclose{
+    background:#eff6ff;
+    border:1px solid #dbeafe;
 }
 
-/* FORECLOSE */
-.foreclose{
-    border:1px solid #dbeafe;
-    background:#eff6ff;
+.foreclose-amount{
+    font-size:31px;
+    font-weight:850;
+    margin:8px 0;
+}
+
+.foreclose-input{
+    width:100%;
+    padding:13px;
+    border:1px solid #dbe3ee;
+    border-radius:9px;
+    margin-top:15px;
+    outline:none;
 }
 
 .foreclose-btn{
-    margin-top:15px;
+    margin-top:12px;
     padding:12px 20px;
     border:0;
     background:#2563eb;
     color:white;
     border-radius:9px;
     cursor:pointer;
-    font-weight:bold;
+    font-weight:700;
 }
 
-/* PROFILE */
+/* ================= PROFILE ================= */
+
 .profile-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:15px;
 }
 
-/* NOTICE */
+/* ================= NOTIFICATIONS ================= */
+
+.notification{
+    display:flex;
+    gap:13px;
+    padding:14px 0;
+    border-bottom:1px solid #edf0f4;
+}
+
+.notification:last-child{border-bottom:0}
+
+.notification-icon{
+    width:38px;
+    height:38px;
+    min-width:38px;
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#eff6ff;
+}
+
+.notification-title{
+    font-weight:700;
+    font-size:14px;
+}
+
+.notification-text{
+    color:#718096;
+    font-size:12px;
+    margin-top:4px;
+}
+
+/* ================= BUTTONS ================= */
+
+.receipt-btn{
+    padding:8px 13px;
+    border:1px solid #dbe3ee;
+    background:white;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:600;
+}
+
+.print-btn{
+    width:100%;
+    margin-top:18px;
+    padding:13px;
+    border:0;
+    background:#2563eb;
+    color:white;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:800;
+}
+
+/* ================= NOTICE ================= */
+
 .notice{
     background:#fff7ed;
     border:1px solid #fed7aa;
     color:#9a3412;
-    padding:15px;
-    border-radius:12px;
-    font-size:13px;
+    padding:14px;
+    border-radius:11px;
+    font-size:12px;
+    margin-bottom:20px;
 }
 
-/* MODAL */
+/* ================= MODALS ================= */
+
 .modal{
     display:none;
     position:fixed;
     inset:0;
     background:rgba(0,0,0,.65);
     z-index:9999;
-    justify-content:center;
     align-items:center;
+    justify-content:center;
     padding:20px;
 }
 
-.modal.show{
-    display:flex;
-}
+.modal.show{display:flex}
 
 .modal-box{
     width:100%;
-    max-width:480px;
+    max-width:500px;
+    max-height:90vh;
+    overflow:auto;
     background:white;
     border-radius:20px;
-    padding:28px;
-    box-shadow:0 20px 60px rgba(0,0,0,.3);
+    padding:27px;
     position:relative;
+    box-shadow:0 25px 70px rgba(0,0,0,.3);
 }
 
 .close{
     position:absolute;
-    right:18px;
-    top:15px;
+    right:17px;
+    top:14px;
     width:35px;
     height:35px;
     border:0;
     border-radius:50%;
     background:#f1f5f9;
-    font-size:20px;
     cursor:pointer;
+    font-size:20px;
 }
 
 .modal-title{
-    font-size:23px;
-    font-weight:800;
-    margin-bottom:7px;
+    font-size:22px;
+    font-weight:850;
 }
 
 .modal-sub{
-    color:#64748b;
-    font-size:14px;
-    margin-bottom:22px;
+    color:#718096;
+    font-size:13px;
+    margin:6px 0 20px;
 }
+
+/* ================= PAYMENT OPTIONS ================= */
 
 .payment-options{
     display:grid;
-    gap:14px;
+    gap:12px;
 }
 
 .payment-option{
-    border:1px solid #e2e8f0;
-    border-radius:15px;
-    padding:15px;
     display:flex;
     align-items:center;
     gap:15px;
+    padding:14px;
+    border:1px solid #e2e8f0;
+    border-radius:14px;
     cursor:pointer;
     transition:.2s;
-    background:white;
 }
 
 .payment-option:hover{
     border-color:#2563eb;
     transform:translateY(-2px);
-    box-shadow:0 5px 15px rgba(0,0,0,.08);
 }
 
 .payment-logo{
-    width:58px;
-    height:58px;
+    width:55px;
+    height:55px;
     object-fit:contain;
-    border-radius:12px;
-    background:#f8fafc;
-    padding:7px;
+    border-radius:11px;
 }
 
-.payment-name{
-    font-size:17px;
-    font-weight:800;
-}
+.payment-name{font-weight:800}
 
 .payment-desc{
-    color:#64748b;
     font-size:12px;
+    color:#718096;
     margin-top:4px;
 }
 
 .demo-note{
-    margin-top:20px;
-    background:#f1f5f9;
-    padding:12px;
-    border-radius:10px;
-    text-align:center;
-    font-size:12px;
+    background:#f8fafc;
     color:#64748b;
+    padding:11px;
+    border-radius:9px;
+    text-align:center;
+    font-size:11px;
+    margin-top:18px;
 }
 
-/* FOOTER */
+/* ================= RECEIPT ================= */
+
+.receipt{
+    border:1px solid #e2e8f0;
+    border-radius:14px;
+    padding:20px;
+}
+
+.receipt-header{
+    text-align:center;
+    border-bottom:1px dashed #cbd5e1;
+    padding-bottom:17px;
+    margin-bottom:15px;
+}
+
+.receipt-logo{
+    font-size:21px;
+    font-weight:850;
+    color:#2563eb;
+}
+
+.receipt-amount{
+    font-size:31px;
+    font-weight:850;
+    margin:10px 0;
+}
+
+.receipt-row{
+    display:flex;
+    justify-content:space-between;
+    padding:9px 0;
+    font-size:13px;
+}
+
+.receipt-row span:first-child{color:#718096}
+
+/* ================= FOOTER ================= */
+
 footer{
     text-align:center;
     color:#94a3b8;
-    padding:15px;
-    font-size:12px;
+    padding:10px;
+    font-size:11px;
 }
 
-/* MOBILE */
-@media(max-width:900px){
+/* ================= MOBILE ================= */
+
+@media(max-width:950px){
+
     .sidebar{
+        position:relative;
         width:100%;
         height:auto;
-        position:relative;
-        padding:15px;
+        padding:16px;
     }
 
-    .logo{
-        margin-bottom:12px;
-    }
+    .logo{margin-bottom:13px}
 
     .menu{
         display:flex;
@@ -410,64 +802,116 @@ footer{
         gap:5px;
     }
 
-    .menu a{
-        white-space:nowrap;
-    }
+    .menu a{white-space:nowrap}
+
+    .sidebar-bottom{display:none}
 
     .main{
         margin-left:0;
         padding:18px;
     }
 
-    .grid{
+    .cards{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .details{
         grid-template-columns:repeat(2,1fr);
     }
 
     .profile-grid{
-        grid-template-columns:1fr;
+        grid-template-columns:repeat(2,1fr);
     }
 }
 
 @media(max-width:600px){
-    .hero-top{
-        display:block;
+
+    .topbar{display:block}
+
+    .profile-mini{
+        width:max-content;
+        margin-top:12px;
     }
 
-    .amount{
-        font-size:34px;
-    }
+    .greeting{font-size:23px}
 
-    .grid{
-        grid-template-columns:1fr;
-    }
+    .hero-header{display:block}
 
-    .details{
-        grid-template-columns:1fr;
-    }
-
-    table{
-        min-width:650px;
-    }
-
-    .section{
-        overflow-x:auto;
-    }
-
-    .topbar{
-        display:block;
-    }
-
-    .user{
+    .active-status{
         display:inline-block;
-        margin-top:10px;
+        margin-top:15px;
     }
+
+    .amount{font-size:35px}
+
+    .cards{grid-template-columns:1fr}
+
+    .details,
+    .profile-grid{
+        grid-template-columns:1fr;
+    }
+
+    .section{padding:18px}
+
+    .chart-wrap{
+        gap:30px;
+    }
+
+    .chart-column{
+        width:80px;
+    }
+
 }
 </style>
 </head>
 
 <body>
 
-<!-- SIDEBAR -->
+<!-- =========================================================
+     DEMO PIN SCREEN
+========================================================= -->
+
+<div class="pin-screen" id="pinScreen">
+
+    <div class="pin-box">
+
+        <div class="pin-logo">
+            QuickLoan
+        </div>
+
+        <div class="pin-sub">
+            Personal Demonstration Dashboard
+        </div>
+
+        <input
+            id="pinInput"
+            class="pin-input"
+            type="password"
+            inputmode="numeric"
+            maxlength="4"
+            placeholder="••••"
+            onkeydown="if(event.key==='Enter') checkPin()"
+        >
+
+        <button class="pin-button" onclick="checkPin()">
+            Unlock Dashboard
+        </button>
+
+        <div class="pin-error" id="pinError"></div>
+
+        <div class="pin-demo">
+            Demo PIN: 1234
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     SIDEBAR
+========================================================= -->
+
 <div class="sidebar">
 
     <div class="logo">
@@ -475,53 +919,140 @@ footer{
     </div>
 
     <div class="menu">
-        <a href="#dashboard" class="active">Dashboard</a>
-        <a href="#payments">Payments</a>
-        <a href="#loan">Loan Details</a>
-        <a href="#foreclose">Foreclose Loan</a>
-        <a href="#profile">My Profile</a>
+
+        <a href="#dashboard" class="active">
+            🏠 Dashboard
+        </a>
+
+        <a href="#payments">
+            💳 Payments
+        </a>
+
+        <a href="#loan">
+            📄 Loan Details
+        </a>
+
+        <a href="#foreclose">
+            📊 Foreclose Loan
+        </a>
+
+        <a href="#profile">
+            👤 My Profile
+        </a>
+
+        <a href="#notifications">
+            🔔 Notifications
+        </a>
+
+    </div>
+
+    <div class="sidebar-bottom">
+
+        <div class="demo-label">
+            PERSONAL DEMO DASHBOARD
+        </div>
+
     </div>
 
 </div>
 
 
-<!-- MAIN -->
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
 <div class="main">
 
-    <div class="topbar">
-        <h1>Loan Dashboard</h1>
+    <!-- TOPBAR -->
 
-        <div class="user">
-            👤 Vikram Yadav
+    <div class="topbar">
+
+        <div>
+
+            <div class="greeting">
+                <span id="greeting">Good Evening</span>, Vikram
+            </div>
+
+            <div class="greeting-sub">
+                Here's your loan account overview
+            </div>
+
         </div>
+
+        <div class="profile-mini">
+
+            <div class="avatar">
+                VY
+            </div>
+
+            <div>
+                <strong>Vikram Yadav</strong>
+
+                <div style="font-size:11px;color:#718096;">
+                    Personal Account
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
 
 
-    <!-- HERO -->
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
     <section class="hero" id="dashboard">
 
-        <div class="hero-top">
+        <div class="hero-header">
 
             <div>
-                <small>Total Outstanding</small>
+
+                <div class="hero-label">
+                    Total Outstanding
+                </div>
 
                 <div class="amount">
                     ₹1,08,600
                 </div>
 
-                <div class="remaining">
+                <div class="hero-small">
                     ₹1,03,600 remaining after today's ₹5,000 payment
                 </div>
 
-                <div class="status">
-                    ACTIVE
-                </div>
+            </div>
+
+            <div class="active-status">
+                ACTIVE
             </div>
 
         </div>
 
 
-        <!-- PAY NOW -->
+        <div class="progress-area">
+
+            <div class="progress-text">
+
+                <span>
+                    Loan repayment progress
+                </span>
+
+                <span>
+                    36%
+                </span>
+
+            </div>
+
+            <div class="progress-bg">
+
+                <div class="progress-fill"></div>
+
+            </div>
+
+        </div>
+
+
         <div class="pay-area">
 
             <button class="pay-btn" onclick="openPayment()">
@@ -533,94 +1064,364 @@ footer{
     </section>
 
 
-    <!-- SUMMARY -->
-    <div class="grid">
+    <!-- =====================================================
+         SUMMARY CARDS
+    ====================================================== -->
+
+    <div class="cards">
 
         <div class="card">
-            <div class="card-title">Paid Today</div>
-            <div class="card-value">₹5,000</div>
+
+            <div class="card-icon">💰</div>
+
+            <div class="card-title">
+                Paid Today
+            </div>
+
+            <div class="card-value">
+                ₹5,000
+            </div>
+
         </div>
 
-        <div class="card">
-            <div class="card-title">7 October Due</div>
-            <div class="card-value">₹11,000</div>
-        </div>
 
         <div class="card">
-            <div class="card-title">10 October Due</div>
-            <div class="card-value">₹22,000</div>
+
+            <div class="card-icon">📅</div>
+
+            <div class="card-title">
+                Next Payment
+            </div>
+
+            <div class="card-value">
+                ₹11,000
+            </div>
+
         </div>
 
+
         <div class="card">
-            <div class="card-title">Loan ID</div>
-            <div class="card-value">QL-2026-001</div>
+
+            <div class="card-icon">⏳</div>
+
+            <div class="card-title">
+                Upcoming Total
+            </div>
+
+            <div class="card-value">
+                ₹33,000
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-icon">🆔</div>
+
+            <div class="card-title">
+                Loan ID
+            </div>
+
+            <div class="card-value">
+                QL-2026-001
+            </div>
+
         </div>
 
     </div>
 
 
-    <!-- PAYMENTS -->
-    <section class="section" id="payments">
+    <!-- =====================================================
+         PAID VS REMAINING CHART
+    ====================================================== -->
 
-        <h2>Payment Schedule</h2>
+    <section class="section">
 
-        <table>
+        <div class="section-header">
 
-            <thead>
-                <tr>
-                    <th>Type</th>
-                    <th>Date</th>
-                    <th>Amount</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
+            <h2>
+                Loan Overview
+            </h2>
 
-            <tbody>
+            <span class="section-link">
+                Current status
+            </span>
 
-                <tr>
-                    <td>Payment Made</td>
-                    <td>5 October 2026</td>
-                    <td>₹5,000</td>
-                    <td>
-                        <span class="badge paid">
-                            PAID TODAY
-                        </span>
-                    </td>
-                </tr>
+        </div>
 
-                <tr>
-                    <td>Upcoming Payment</td>
-                    <td>7 October 2026</td>
-                    <td>₹11,000</td>
-                    <td>
-                        <span class="badge due">
-                            DUE ON 7 OCTOBER
-                        </span>
-                    </td>
-                </tr>
 
-                <tr>
-                    <td>Upcoming Payment</td>
-                    <td>10 October 2026</td>
-                    <td>₹22,000</td>
-                    <td>
-                        <span class="badge due">
-                            DUE ON 10 OCTOBER
-                        </span>
-                    </td>
-                </tr>
+        <div class="chart-wrap">
 
-            </tbody>
+            <div class="chart-column">
 
-        </table>
+                <div class="chart-value">
+                    ₹5,000
+                </div>
+
+                <div class="chart-bar chart-paid"></div>
+
+                <div class="chart-label">
+                    Paid
+                </div>
+
+            </div>
+
+
+            <div class="chart-column">
+
+                <div class="chart-value">
+                    ₹1,03,600
+                </div>
+
+                <div class="chart-bar chart-remaining"></div>
+
+                <div class="chart-label">
+                    Remaining
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="chart-legend">
+
+            <div class="legend-item">
+
+                <span class="legend-dot legend-paid"></span>
+
+                Paid — ₹5,000
+
+            </div>
+
+            <div class="legend-item">
+
+                <span class="legend-dot legend-remaining"></span>
+
+                Remaining — ₹1,03,600
+
+            </div>
+
+        </div>
 
     </section>
 
 
-    <!-- LOAN DETAILS -->
+    <!-- =====================================================
+         PAYMENT TIMELINE
+    ====================================================== -->
+
+    <section class="section">
+
+        <div class="section-header">
+
+            <h2>
+                Payment Timeline
+            </h2>
+
+            <span class="section-link">
+                Upcoming
+            </span>
+
+        </div>
+
+
+        <div class="timeline">
+
+            <div class="timeline-item">
+
+                <div class="timeline-line"></div>
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-content">
+
+                    <span class="timeline-amount">
+                        ₹5,000
+                    </span>
+
+                    <div class="timeline-title">
+                        Payment completed
+                    </div>
+
+                    <div class="timeline-date">
+                        5 October 2026
+                    </div>
+
+                    <span class="badge badge-paid">
+                        PAID
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <div class="timeline-line"></div>
+
+                <div class="timeline-dot upcoming"></div>
+
+                <div class="timeline-content">
+
+                    <span class="timeline-amount">
+                        ₹11,000
+                    </span>
+
+                    <div class="timeline-title">
+                        Upcoming payment
+                    </div>
+
+                    <div class="timeline-date">
+                        7 October 2026
+                    </div>
+
+                    <span class="badge badge-upcoming">
+                        UPCOMING
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot upcoming"></div>
+
+                <div class="timeline-content">
+
+                    <span class="timeline-amount">
+                        ₹22,000
+                    </span>
+
+                    <div class="timeline-title">
+                        Upcoming payment
+                    </div>
+
+                    <div class="timeline-date">
+                        10 October 2026
+                    </div>
+
+                    <span class="badge badge-upcoming">
+                        UPCOMING
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         TRANSACTIONS
+    ====================================================== -->
+
+    <section class="section" id="payments">
+
+        <div class="section-header">
+
+            <h2>
+                Transaction History
+            </h2>
+
+            <span class="section-link">
+                Recent activity
+            </span>
+
+        </div>
+
+
+        <div class="table-wrap">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Date</th>
+                        <th>Transaction ID</th>
+                        <th>Amount</th>
+                        <th>Method</th>
+                        <th>Status</th>
+                        <th>Receipt</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    <tr>
+
+                        <td>
+                            5 Oct 2026
+                        </td>
+
+                        <td>
+                            TXN-051026
+                        </td>
+
+                        <td>
+                            <strong>₹5,000</strong>
+                        </td>
+
+                        <td>
+                            Demo Payment
+                        </td>
+
+                        <td>
+
+                            <span class="badge badge-paid">
+                                SUCCESS
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <button
+                            class="receipt-btn"
+                            onclick="openReceipt()">
+
+                                View
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         LOAN DETAILS
+    ====================================================== -->
+
     <section class="section" id="loan">
 
-        <h2>Loan Details</h2>
+        <div class="section-header">
+
+            <h2>
+                Loan Details
+            </h2>
+
+        </div>
+
 
         <div class="details">
 
@@ -644,36 +1445,165 @@ footer{
                 <strong>₹33,000</strong>
             </div>
 
+            <div class="detail">
+                <label>Loan Status</label>
+                <strong>Running</strong>
+            </div>
+
+            <div class="detail">
+                <label>Account Status</label>
+                <strong>Active</strong>
+            </div>
+
         </div>
 
     </section>
 
 
-    <!-- FORECLOSE -->
+    <!-- =====================================================
+         FORECLOSURE
+    ====================================================== -->
+
     <section class="section foreclose" id="foreclose">
 
-        <h2>Foreclose Loan</h2>
+        <div class="section-header">
 
-        <p>
-            Current foreclosure amount
-        </p>
+            <h2>
+                Foreclose Loan
+            </h2>
 
-        <div style="font-size:30px;font-weight:800;margin-top:8px;">
+        </div>
+
+
+        <div style="color:#64748b;font-size:13px;">
+            Current demonstration foreclosure amount
+        </div>
+
+
+        <div class="foreclose-amount">
             ₹1,08,600
         </div>
 
-        <button class="foreclose-btn"
-                onclick="alert('Demo only — foreclosure details are not connected to any real loan account.')">
-            View Foreclosure Details
+
+        <input
+        class="foreclose-input"
+        id="forecloseInput"
+        type="number"
+        placeholder="Enter amount to simulate payment">
+
+
+        <button
+        class="foreclose-btn"
+        onclick="calculateForeclose()">
+
+            Calculate
+
         </button>
+
+
+        <div
+        id="forecloseResult"
+        style="margin-top:15px;font-weight:700;">
+
+        </div>
 
     </section>
 
 
-    <!-- PROFILE -->
+    <!-- =====================================================
+         NOTIFICATIONS
+    ====================================================== -->
+
+    <section class="section" id="notifications">
+
+        <div class="section-header">
+
+            <h2>
+                Notifications
+            </h2>
+
+        </div>
+
+
+        <div class="notification">
+
+            <div class="notification-icon">
+                ✓
+            </div>
+
+            <div>
+
+                <div class="notification-title">
+                    Payment recorded
+                </div>
+
+                <div class="notification-text">
+                    Your demonstration payment of ₹5,000 was recorded on 5 October 2026.
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="notification">
+
+            <div class="notification-icon">
+                📅
+            </div>
+
+            <div>
+
+                <div class="notification-title">
+                    Upcoming payment
+                </div>
+
+                <div class="notification-text">
+                    ₹11,000 is scheduled for 7 October 2026.
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="notification">
+
+            <div class="notification-icon">
+                🔔
+            </div>
+
+            <div>
+
+                <div class="notification-title">
+                    Upcoming payment
+                </div>
+
+                <div class="notification-text">
+                    ₹22,000 is scheduled for 10 October 2026.
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         PROFILE
+    ====================================================== -->
+
     <section class="section" id="profile">
 
-        <h2>My Profile</h2>
+        <div class="section-header">
+
+            <h2>
+                My Profile
+            </h2>
+
+        </div>
+
 
         <div class="profile-grid">
 
@@ -712,20 +1642,30 @@ footer{
     </section>
 
 
-    <!-- NOTICE -->
+    <!-- =====================================================
+         NOTICE
+    ====================================================== -->
+
     <div class="notice">
-        This is a personal demonstration dashboard. It is not connected to any real financial institution, loan account, or payment system.
+
+        ⚠️ This is a personal demonstration dashboard.
+        It is not connected to any real financial institution,
+        loan account, bank account, UPI account, or payment system.
+
     </div>
 
 
     <footer>
-        © 2026 QuickLoan — Personal Dashboard
+        © 2026 QuickLoan — Personal Demonstration Dashboard
     </footer>
 
 </div>
 
 
-<!-- PAYMENT MODAL -->
+<!-- =========================================================
+     PAYMENT MODAL
+========================================================= -->
+
 <div class="modal" id="paymentModal">
 
     <div class="modal-box">
@@ -734,9 +1674,11 @@ footer{
             ×
         </button>
 
+
         <div class="modal-title">
             Choose Payment Method
         </div>
+
 
         <div class="modal-sub">
             Select a payment app for this demonstration.
@@ -747,15 +1689,18 @@ footer{
 
 
             <!-- PHONEPE -->
-            <div class="payment-option"
-                 onclick="demoPayment('PhonePe')">
+
+            <div
+            class="payment-option"
+            onclick="demoPayment('PhonePe')">
 
                 <img
-                    class="payment-logo"
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/PhonePe_Logo.svg/512px-PhonePe_Logo.svg.png"
-                    alt="PhonePe">
+                class="payment-logo"
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/PhonePe_Logo.svg/512px-PhonePe_Logo.svg.png"
+                alt="PhonePe">
 
                 <div>
+
                     <div class="payment-name">
                         PhonePe
                     </div>
@@ -763,21 +1708,25 @@ footer{
                     <div class="payment-desc">
                         Demo payment option
                     </div>
+
                 </div>
 
             </div>
 
 
             <!-- GOOGLE PAY -->
-            <div class="payment-option"
-                 onclick="demoPayment('Google Pay')">
+
+            <div
+            class="payment-option"
+            onclick="demoPayment('Google Pay')">
 
                 <img
-                    class="payment-logo"
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Google_Pay_Logo_%282020%29.svg/512px-Google_Pay_Logo_%282020%29.svg.png"
-                    alt="Google Pay">
+                class="payment-logo"
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Google_Pay_Logo_%282020%29.svg/512px-Google_Pay_Logo_%282020%29.svg.png"
+                alt="Google Pay">
 
                 <div>
+
                     <div class="payment-name">
                         Google Pay
                     </div>
@@ -785,21 +1734,25 @@ footer{
                     <div class="payment-desc">
                         Demo payment option
                     </div>
+
                 </div>
 
             </div>
 
 
             <!-- PAYTM -->
-            <div class="payment-option"
-                 onclick="demoPayment('Paytm')">
+
+            <div
+            class="payment-option"
+            onclick="demoPayment('Paytm')">
 
                 <img
-                    class="payment-logo"
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Paytm_logo.png/512px-Paytm_logo.png"
-                    alt="Paytm">
+                class="payment-logo"
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Paytm_logo.png/512px-Paytm_logo.png"
+                alt="Paytm">
 
                 <div>
+
                     <div class="payment-name">
                         Paytm
                     </div>
@@ -807,6 +1760,7 @@ footer{
                     <div class="payment-desc">
                         Demo payment option
                     </div>
+
                 </div>
 
             </div>
@@ -816,8 +1770,90 @@ footer{
 
 
         <div class="demo-note">
-            ⚠️ Demo only — no real payment is processed.
+            Demo only — no real payment is processed.
         </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     RECEIPT MODAL
+========================================================= -->
+
+<div class="modal" id="receiptModal">
+
+    <div class="modal-box">
+
+        <button class="close" onclick="closeReceipt()">
+            ×
+        </button>
+
+
+        <div class="receipt" id="receiptContent">
+
+            <div class="receipt-header">
+
+                <div class="receipt-logo">
+                    QuickLoan
+                </div>
+
+                <div style="font-size:12px;color:#718096;margin-top:5px;">
+                    Payment Receipt — Demonstration
+                </div>
+
+                <div class="receipt-amount">
+                    ₹5,000
+                </div>
+
+                <span class="badge badge-paid">
+                    SUCCESS
+                </span>
+
+            </div>
+
+
+            <div class="receipt-row">
+                <span>Transaction ID</span>
+                <strong>TXN-051026</strong>
+            </div>
+
+            <div class="receipt-row">
+                <span>Date</span>
+                <strong>5 October 2026</strong>
+            </div>
+
+            <div class="receipt-row">
+                <span>Payment Method</span>
+                <strong>Demo Payment</strong>
+            </div>
+
+            <div class="receipt-row">
+                <span>Loan ID</span>
+                <strong>QL-2026-001</strong>
+            </div>
+
+            <div class="receipt-row">
+                <span>Amount</span>
+                <strong>₹5,000</strong>
+            </div>
+
+
+            <div class="demo-note">
+                Demonstration receipt — not a real financial transaction.
+            </div>
+
+        </div>
+
+
+        <button
+        class="print-btn"
+        onclick="printReceipt()">
+
+            🖨️ Print / Save Receipt
+
+        </button>
 
     </div>
 
@@ -826,12 +1862,102 @@ footer{
 
 <script>
 
+/* =========================================================
+   DEMO PIN
+========================================================= */
+
+const DEMO_PIN = "1234";
+
+function checkPin(){
+
+    const input =
+        document.getElementById("pinInput").value;
+
+    const error =
+        document.getElementById("pinError");
+
+    if(input === DEMO_PIN){
+
+        document
+        .getElementById("pinScreen")
+        .style.display = "none";
+
+        error.textContent = "";
+
+    }
+    else{
+
+        error.textContent =
+            "Incorrect demo PIN. Try again.";
+
+        document
+        .getElementById("pinInput")
+        .value = "";
+
+    }
+
+}
+
+
+/* =========================================================
+   DYNAMIC GREETING
+========================================================= */
+
+function updateGreeting(){
+
+    const hour =
+        new Date().getHours();
+
+    let greeting;
+
+    if(hour >= 5 && hour < 12){
+
+        greeting = "Good Morning";
+
+    }
+    else if(hour >= 12 && hour < 17){
+
+        greeting = "Good Afternoon";
+
+    }
+    else if(hour >= 17 && hour < 21){
+
+        greeting = "Good Evening";
+
+    }
+    else{
+
+        greeting = "Good Night";
+
+    }
+
+    document
+    .getElementById("greeting")
+    .textContent = greeting;
+
+}
+
+updateGreeting();
+
+
+/* =========================================================
+   PAYMENT MODAL
+========================================================= */
+
 function openPayment(){
-    document.getElementById("paymentModal").classList.add("show");
+
+    document
+    .getElementById("paymentModal")
+    .classList.add("show");
+
 }
 
 function closePayment(){
-    document.getElementById("paymentModal").classList.remove("show");
+
+    document
+    .getElementById("paymentModal")
+    .classList.remove("show");
+
 }
 
 function demoPayment(app){
@@ -844,18 +1970,207 @@ function demoPayment(app){
 
 }
 
-document.getElementById("paymentModal").addEventListener("click", function(e){
 
-    if(e.target === this){
+/* =========================================================
+   RECEIPT MODAL
+========================================================= */
+
+function openReceipt(){
+
+    document
+    .getElementById("receiptModal")
+    .classList.add("show");
+
+}
+
+function closeReceipt(){
+
+    document
+    .getElementById("receiptModal")
+    .classList.remove("show");
+
+}
+
+
+/* =========================================================
+   PRINT / SAVE RECEIPT
+========================================================= */
+
+function printReceipt(){
+
+    const receipt =
+        document.getElementById("receiptContent").innerHTML;
+
+    const printWindow =
+        window.open("", "_blank", "width=600,height=700");
+
+    printWindow.document.write(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+        <title>QuickLoan Demo Receipt</title>
+
+        <style>
+
+        body{
+            font-family:Arial,sans-serif;
+            padding:35px;
+            color:#172033;
+        }
+
+        .receipt{
+            max-width:500px;
+            margin:auto;
+            border:1px solid #ddd;
+            border-radius:14px;
+            padding:25px;
+        }
+
+        .receipt-header{
+            text-align:center;
+            border-bottom:1px dashed #aaa;
+            padding-bottom:18px;
+            margin-bottom:15px;
+        }
+
+        .receipt-logo{
+            font-size:24px;
+            font-weight:bold;
+            color:#2563eb;
+        }
+
+        .receipt-amount{
+            font-size:32px;
+            font-weight:bold;
+            margin:12px;
+        }
+
+        .receipt-row{
+            display:flex;
+            justify-content:space-between;
+            padding:10px 0;
+        }
+
+        .receipt-row span{
+            color:#777;
+        }
+
+        .demo-note{
+            margin-top:20px;
+            padding:12px;
+            background:#f1f5f9;
+            text-align:center;
+            font-size:11px;
+        }
+
+        </style>
+
+        </head>
+
+        <body>
+
+        <div class="receipt">
+
+        ${receipt}
+
+        </div>
+
+        <script>
+        window.onload = function(){
+            window.print();
+        }
+        <\/script>
+
+        </body>
+        </html>
+    `);
+
+    printWindow.document.close();
+
+}
+
+
+/* =========================================================
+   FORECLOSURE CALCULATOR
+========================================================= */
+
+function calculateForeclose(){
+
+    const input =
+        document.getElementById("forecloseInput").value;
+
+    const outstanding = 108600;
+
+    const result =
+        document.getElementById("forecloseResult");
+
+    if(input === "" || Number(input) <= 0){
+
+        result.textContent =
+            "Enter an amount to continue.";
+
+        return;
+
+    }
+
+    const remaining =
+        outstanding - Number(input);
+
+    if(remaining <= 0){
+
+        result.textContent =
+            "Demo calculation: Loan balance would be ₹0.";
+
+    }
+    else{
+
+        result.textContent =
+            "Demo remaining balance: ₹" +
+            remaining.toLocaleString("en-IN");
+
+    }
+
+}
+
+
+/* =========================================================
+   MODAL CLICK OUTSIDE
+========================================================= */
+
+document.addEventListener("click",function(event){
+
+    const paymentModal =
+        document.getElementById("paymentModal");
+
+    const receiptModal =
+        document.getElementById("receiptModal");
+
+    if(event.target === paymentModal){
+
         closePayment();
+
+    }
+
+    if(event.target === receiptModal){
+
+        closeReceipt();
+
     }
 
 });
 
-document.addEventListener("keydown", function(e){
 
-    if(e.key === "Escape"){
+/* =========================================================
+   ESCAPE
+========================================================= */
+
+document.addEventListener("keydown",function(event){
+
+    if(event.key === "Escape"){
+
         closePayment();
+        closeReceipt();
+
     }
 
 });
