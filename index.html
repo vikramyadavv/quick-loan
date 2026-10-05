@@ -1,19 +1,18 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>QuickLoan — Personal Dashboard</title>
+<title>QuickLoan | Personal Dashboard</title>
 
 <style>
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Inter,Arial,Helvetica,sans-serif;
+    font-family:Inter,Arial,sans-serif;
 }
-
-html{scroll-behavior:smooth}
 
 body{
     background:#f5f7fb;
@@ -21,739 +20,358 @@ body{
 }
 
 /* SIDEBAR */
-
 .sidebar{
     position:fixed;
     left:0;
     top:0;
-    width:255px;
+    width:245px;
     height:100vh;
-    background:#101827;
+    background:#0f172a;
     color:white;
-    padding:25px 17px;
-    z-index:1000;
+    padding:28px 16px;
+    z-index:10;
 }
 
 .logo{
     font-size:26px;
     font-weight:800;
-    padding:0 12px;
-    margin-bottom:35px;
+    padding:0 14px 35px;
 }
 
-.logo span{color:#4f8cff}
+.logo span{
+    color:#60a5fa;
+}
+
+.menu-title{
+    color:#64748b;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    padding:0 14px 10px;
+}
+
+.menu{
+    list-style:none;
+}
+
+.menu li{
+    margin-bottom:6px;
+}
 
 .menu a{
     display:flex;
     align-items:center;
     gap:12px;
+    padding:13px 14px;
+    border-radius:10px;
     text-decoration:none;
-    color:#aeb9c9;
-    padding:14px 15px;
-    margin:5px 0;
-    border-radius:11px;
+    color:#cbd5e1;
+    font-size:14px;
     transition:.2s;
 }
 
 .menu a:hover,
 .menu a.active{
     background:#1d4ed8;
-    color:#fff;
+    color:white;
 }
 
-.sidebar-bottom{
-    position:absolute;
-    left:18px;
-    right:18px;
-    bottom:25px;
-}
-
-.account-label{
-    background:#1e293b;
-    color:#94a3b8;
-    padding:11px;
-    border-radius:10px;
+.icon{
+    width:22px;
     text-align:center;
-    font-size:11px;
 }
 
 /* MAIN */
-
 .main{
-    margin-left:255px;
-    padding:28px;
-    max-width:1550px;
+    margin-left:245px;
+    padding:32px;
+    max-width:1250px;
 }
 
-.topbar{
+.header{
     display:flex;
-    align-items:center;
     justify-content:space-between;
-    margin-bottom:25px;
+    align-items:center;
+    margin-bottom:28px;
 }
 
-.greeting{
+.header h1{
     font-size:28px;
-    font-weight:800;
+    margin-bottom:6px;
 }
 
-.greeting-sub{
-    color:#718096;
-    margin-top:5px;
+.header p{
+    color:#64748b;
     font-size:14px;
 }
 
 .profile-mini{
     display:flex;
     align-items:center;
-    gap:12px;
-    background:white;
-    padding:9px 14px;
-    border-radius:14px;
-    box-shadow:0 4px 15px rgba(0,0,0,.05);
+    gap:10px;
 }
 
 .avatar{
-    width:40px;
-    height:40px;
+    width:42px;
+    height:42px;
     border-radius:50%;
+    background:#dbeafe;
+    color:#1d4ed8;
     display:flex;
     align-items:center;
     justify-content:center;
-    background:#2563eb;
-    color:white;
-    font-weight:800;
+    font-weight:bold;
 }
 
 /* HERO */
-
 .hero{
-    background:linear-gradient(135deg,#2563eb,#4f46e5);
+    background:linear-gradient(135deg,#111827,#1e3a8a);
     color:white;
-    border-radius:22px;
+    border-radius:18px;
     padding:30px;
-    margin-bottom:22px;
-    box-shadow:0 15px 35px rgba(37,99,235,.22);
+    margin-bottom:20px;
+    box-shadow:0 10px 30px rgba(15,23,42,.15);
 }
 
-.hero-header{
+.hero-top{
     display:flex;
     justify-content:space-between;
-    gap:20px;
+    align-items:flex-start;
 }
 
 .hero-label{
-    opacity:.8;
-    font-size:14px;
+    color:#bfdbfe;
+    font-size:13px;
 }
 
-.amount{
-    font-size:44px;
-    font-weight:850;
+.hero-amount{
+    font-size:43px;
+    font-weight:800;
     margin:8px 0;
 }
 
-.hero-small{
-    font-size:14px;
-    opacity:.9;
+.hero-note{
+    color:#cbd5e1;
+    font-size:13px;
 }
 
-.active-status{
-    background:#16a34a;
-    padding:8px 14px;
-    border-radius:30px;
-    height:max-content;
+.loan-status{
+    background:#dcfce7;
+    color:#166534;
+    padding:8px 13px;
+    border-radius:20px;
     font-size:12px;
     font-weight:bold;
 }
 
-.progress-area{
-    margin-top:25px;
+/* SUMMARY */
+.summary{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:16px;
+    margin-bottom:20px;
 }
 
-.progress-text{
-    display:flex;
-    justify-content:space-between;
-    font-size:13px;
+.summary-card{
+    background:white;
+    border-radius:14px;
+    padding:20px;
+    box-shadow:0 4px 18px rgba(15,23,42,.05);
+}
+
+.summary-card small{
+    color:#64748b;
+    display:block;
+    font-size:12px;
     margin-bottom:8px;
 }
 
-.progress-bg{
-    width:100%;
-    height:9px;
-    background:rgba(255,255,255,.22);
-    border-radius:20px;
-    overflow:hidden;
+.summary-card strong{
+    font-size:22px;
 }
 
-.progress-fill{
-    width:36%;
-    height:100%;
-    background:white;
-    border-radius:20px;
-}
-
-.pay-area{
-    margin-top:25px;
-}
-
-.pay-btn{
-    border:0;
-    background:white;
-    color:#1d4ed8;
-    padding:14px 30px;
-    border-radius:12px;
-    font-size:16px;
-    font-weight:800;
-    cursor:pointer;
-    box-shadow:0 5px 15px rgba(0,0,0,.15);
-}
-
-/* CARDS */
-
-.cards{
+/* CONTENT */
+.content-grid{
     display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:17px;
-    margin-bottom:23px;
+    grid-template-columns:2fr 1fr;
+    gap:20px;
 }
 
 .card{
     background:white;
-    padding:21px;
     border-radius:16px;
-    box-shadow:0 4px 15px rgba(0,0,0,.05);
-}
-
-.card-icon{
-    font-size:22px;
-    margin-bottom:12px;
-}
-
-.card-title{
-    font-size:13px;
-    color:#718096;
-}
-
-.card-value{
-    font-size:23px;
-    font-weight:800;
-    margin-top:7px;
-}
-
-/* SECTIONS */
-
-.section{
-    background:white;
-    border-radius:18px;
     padding:24px;
-    margin-bottom:23px;
-    box-shadow:0 4px 15px rgba(0,0,0,.05);
+    margin-bottom:20px;
+    box-shadow:0 4px 18px rgba(15,23,42,.05);
 }
 
-.section-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:18px;
+.card h2{
+    font-size:19px;
+    margin-bottom:20px;
 }
 
-.section h2{
-    font-size:20px;
-}
-
-.section-link{
-    color:#2563eb;
-    font-size:13px;
-}
-
-/* CHART */
-
-.chart-wrap{
-    display:flex;
-    align-items:flex-end;
-    justify-content:center;
-    gap:70px;
-    height:220px;
-    padding:25px 20px 5px;
-}
-
-.chart-column{
-    width:100px;
-    height:180px;
-    display:flex;
-    flex-direction:column;
-    justify-content:flex-end;
-    align-items:center;
-}
-
-.chart-bar{
-    width:70px;
-    border-radius:10px 10px 4px 4px;
-}
-
-.chart-paid{
-    height:63px;
-    background:#22c55e;
-}
-
-.chart-remaining{
-    height:117px;
-    background:#2563eb;
-}
-
-.chart-value{
-    font-size:14px;
-    font-weight:800;
-    margin-bottom:8px;
-}
-
-.chart-label{
-    margin-top:9px;
-    color:#64748b;
-    font-size:13px;
-}
-
-.chart-legend{
-    display:flex;
-    justify-content:center;
-    gap:25px;
-    margin-top:12px;
-    font-size:12px;
-    color:#64748b;
-}
-
-.legend-item{
+/* PAYMENT */
+.payment{
     display:flex;
     align-items:center;
-    gap:7px;
-}
-
-.legend-dot{
-    width:10px;
-    height:10px;
-    border-radius:50%;
-}
-
-.legend-paid{background:#22c55e}
-.legend-remaining{background:#2563eb}
-
-/* TIMELINE */
-
-.timeline{
-    position:relative;
-}
-
-.timeline-item{
-    display:flex;
     gap:15px;
-    position:relative;
-    padding-bottom:23px;
+    padding:17px 0;
+    border-bottom:1px solid #edf0f4;
 }
 
-.timeline-item:last-child{
-    padding-bottom:0;
+.payment:last-child{
+    border-bottom:none;
 }
 
-.timeline-line{
-    position:absolute;
-    left:10px;
-    top:22px;
-    width:2px;
-    height:calc(100% - 10px);
-    background:#e2e8f0;
-}
-
-.timeline-dot{
-    width:21px;
-    height:21px;
-    min-width:21px;
+.payment-icon{
+    width:43px;
+    height:43px;
     border-radius:50%;
-    background:#16a34a;
-    border:4px solid #dcfce7;
-    z-index:2;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:18px;
 }
 
-.timeline-dot.upcoming{
-    background:#f59e0b;
-    border-color:#fef3c7;
+.payment-icon.paid{
+    background:#dcfce7;
 }
 
-.timeline-content{
+.payment-icon.due{
+    background:#ffedd5;
+}
+
+.payment-info{
     flex:1;
 }
 
-.timeline-title{
-    font-weight:800;
+.payment-info h3{
+    font-size:15px;
+    margin-bottom:5px;
 }
 
-.timeline-date{
-    color:#718096;
+.payment-info p{
+    color:#64748b;
     font-size:13px;
-    margin-top:4px;
 }
 
-.timeline-amount{
-    font-weight:800;
-    float:right;
-}
-
-/* TABLE */
-
-.table-wrap{
-    overflow-x:auto;
-}
-
-table{
-    width:100%;
-    border-collapse:collapse;
-}
-
-th,td{
-    padding:14px 12px;
-    text-align:left;
-    border-bottom:1px solid #edf0f4;
-    white-space:nowrap;
-}
-
-th{
-    color:#718096;
-    font-size:12px;
-}
-
-td{
-    font-size:14px;
-}
-
-.badge{
-    padding:6px 10px;
-    border-radius:20px;
+.payment-status{
     font-size:11px;
+    font-weight:bold;
+    margin-top:5px;
+}
+
+.payment-status.green{
+    color:#16a34a;
+}
+
+.payment-status.orange{
+    color:#ea580c;
+}
+
+.payment-amount{
     font-weight:800;
-}
-
-.badge-paid{
-    background:#dcfce7;
-    color:#15803d;
-}
-
-.badge-upcoming{
-    background:#fef3c7;
-    color:#92400e;
+    font-size:17px;
 }
 
 /* DETAILS */
-
 .details{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:15px;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
 }
 
 .detail{
     background:#f8fafc;
-    padding:17px;
-    border-radius:12px;
+    border-radius:10px;
+    padding:15px;
 }
 
-.detail label{
+.detail span{
     display:block;
-    color:#718096;
+    color:#64748b;
     font-size:12px;
-    margin-bottom:7px;
+    margin-bottom:6px;
 }
 
 .detail strong{
-    font-size:16px;
+    font-size:15px;
 }
 
-/* FORECLOSE */
+/* FORECLOSURE */
+.foreclose-box{
+    background:#f8fafc;
+    border-radius:12px;
+    padding:18px;
+}
 
-.foreclose{
-    background:#eff6ff;
-    border:1px solid #dbeafe;
+.foreclose-label{
+    color:#64748b;
+    font-size:13px;
 }
 
 .foreclose-amount{
-    font-size:31px;
-    font-weight:850;
-    margin:8px 0;
+    font-size:28px;
+    font-weight:800;
+    margin:8px 0 16px;
 }
 
-.foreclose-input{
+.button{
     width:100%;
+    border:0;
+    background:#1d4ed8;
+    color:white;
     padding:13px;
-    border:1px solid #dbe3ee;
     border-radius:9px;
-    margin-top:15px;
-    outline:none;
+    font-weight:bold;
+    cursor:pointer;
 }
 
-.foreclose-btn{
-    margin-top:12px;
-    padding:12px 20px;
-    border:0;
-    background:#2563eb;
-    color:white;
-    border-radius:9px;
-    cursor:pointer;
-    font-weight:700;
+.button:hover{
+    background:#1e40af;
 }
 
 /* PROFILE */
-
-.profile-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:15px;
-}
-
-/* NOTIFICATIONS */
-
-.notification{
+.profile-row{
     display:flex;
-    gap:13px;
+    justify-content:space-between;
     padding:14px 0;
     border-bottom:1px solid #edf0f4;
 }
 
-.notification:last-child{
-    border-bottom:0;
+.profile-row:last-child{
+    border-bottom:none;
 }
 
-.notification-icon{
-    width:38px;
-    height:38px;
-    min-width:38px;
-    border-radius:10px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:#eff6ff;
-}
-
-.notification-title{
-    font-weight:700;
-    font-size:14px;
-}
-
-.notification-text{
-    color:#718096;
-    font-size:12px;
-    margin-top:4px;
-}
-
-/* BUTTONS */
-
-.receipt-btn{
-    padding:8px 13px;
-    border:1px solid #dbe3ee;
-    background:white;
-    border-radius:8px;
-    cursor:pointer;
-    font-weight:600;
-}
-
-.print-btn{
-    width:100%;
-    margin-top:18px;
-    padding:13px;
-    border:0;
-    background:#2563eb;
-    color:white;
-    border-radius:10px;
-    cursor:pointer;
-    font-weight:800;
-}
-
-/* ACCOUNT NOTICE */
-
-.account-notice{
-    background:#f8fafc;
-    border:1px solid #e2e8f0;
+.profile-row span{
     color:#64748b;
-    padding:13px;
-    border-radius:11px;
-    font-size:11px;
-    margin-bottom:20px;
-    text-align:center;
-}
-
-/* MODALS */
-
-.modal{
-    display:none;
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.65);
-    z-index:9999;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
-}
-
-.modal.show{
-    display:flex;
-}
-
-.modal-box{
-    width:100%;
-    max-width:500px;
-    max-height:90vh;
-    overflow:auto;
-    background:white;
-    border-radius:20px;
-    padding:27px;
-    position:relative;
-    box-shadow:0 25px 70px rgba(0,0,0,.3);
-}
-
-.close{
-    position:absolute;
-    right:17px;
-    top:14px;
-    width:35px;
-    height:35px;
-    border:0;
-    border-radius:50%;
-    background:#f1f5f9;
-    cursor:pointer;
-    font-size:20px;
-}
-
-.modal-title{
-    font-size:22px;
-    font-weight:850;
-}
-
-.modal-sub{
-    color:#718096;
     font-size:13px;
-    margin:6px 0 20px;
 }
 
-/* PAYMENT OPTIONS */
-
-.payment-options{
-    display:grid;
-    gap:12px;
+.profile-row strong{
+    font-size:13px;
 }
 
-.payment-option{
-    display:flex;
-    align-items:center;
-    gap:15px;
+/* NOTICE */
+.notice{
+    background:#eff6ff;
+    color:#1e40af;
     padding:14px;
-    border:1px solid #e2e8f0;
-    border-radius:14px;
-    cursor:pointer;
-    transition:.2s;
-}
-
-.payment-option:hover{
-    border-color:#2563eb;
-    transform:translateY(-2px);
-}
-
-.payment-logo{
-    width:58px;
-    height:58px;
-    min-width:58px;
-    border-radius:14px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-weight:900;
-    box-shadow:0 3px 10px rgba(0,0,0,.08);
-}
-
-.phonepe-logo{
-    background:#5f259f;
-    color:white;
-    font-size:24px;
-}
-
-.gpay-logo{
-    background:white;
-    border:1px solid #e5e7eb;
-    font-size:20px;
-}
-
-.gpay-g{
-    color:#4285f4;
-}
-
-.gpay-pay{
-    color:#34a853;
-}
-
-.paytm-logo{
-    background:#00baf2;
-    color:white;
-    font-size:16px;
-    letter-spacing:-1px;
-}
-
-.payment-name{
-    font-weight:800;
-}
-
-.payment-desc{
+    border-radius:9px;
     font-size:12px;
-    color:#718096;
-    margin-top:4px;
-}
-
-/* RECEIPT */
-
-.receipt{
-    border:1px solid #e2e8f0;
-    border-radius:14px;
-    padding:20px;
-}
-
-.receipt-header{
-    text-align:center;
-    border-bottom:1px dashed #cbd5e1;
-    padding-bottom:17px;
-    margin-bottom:15px;
-}
-
-.receipt-logo{
-    font-size:21px;
-    font-weight:850;
-    color:#2563eb;
-}
-
-.receipt-amount{
-    font-size:31px;
-    font-weight:850;
-    margin:10px 0;
-}
-
-.receipt-row{
-    display:flex;
-    justify-content:space-between;
-    padding:9px 0;
-    font-size:13px;
-}
-
-.receipt-row span:first-child{
-    color:#718096;
+    line-height:1.5;
 }
 
 /* FOOTER */
-
-footer{
+.footer{
     text-align:center;
     color:#94a3b8;
-    padding:10px;
     font-size:11px;
+    padding:10px;
 }
 
 /* MOBILE */
-
-@media(max-width:950px){
+@media(max-width:900px){
 
     .sidebar{
         position:relative;
@@ -763,21 +381,21 @@ footer{
     }
 
     .logo{
-        margin-bottom:13px;
+        padding:5px 10px 18px;
+    }
+
+    .menu-title{
+        display:none;
     }
 
     .menu{
         display:flex;
-        overflow-x:auto;
         gap:5px;
+        overflow-x:auto;
     }
 
-    .menu a{
-        white-space:nowrap;
-    }
-
-    .sidebar-bottom{
-        display:none;
+    .menu li{
+        min-width:max-content;
     }
 
     .main{
@@ -785,66 +403,51 @@ footer{
         padding:18px;
     }
 
-    .cards{
-        grid-template-columns:repeat(2,1fr);
+    .summary{
+        grid-template-columns:1fr 1fr;
     }
 
-    .details{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .profile-grid{
-        grid-template-columns:repeat(2,1fr);
+    .content-grid{
+        grid-template-columns:1fr;
     }
 }
 
-@media(max-width:600px){
+@media(max-width:550px){
 
-    .topbar{
-        display:block;
+    .header{
+        align-items:flex-start;
     }
 
-    .profile-mini{
-        width:max-content;
-        margin-top:12px;
-    }
-
-    .greeting{
+    .header h1{
         font-size:23px;
     }
 
-    .hero-header{
-        display:block;
+    .profile-mini{
+        display:none;
     }
 
-    .active-status{
-        display:inline-block;
-        margin-top:15px;
+    .hero{
+        padding:22px;
     }
 
-    .amount{
-        font-size:35px;
+    .hero-amount{
+        font-size:34px;
     }
 
-    .cards{
+    .loan-status{
+        font-size:10px;
+    }
+
+    .summary{
         grid-template-columns:1fr;
     }
 
-    .details,
-    .profile-grid{
+    .details{
         grid-template-columns:1fr;
     }
 
-    .section{
-        padding:18px;
-    }
-
-    .chart-wrap{
-        gap:30px;
-    }
-
-    .chart-column{
-        width:80px;
+    .payment-amount{
+        font-size:15px;
     }
 }
 </style>
@@ -853,146 +456,97 @@ footer{
 <body>
 
 <!-- SIDEBAR -->
-
-<div class="sidebar">
+<aside class="sidebar">
 
     <div class="logo">
         Quick<span>Loan</span>
     </div>
 
-    <div class="menu">
+    <div class="menu-title">Menu</div>
 
-        <a href="#dashboard" class="active">
-            🏠 Dashboard
-        </a>
+    <ul class="menu">
 
-        <a href="#payments">
-            💳 Payments
-        </a>
+        <li>
+            <a href="#dashboard" class="active">
+                <span class="icon">⌂</span>
+                Dashboard
+            </a>
+        </li>
 
-        <a href="#loan">
-            📄 Loan Details
-        </a>
+        <li>
+            <a href="#payments">
+                <span class="icon">▣</span>
+                Payments
+            </a>
+        </li>
 
-        <a href="#foreclose">
-            📊 Foreclose Loan
-        </a>
+        <li>
+            <a href="#loan">
+                <span class="icon">▤</span>
+                Loan Details
+            </a>
+        </li>
 
-        <a href="#profile">
-            👤 My Profile
-        </a>
+        <li>
+            <a href="#foreclose">
+                <span class="icon">✓</span>
+                Foreclose Loan
+            </a>
+        </li>
 
-        <a href="#notifications">
-            🔔 Notifications
-        </a>
+        <li>
+            <a href="#profile">
+                <span class="icon">●</span>
+                My Profile
+            </a>
+        </li>
 
-    </div>
+    </ul>
 
-    <div class="sidebar-bottom">
-
-        <div class="account-label">
-            PERSONAL ACCOUNT
-        </div>
-
-    </div>
-
-</div>
+</aside>
 
 
 <!-- MAIN -->
+<main class="main" id="dashboard">
 
-<div class="main">
-
-    <div class="topbar">
+    <!-- HEADER -->
+    <div class="header">
 
         <div>
-
-            <div class="greeting">
-                <span id="greeting">Good Evening</span>, Vikram
-            </div>
-
-            <div class="greeting-sub">
-                Here's your loan account overview
-            </div>
-
+            <h1>Good afternoon, Vikram</h1>
+            <p>Here's your loan account overview.</p>
         </div>
 
         <div class="profile-mini">
-
-            <div class="avatar">
-                VY
-            </div>
-
-            <div>
-
-                <strong>Vikram Yadav</strong>
-
-                <div style="font-size:11px;color:#718096;">
-                    Personal Account
-                </div>
-
-            </div>
-
+            <div class="avatar">VY</div>
+            <strong>Vikram Yadav</strong>
         </div>
 
     </div>
 
 
     <!-- HERO -->
+    <section class="hero">
 
-    <section class="hero" id="dashboard">
-
-        <div class="hero-header">
+        <div class="hero-top">
 
             <div>
-
                 <div class="hero-label">
                     Total Outstanding
                 </div>
 
-                <div class="amount">
+                <div class="hero-amount">
                     ₹1,08,600
                 </div>
 
-                <div class="hero-small">
+                <div class="hero-note">
                     ₹1,03,600 remaining after today's ₹5,000 payment
                 </div>
-
             </div>
 
-            <div class="active-status">
+            <div class="loan-status">
                 ACTIVE
             </div>
-
-        </div>
-
-
-        <div class="progress-area">
-
-            <div class="progress-text">
-
-                <span>
-                    Loan repayment progress
-                </span>
-
-                <span>
-                    36%
-                </span>
-
-            </div>
-
-            <div class="progress-bg">
-                <div class="progress-fill"></div>
-            </div>
-
-        </div>
-
-
-        <div class="pay-area">
-
-            <button class="pay-btn" onclick="openPayment()">
-                💳 Pay Now
-            </button>
 
         </div>
 
@@ -1000,935 +554,234 @@ footer{
 
 
     <!-- SUMMARY -->
+    <section class="summary">
 
-    <div class="cards">
-
-        <div class="card">
-            <div class="card-icon">💰</div>
-            <div class="card-title">Paid Today</div>
-            <div class="card-value">₹5,000</div>
+        <div class="summary-card">
+            <small>Paid Today</small>
+            <strong>₹5,000</strong>
         </div>
 
-        <div class="card">
-            <div class="card-icon">📅</div>
-            <div class="card-title">Next Payment</div>
-            <div class="card-value">₹11,000</div>
+        <div class="summary-card">
+            <small>7 Oct Due</small>
+            <strong>₹11,000</strong>
         </div>
 
-        <div class="card">
-            <div class="card-icon">⏳</div>
-            <div class="card-title">Upcoming Total</div>
-            <div class="card-value">₹33,000</div>
+        <div class="summary-card">
+            <small>10 Oct Due</small>
+            <strong>₹22,000</strong>
         </div>
 
-        <div class="card">
-            <div class="card-icon">🆔</div>
-            <div class="card-title">Loan ID</div>
-            <div class="card-value">QL-2026-001</div>
-        </div>
-
-    </div>
-
-
-    <!-- CHART -->
-
-    <section class="section">
-
-        <div class="section-header">
-
-            <h2>Loan Overview</h2>
-
-            <span class="section-link">
-                Current status
-            </span>
-
-        </div>
-
-
-        <div class="chart-wrap">
-
-            <div class="chart-column">
-
-                <div class="chart-value">
-                    ₹5,000
-                </div>
-
-                <div class="chart-bar chart-paid"></div>
-
-                <div class="chart-label">
-                    Paid
-                </div>
-
-            </div>
-
-
-            <div class="chart-column">
-
-                <div class="chart-value">
-                    ₹1,03,600
-                </div>
-
-                <div class="chart-bar chart-remaining"></div>
-
-                <div class="chart-label">
-                    Remaining
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="chart-legend">
-
-            <div class="legend-item">
-                <span class="legend-dot legend-paid"></span>
-                Paid — ₹5,000
-            </div>
-
-            <div class="legend-item">
-                <span class="legend-dot legend-remaining"></span>
-                Remaining — ₹1,03,600
-            </div>
-
+        <div class="summary-card">
+            <small>Loan ID</small>
+            <strong style="font-size:16px;">QL-2026-001</strong>
         </div>
 
     </section>
 
 
-    <!-- TIMELINE -->
+    <div class="content-grid">
 
-    <section class="section">
+        <!-- LEFT -->
+        <div>
 
-        <div class="section-header">
+            <!-- PAYMENTS -->
+            <section class="card" id="payments">
 
-            <h2>Payment Timeline</h2>
+                <h2>Payment Schedule</h2>
 
-            <span class="section-link">
-                Upcoming
-            </span>
+                <div class="payment">
 
-        </div>
+                    <div class="payment-icon paid">
+                        ✓
+                    </div>
 
+                    <div class="payment-info">
+                        <h3>Payment Made</h3>
+                        <p>5 October 2026</p>
+                        <div class="payment-status green">
+                            PAID TODAY
+                        </div>
+                    </div>
 
-        <div class="timeline">
-
-            <div class="timeline-item">
-
-                <div class="timeline-line"></div>
-
-                <div class="timeline-dot"></div>
-
-                <div class="timeline-content">
-
-                    <span class="timeline-amount">
+                    <div class="payment-amount">
                         ₹5,000
-                    </span>
-
-                    <div class="timeline-title">
-                        Payment completed
                     </div>
-
-                    <div class="timeline-date">
-                        5 October 2026
-                    </div>
-
-                    <span class="badge badge-paid">
-                        PAID
-                    </span>
 
                 </div>
 
-            </div>
 
+                <div class="payment">
 
-            <div class="timeline-item">
+                    <div class="payment-icon due">
+                        !
+                    </div>
 
-                <div class="timeline-line"></div>
+                    <div class="payment-info">
+                        <h3>Upcoming Payment</h3>
+                        <p>7 October 2026</p>
+                        <div class="payment-status orange">
+                            DUE ON 7 OCTOBER
+                        </div>
+                    </div>
 
-                <div class="timeline-dot upcoming"></div>
-
-                <div class="timeline-content">
-
-                    <span class="timeline-amount">
+                    <div class="payment-amount">
                         ₹11,000
-                    </span>
-
-                    <div class="timeline-title">
-                        Upcoming payment
                     </div>
-
-                    <div class="timeline-date">
-                        7 October 2026
-                    </div>
-
-                    <span class="badge badge-upcoming">
-                        UPCOMING
-                    </span>
 
                 </div>
 
-            </div>
 
+                <div class="payment">
 
-            <div class="timeline-item">
+                    <div class="payment-icon due">
+                        !
+                    </div>
 
-                <div class="timeline-dot upcoming"></div>
+                    <div class="payment-info">
+                        <h3>Upcoming Payment</h3>
+                        <p>10 October 2026</p>
+                        <div class="payment-status orange">
+                            DUE ON 10 OCTOBER
+                        </div>
+                    </div>
 
-                <div class="timeline-content">
-
-                    <span class="timeline-amount">
+                    <div class="payment-amount">
                         ₹22,000
-                    </span>
-
-                    <div class="timeline-title">
-                        Upcoming payment
-                    </div>
-
-                    <div class="timeline-date">
-                        10 October 2026
-                    </div>
-
-                    <span class="badge badge-upcoming">
-                        UPCOMING
-                    </span>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- PAYMENTS -->
-
-    <section class="section" id="payments">
-
-        <div class="section-header">
-
-            <h2>Transaction History</h2>
-
-            <span class="section-link">
-                Recent activity
-            </span>
-
-        </div>
-
-
-        <div class="table-wrap">
-
-            <table>
-
-                <thead>
-
-                    <tr>
-                        <th>Date</th>
-                        <th>Transaction ID</th>
-                        <th>Amount</th>
-                        <th>Method</th>
-                        <th>Status</th>
-                        <th>Receipt</th>
-                    </tr>
-
-                </thead>
-
-
-                <tbody>
-
-                    <tr>
-
-                        <td>5 Oct 2026</td>
-
-                        <td>TXN-051026</td>
-
-                        <td>
-                            <strong>₹5,000</strong>
-                        </td>
-
-                        <td>UPI</td>
-
-                        <td>
-                            <span class="badge badge-paid">
-                                SUCCESS
-                            </span>
-                        </td>
-
-                        <td>
-
-                            <button
-                            class="receipt-btn"
-                            onclick="openReceipt()">
-
-                                View
-
-                            </button>
-
-                        </td>
-
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-    </section>
-
-
-    <!-- LOAN DETAILS -->
-
-    <section class="section" id="loan">
-
-        <div class="section-header">
-            <h2>Loan Details</h2>
-        </div>
-
-
-        <div class="details">
-
-            <div class="detail">
-                <label>Loan ID</label>
-                <strong>QL-2026-001</strong>
-            </div>
-
-            <div class="detail">
-                <label>Total Outstanding</label>
-                <strong>₹1,08,600</strong>
-            </div>
-
-            <div class="detail">
-                <label>Today's Payment</label>
-                <strong>₹5,000</strong>
-            </div>
-
-            <div class="detail">
-                <label>Upcoming Payments</label>
-                <strong>₹33,000</strong>
-            </div>
-
-            <div class="detail">
-                <label>Loan Status</label>
-                <strong>Running</strong>
-            </div>
-
-            <div class="detail">
-                <label>Account Status</label>
-                <strong>Active</strong>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- FORECLOSE -->
-
-    <section class="section foreclose" id="foreclose">
-
-        <div class="section-header">
-            <h2>Foreclose Loan</h2>
-        </div>
-
-        <div style="color:#64748b;font-size:13px;">
-            Current foreclosure amount
-        </div>
-
-        <div class="foreclose-amount">
-            ₹1,08,600
-        </div>
-
-        <input
-        class="foreclose-input"
-        id="forecloseInput"
-        type="number"
-        placeholder="Enter amount">
-
-        <button
-        class="foreclose-btn"
-        onclick="calculateForeclose()">
-
-            Calculate
-
-        </button>
-
-        <div
-        id="forecloseResult"
-        style="margin-top:15px;font-weight:700;">
-
-        </div>
-
-    </section>
-
-
-    <!-- NOTIFICATIONS -->
-
-    <section class="section" id="notifications">
-
-        <div class="section-header">
-            <h2>Notifications</h2>
-        </div>
-
-
-        <div class="notification">
-
-            <div class="notification-icon">
-                ✓
-            </div>
-
-            <div>
-
-                <div class="notification-title">
-                    Payment recorded
-                </div>
-
-                <div class="notification-text">
-                    Your payment of ₹5,000 was recorded on 5 October 2026.
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="notification">
-
-            <div class="notification-icon">
-                📅
-            </div>
-
-            <div>
-
-                <div class="notification-title">
-                    Upcoming payment
-                </div>
-
-                <div class="notification-text">
-                    ₹11,000 is scheduled for 7 October 2026.
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="notification">
-
-            <div class="notification-icon">
-                🔔
-            </div>
-
-            <div>
-
-                <div class="notification-title">
-                    Upcoming payment
-                </div>
-
-                <div class="notification-text">
-                    ₹22,000 is scheduled for 10 October 2026.
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- PROFILE -->
-
-    <section class="section" id="profile">
-
-        <div class="section-header">
-            <h2>My Profile</h2>
-        </div>
-
-
-        <div class="profile-grid">
-
-            <div class="detail">
-                <label>Full Name</label>
-                <strong>Vikram Yadav</strong>
-            </div>
-
-            <div class="detail">
-                <label>Phone Number</label>
-                <strong>90146XX138</strong>
-            </div>
-
-            <div class="detail">
-                <label>PAN Number</label>
-                <strong>CDXPTXX22</strong>
-            </div>
-
-            <div class="detail">
-                <label>Customer Type</label>
-                <strong>Personal</strong>
-            </div>
-
-            <div class="detail">
-                <label>Account Status</label>
-                <strong>Active</strong>
-            </div>
-
-            <div class="detail">
-                <label>Loan Status</label>
-                <strong>Running</strong>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <div class="account-notice">
-        Personal account dashboard — not connected to a bank, lender, UPI service, or payment processor.
-    </div>
-
-
-    <footer>
-        © 2026 QuickLoan
-    </footer>
-
-</div>
-
-
-<!-- PAYMENT MODAL -->
-
-<div class="modal" id="paymentModal">
-
-    <div class="modal-box">
-
-        <button class="close" onclick="closePayment()">
-            ×
-        </button>
-
-        <div class="modal-title">
-            Choose Payment Method
-        </div>
-
-        <div class="modal-sub">
-            Select a payment app.
-        </div>
-
-
-        <div class="payment-options">
-
-
-            <!-- PHONEPE -->
-
-            <div
-            class="payment-option"
-            onclick="selectPayment('PhonePe')">
-
-                <div class="payment-logo phonepe-logo">
-                    पे
-                </div>
-
-                <div>
-
-                    <div class="payment-name">
-                        PhonePe
-                    </div>
-
-                    <div class="payment-desc">
-                        UPI payment
                     </div>
 
                 </div>
 
-            </div>
+            </section>
 
 
-            <!-- GOOGLE PAY -->
+            <!-- LOAN DETAILS -->
+            <section class="card" id="loan">
 
-            <div
-            class="payment-option"
-            onclick="selectPayment('Google Pay')">
+                <h2>Loan Details</h2>
 
-                <div class="payment-logo gpay-logo">
+                <div class="details">
 
-                    <span class="gpay-g">
-                        G
-                    </span>
-
-                    <span class="gpay-pay">
-                        Pay
-                    </span>
-
-                </div>
-
-                <div>
-
-                    <div class="payment-name">
-                        Google Pay
+                    <div class="detail">
+                        <span>Loan ID</span>
+                        <strong>QL-2026-001</strong>
                     </div>
 
-                    <div class="payment-desc">
-                        UPI payment
+                    <div class="detail">
+                        <span>Total Outstanding</span>
+                        <strong>₹1,08,600</strong>
                     </div>
 
-                </div>
-
-            </div>
-
-
-            <!-- PAYTM -->
-
-            <div
-            class="payment-option"
-            onclick="selectPayment('Paytm')">
-
-                <div class="payment-logo paytm-logo">
-                    paytm
-                </div>
-
-                <div>
-
-                    <div class="payment-name">
-                        Paytm
+                    <div class="detail">
+                        <span>Today's Payment</span>
+                        <strong>₹5,000</strong>
                     </div>
 
-                    <div class="payment-desc">
-                        UPI payment
+                    <div class="detail">
+                        <span>Upcoming Total</span>
+                        <strong>₹33,000</strong>
                     </div>
 
                 </div>
 
-            </div>
+            </section>
+
+
+            <!-- FORECLOSE -->
+            <section class="card" id="foreclose">
+
+                <h2>Foreclose Loan</h2>
+
+                <div class="foreclose-box">
+
+                    <div class="foreclose-label">
+                        Current foreclosure amount
+                    </div>
+
+                    <div class="foreclose-amount">
+                        ₹1,08,600
+                    </div>
+
+                    <button class="button"
+                    onclick="alert('No real payment or foreclosure processing is connected.')">
+                        View Foreclosure Details
+                    </button>
+
+                </div>
+
+            </section>
+
+        </div>
+
+
+        <!-- RIGHT -->
+        <div>
+
+            <!-- PROFILE -->
+            <section class="card" id="profile">
+
+                <h2>My Profile</h2>
+
+                <div class="profile-row">
+                    <span>Full Name</span>
+                    <strong>Vikram Yadav</strong>
+                </div>
+
+                <div class="profile-row">
+                    <span>Phone Number</span>
+                    <strong>90146XX138</strong>
+                </div>
+
+                <div class="profile-row">
+                    <span>PAN Number</span>
+                    <strong>CDXPTXX22</strong>
+                </div>
+
+                <div class="profile-row">
+                    <span>Customer Type</span>
+                    <strong>Personal</strong>
+                </div>
+
+            </section>
+
+
+            <!-- ACCOUNT -->
+            <section class="card">
+
+                <h2>Account</h2>
+
+                <div class="profile-row">
+                    <span>Account Status</span>
+                    <strong style="color:#16a34a;">Active</strong>
+                </div>
+
+                <div class="profile-row">
+                    <span>Loan Status</span>
+                    <strong>Running</strong>
+                </div>
+
+            </section>
+
+
+            <!-- NOTICE -->
+            <section class="card">
+
+                <div class="notice">
+                    Personal account dashboard. It is not connected to any real financial institution, loan account, or payment system.
+                </div>
+
+            </section>
 
         </div>
 
     </div>
 
-</div>
 
-
-<!-- RECEIPT -->
-
-<div class="modal" id="receiptModal">
-
-    <div class="modal-box">
-
-        <button class="close" onclick="closeReceipt()">
-            ×
-        </button>
-
-
-        <div class="receipt" id="receiptContent">
-
-            <div class="receipt-header">
-
-                <div class="receipt-logo">
-                    QuickLoan
-                </div>
-
-                <div style="font-size:12px;color:#718096;margin-top:5px;">
-                    Payment Receipt
-                </div>
-
-                <div class="receipt-amount">
-                    ₹5,000
-                </div>
-
-                <span class="badge badge-paid">
-                    SUCCESS
-                </span>
-
-            </div>
-
-
-            <div class="receipt-row">
-                <span>Transaction ID</span>
-                <strong>TXN-051026</strong>
-            </div>
-
-            <div class="receipt-row">
-                <span>Date</span>
-                <strong>5 October 2026</strong>
-            </div>
-
-            <div class="receipt-row">
-                <span>Payment Method</span>
-                <strong>UPI</strong>
-            </div>
-
-            <div class="receipt-row">
-                <span>Loan ID</span>
-                <strong>QL-2026-001</strong>
-            </div>
-
-            <div class="receipt-row">
-                <span>Amount</span>
-                <strong>₹5,000</strong>
-            </div>
-
-        </div>
-
-
-        <button
-        class="print-btn"
-        onclick="printReceipt()">
-
-            🖨️ Print / Save Receipt
-
-        </button>
-
+    <div class="footer">
+        © 2026 QuickLoan — Personal Dashboard
     </div>
 
-</div>
-
-
-<script>
-
-/* GREETING */
-
-function updateGreeting(){
-
-    const hour = new Date().getHours();
-
-    let greeting;
-
-    if(hour >= 5 && hour < 12){
-        greeting = "Good Morning";
-    }
-    else if(hour >= 12 && hour < 17){
-        greeting = "Good Afternoon";
-    }
-    else if(hour >= 17 && hour < 21){
-        greeting = "Good Evening";
-    }
-    else{
-        greeting = "Good Night";
-    }
-
-    document.getElementById("greeting").textContent = greeting;
-}
-
-updateGreeting();
-
-
-/* PAYMENT */
-
-function openPayment(){
-
-    document
-    .getElementById("paymentModal")
-    .classList.add("show");
-
-}
-
-function closePayment(){
-
-    document
-    .getElementById("paymentModal")
-    .classList.remove("show");
-
-}
-
-function selectPayment(app){
-
-    closePayment();
-
-    alert(
-        app +
-        " selected.\n\n" +
-        "This page does not process payments."
-    );
-
-}
-
-
-/* RECEIPT */
-
-function openReceipt(){
-
-    document
-    .getElementById("receiptModal")
-    .classList.add("show");
-
-}
-
-function closeReceipt(){
-
-    document
-    .getElementById("receiptModal")
-    .classList.remove("show");
-
-}
-
-
-/* PRINT */
-
-function printReceipt(){
-
-    const receipt =
-        document.getElementById("receiptContent").innerHTML;
-
-    const printWindow =
-        window.open("", "_blank", "width=600,height=700");
-
-    printWindow.document.write(`
-
-        <!DOCTYPE html>
-
-        <html>
-
-        <head>
-
-        <title>QuickLoan Receipt</title>
-
-        <style>
-
-        body{
-            font-family:Arial,sans-serif;
-            padding:35px;
-            color:#172033;
-        }
-
-        .receipt{
-            max-width:500px;
-            margin:auto;
-            border:1px solid #ddd;
-            border-radius:14px;
-            padding:25px;
-        }
-
-        .receipt-header{
-            text-align:center;
-            border-bottom:1px dashed #aaa;
-            padding-bottom:18px;
-            margin-bottom:15px;
-        }
-
-        .receipt-logo{
-            font-size:24px;
-            font-weight:bold;
-            color:#2563eb;
-        }
-
-        .receipt-amount{
-            font-size:32px;
-            font-weight:bold;
-            margin:12px;
-        }
-
-        .receipt-row{
-            display:flex;
-            justify-content:space-between;
-            padding:10px 0;
-        }
-
-        .receipt-row span{
-            color:#777;
-        }
-
-        </style>
-
-        </head>
-
-        <body>
-
-        <div class="receipt">
-
-        ${receipt}
-
-        </div>
-
-        <script>
-
-        window.onload = function(){
-            window.print();
-        }
-
-        <\/script>
-
-        </body>
-
-        </html>
-    `);
-
-    printWindow.document.close();
-
-}
-
-
-/* FORECLOSURE */
-
-function calculateForeclose(){
-
-    const input =
-        document.getElementById("forecloseInput").value;
-
-    const outstanding = 108600;
-
-    const result =
-        document.getElementById("forecloseResult");
-
-    if(input === "" || Number(input) <= 0){
-
-        result.textContent =
-            "Enter an amount to continue.";
-
-        return;
-
-    }
-
-    const remaining =
-        outstanding - Number(input);
-
-    if(remaining <= 0){
-
-        result.textContent =
-            "Remaining balance: ₹0";
-
-    }
-    else{
-
-        result.textContent =
-            "Remaining balance: ₹" +
-            remaining.toLocaleString("en-IN");
-
-    }
-
-}
-
-
-/* CLOSE MODALS */
-
-document.addEventListener("click",function(event){
-
-    const paymentModal =
-        document.getElementById("paymentModal");
-
-    const receiptModal =
-        document.getElementById("receiptModal");
-
-    if(event.target === paymentModal){
-        closePayment();
-    }
-
-    if(event.target === receiptModal){
-        closeReceipt();
-    }
-
-});
-
-
-document.addEventListener("keydown",function(event){
-
-    if(event.key === "Escape"){
-
-        closePayment();
-        closeReceipt();
-
-    }
-
-});
-
-</script>
+</main>
 
 </body>
 </html>
+```
