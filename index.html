@@ -3,23 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>QuickLoan | Personal Dashboard</title>
+<title>QuickLoan - Personal Dashboard</title>
 
 <style>
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Inter,Arial,sans-serif;
-}
-
-html{
-    scroll-behavior:smooth;
+    font-family:Arial,Helvetica,sans-serif;
 }
 
 body{
-    background:#f5f7fb;
-    color:#172033;
+    background:#f4f7fb;
+    color:#182230;
 }
 
 /* SIDEBAR */
@@ -27,50 +23,33 @@ body{
     position:fixed;
     left:0;
     top:0;
-    width:245px;
+    width:250px;
     height:100vh;
-    background:#0f172a;
+    background:#111827;
     color:white;
-    padding:28px 16px;
-    z-index:10;
+    padding:25px 18px;
+    z-index:100;
 }
 
 .logo{
-    font-size:26px;
+    font-size:25px;
     font-weight:800;
-    padding:0 14px 35px;
+    margin-bottom:35px;
+    padding-left:12px;
 }
 
 .logo span{
-    color:#60a5fa;
-}
-
-.menu-title{
-    color:#64748b;
-    font-size:11px;
-    text-transform:uppercase;
-    letter-spacing:1px;
-    padding:0 14px 10px;
-}
-
-.menu{
-    list-style:none;
-}
-
-.menu li{
-    margin-bottom:6px;
+    color:#4f8cff;
 }
 
 .menu a{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    padding:13px 14px;
-    border-radius:10px;
-    text-decoration:none;
+    display:block;
     color:#cbd5e1;
-    font-size:14px;
-    transition:.2s;
+    text-decoration:none;
+    padding:14px 15px;
+    margin:5px 0;
+    border-radius:10px;
+    font-size:15px;
 }
 
 .menu a:hover,
@@ -79,444 +58,360 @@ body{
     color:white;
 }
 
-.icon{
-    width:22px;
-    text-align:center;
-}
-
 /* MAIN */
 .main{
-    margin-left:245px;
-    padding:32px;
-    max-width:1250px;
+    margin-left:250px;
+    padding:30px;
+    max-width:1500px;
 }
 
-.header{
+.topbar{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin-bottom:28px;
+    margin-bottom:25px;
 }
 
-.header h1{
-    font-size:28px;
-    margin-bottom:6px;
+.topbar h1{
+    font-size:26px;
 }
 
-.header p{
-    color:#64748b;
-    font-size:14px;
-}
-
-.profile-mini{
-    display:flex;
-    align-items:center;
-    gap:10px;
-}
-
-.avatar{
-    width:42px;
-    height:42px;
-    border-radius:50%;
-    background:#dbeafe;
-    color:#1d4ed8;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-weight:bold;
+.user{
+    background:white;
+    padding:10px 16px;
+    border-radius:12px;
+    box-shadow:0 3px 12px rgba(0,0,0,.06);
 }
 
 /* HERO */
 .hero{
-    background:linear-gradient(135deg,#111827,#1e3a8a);
+    background:linear-gradient(135deg,#2563eb,#4f46e5);
     color:white;
-    border-radius:18px;
     padding:30px;
-    margin-bottom:20px;
-    box-shadow:0 10px 30px rgba(15,23,42,.15);
+    border-radius:20px;
+    box-shadow:0 12px 30px rgba(37,99,235,.22);
+    margin-bottom:25px;
 }
 
 .hero-top{
     display:flex;
     justify-content:space-between;
-    align-items:flex-start;
+    gap:20px;
 }
 
-.hero-label{
-    color:#bfdbfe;
-    font-size:13px;
+.hero small{
+    opacity:.85;
 }
 
-.hero-amount{
-    font-size:43px;
+.amount{
+    font-size:42px;
     font-weight:800;
-    margin:8px 0;
+    margin:10px 0;
 }
 
-.hero-note{
-    color:#cbd5e1;
+.remaining{
+    font-size:15px;
+    opacity:.92;
+}
+
+.status{
+    background:#16a34a;
+    display:inline-block;
+    padding:8px 15px;
+    border-radius:30px;
     font-size:13px;
-}
-
-.loan-status{
-    background:#dcfce7;
-    color:#166534;
-    padding:8px 13px;
-    border-radius:20px;
-    font-size:12px;
     font-weight:bold;
+    margin-top:15px;
 }
 
-/* SUMMARY */
-.summary{
+/* PAY BUTTON */
+.pay-area{
+    margin-top:25px;
+}
+
+.pay-btn{
+    border:0;
+    background:white;
+    color:#1d4ed8;
+    padding:15px 35px;
+    border-radius:12px;
+    font-size:17px;
+    font-weight:800;
+    cursor:pointer;
+    box-shadow:0 5px 15px rgba(0,0,0,.18);
+}
+
+.pay-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 20px rgba(0,0,0,.22);
+}
+
+/* CARDS */
+.grid{
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    gap:16px;
-    margin-bottom:20px;
-}
-
-.summary-card{
-    background:white;
-    border-radius:14px;
-    padding:20px;
-    box-shadow:0 4px 18px rgba(15,23,42,.05);
-}
-
-.summary-card small{
-    color:#64748b;
-    display:block;
-    font-size:12px;
-    margin-bottom:8px;
-}
-
-.summary-card strong{
-    font-size:22px;
-}
-
-/* CONTENT */
-.content-grid{
-    display:grid;
-    grid-template-columns:2fr 1fr;
-    gap:20px;
+    gap:18px;
+    margin-bottom:25px;
 }
 
 .card{
     background:white;
     border-radius:16px;
-    padding:24px;
+    padding:22px;
+    box-shadow:0 4px 15px rgba(0,0,0,.06);
+}
+
+.card-title{
+    color:#64748b;
+    font-size:13px;
+    margin-bottom:10px;
+}
+
+.card-value{
+    font-size:23px;
+    font-weight:800;
+}
+
+/* SECTIONS */
+.section{
+    background:white;
+    border-radius:18px;
+    padding:25px;
+    margin-bottom:25px;
+    box-shadow:0 4px 15px rgba(0,0,0,.06);
+}
+
+.section h2{
+    font-size:20px;
     margin-bottom:20px;
-    box-shadow:0 4px 18px rgba(15,23,42,.05);
 }
 
-.card h2{
-    font-size:19px;
-    margin-bottom:20px;
+/* TABLE */
+table{
+    width:100%;
+    border-collapse:collapse;
 }
 
-/* PAYMENT */
-.payment{
-    display:flex;
-    align-items:center;
-    gap:15px;
-    padding:17px 0;
-    border-bottom:1px solid #edf0f4;
+th,td{
+    padding:15px 12px;
+    border-bottom:1px solid #e5e7eb;
+    text-align:left;
 }
 
-.payment:last-child{
-    border-bottom:none;
-}
-
-.payment-icon{
-    width:43px;
-    height:43px;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:18px;
-}
-
-.payment-icon.paid{
-    background:#dcfce7;
-}
-
-.payment-icon.due{
-    background:#ffedd5;
-}
-
-.payment-info{
-    flex:1;
-}
-
-.payment-info h3{
-    font-size:15px;
-    margin-bottom:5px;
-}
-
-.payment-info p{
+th{
     color:#64748b;
     font-size:13px;
 }
 
-.payment-status{
-    font-size:11px;
+.badge{
+    display:inline-block;
+    padding:6px 10px;
+    border-radius:20px;
+    font-size:12px;
     font-weight:bold;
-    margin-top:5px;
 }
 
-.payment-status.green{
-    color:#16a34a;
+.paid{
+    background:#dcfce7;
+    color:#15803d;
 }
 
-.payment-status.orange{
-    color:#ea580c;
-}
-
-.payment-amount{
-    font-weight:800;
-    font-size:17px;
+.due{
+    background:#fef3c7;
+    color:#92400e;
 }
 
 /* DETAILS */
 .details{
     display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:12px;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
 }
 
 .detail{
     background:#f8fafc;
-    border-radius:10px;
-    padding:15px;
+    padding:17px;
+    border-radius:12px;
 }
 
-.detail span{
+.detail label{
     display:block;
     color:#64748b;
-    font-size:12px;
-    margin-bottom:6px;
+    font-size:13px;
+    margin-bottom:7px;
 }
 
 .detail strong{
-    font-size:15px;
+    font-size:17px;
 }
 
-/* FORECLOSURE */
-.foreclose-box{
-    background:#f8fafc;
-    border-radius:12px;
-    padding:18px;
+/* FORECLOSE */
+.foreclose{
+    border:1px solid #dbeafe;
+    background:#eff6ff;
 }
 
-.foreclose-label{
-    color:#64748b;
-    font-size:13px;
-}
-
-.foreclose-amount{
-    font-size:28px;
-    font-weight:800;
-    margin:8px 0 16px;
-}
-
-.button{
-    width:100%;
+.foreclose-btn{
+    margin-top:15px;
+    padding:12px 20px;
     border:0;
-    background:#1d4ed8;
+    background:#2563eb;
     color:white;
-    padding:13px;
     border-radius:9px;
-    font-weight:bold;
     cursor:pointer;
-    transition:.2s;
-}
-
-.button:hover{
-    background:#1e40af;
+    font-weight:bold;
 }
 
 /* PROFILE */
-.profile-row{
-    display:flex;
-    justify-content:space-between;
-    padding:14px 0;
-    border-bottom:1px solid #edf0f4;
-}
-
-.profile-row:last-child{
-    border-bottom:none;
-}
-
-.profile-row span{
-    color:#64748b;
-    font-size:13px;
-}
-
-.profile-row strong{
-    font-size:13px;
+.profile-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
 }
 
 /* NOTICE */
 .notice{
-    background:#eff6ff;
-    color:#1e40af;
-    padding:14px;
-    border-radius:9px;
-    font-size:12px;
-    line-height:1.5;
+    background:#fff7ed;
+    border:1px solid #fed7aa;
+    color:#9a3412;
+    padding:15px;
+    border-radius:12px;
+    font-size:13px;
 }
 
-/* FOOTER */
-.footer{
-    text-align:center;
-    color:#94a3b8;
-    font-size:11px;
-    padding:10px;
-}
-
-/* DEMO PAYMENT POPUP */
-.pay-modal{
+/* MODAL */
+.modal{
     display:none;
     position:fixed;
     inset:0;
-    background:rgba(15,23,42,.65);
-    z-index:999;
-    align-items:center;
+    background:rgba(0,0,0,.65);
+    z-index:9999;
     justify-content:center;
+    align-items:center;
     padding:20px;
 }
 
-.pay-modal.show{
+.modal.show{
     display:flex;
 }
 
-.pay-box{
+.modal-box{
     width:100%;
-    max-width:410px;
+    max-width:480px;
     background:white;
     border-radius:20px;
-    padding:26px;
-    box-shadow:0 25px 70px rgba(0,0,0,.3);
-    animation:popup .2s ease;
+    padding:28px;
+    box-shadow:0 20px 60px rgba(0,0,0,.3);
+    position:relative;
 }
 
-@keyframes popup{
-    from{
-        transform:scale(.94);
-        opacity:0;
-    }
-    to{
-        transform:scale(1);
-        opacity:1;
-    }
+.close{
+    position:absolute;
+    right:18px;
+    top:15px;
+    width:35px;
+    height:35px;
+    border:0;
+    border-radius:50%;
+    background:#f1f5f9;
+    font-size:20px;
+    cursor:pointer;
 }
 
-.pay-box h2{
-    text-align:center;
-    font-size:21px;
+.modal-title{
+    font-size:23px;
+    font-weight:800;
     margin-bottom:7px;
 }
 
-.pay-box > p{
-    text-align:center;
+.modal-sub{
     color:#64748b;
-    font-size:13px;
+    font-size:14px;
     margin-bottom:22px;
 }
 
-.pay-options{
+.payment-options{
     display:grid;
-    gap:12px;
-}
-
-.pay-option{
-    display:flex;
-    align-items:center;
     gap:14px;
-    width:100%;
-    border:1px solid #e5e7eb;
-    background:#f8fafc;
-    border-radius:13px;
-    padding:13px 15px;
-    cursor:pointer;
-    text-align:left;
-    transition:.2s;
 }
 
-.pay-option:hover{
-    background:#f1f5f9;
-    transform:translateY(-1px);
-}
-
-.pay-logo{
-    width:50px;
-    height:50px;
-    border-radius:12px;
-    background:white;
-    border:1px solid #e5e7eb;
+.payment-option{
+    border:1px solid #e2e8f0;
+    border-radius:15px;
+    padding:15px;
     display:flex;
     align-items:center;
-    justify-content:center;
-    overflow:hidden;
-    flex-shrink:0;
+    gap:15px;
+    cursor:pointer;
+    transition:.2s;
+    background:white;
 }
 
-.pay-logo img{
-    width:38px;
-    height:38px;
+.payment-option:hover{
+    border-color:#2563eb;
+    transform:translateY(-2px);
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.payment-logo{
+    width:58px;
+    height:58px;
     object-fit:contain;
+    border-radius:12px;
+    background:#f8fafc;
+    padding:7px;
 }
 
-.pay-name{
-    font-weight:700;
-    font-size:15px;
-    color:#172033;
+.payment-name{
+    font-size:17px;
+    font-weight:800;
 }
 
-.pay-demo{
-    font-size:11px;
-    color:#94a3b8;
+.payment-desc{
+    color:#64748b;
+    font-size:12px;
     margin-top:4px;
 }
 
-.close-pay{
-    display:block;
-    margin:20px auto 0;
-    border:0;
-    background:#e5e7eb;
-    color:#334155;
-    padding:10px 22px;
-    border-radius:9px;
-    cursor:pointer;
-    font-weight:600;
+.demo-note{
+    margin-top:20px;
+    background:#f1f5f9;
+    padding:12px;
+    border-radius:10px;
+    text-align:center;
+    font-size:12px;
+    color:#64748b;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    color:#94a3b8;
+    padding:15px;
+    font-size:12px;
 }
 
 /* MOBILE */
 @media(max-width:900px){
-
     .sidebar{
-        position:relative;
         width:100%;
         height:auto;
-        padding:16px;
+        position:relative;
+        padding:15px;
     }
 
     .logo{
-        padding:5px 10px 18px;
-    }
-
-    .menu-title{
-        display:none;
+        margin-bottom:12px;
     }
 
     .menu{
         display:flex;
-        gap:5px;
         overflow-x:auto;
+        gap:5px;
     }
 
-    .menu li{
-        min-width:max-content;
+    .menu a{
+        white-space:nowrap;
     }
 
     .main{
@@ -524,42 +419,25 @@ body{
         padding:18px;
     }
 
-    .summary{
-        grid-template-columns:1fr 1fr;
+    .grid{
+        grid-template-columns:repeat(2,1fr);
     }
 
-    .content-grid{
+    .profile-grid{
         grid-template-columns:1fr;
     }
 }
 
-@media(max-width:550px){
-
-    .header{
-        align-items:flex-start;
+@media(max-width:600px){
+    .hero-top{
+        display:block;
     }
 
-    .header h1{
-        font-size:23px;
-    }
-
-    .profile-mini{
-        display:none;
-    }
-
-    .hero{
-        padding:22px;
-    }
-
-    .hero-amount{
+    .amount{
         font-size:34px;
     }
 
-    .loan-status{
-        font-size:10px;
-    }
-
-    .summary{
+    .grid{
         grid-template-columns:1fr;
     }
 
@@ -567,8 +445,21 @@ body{
         grid-template-columns:1fr;
     }
 
-    .payment-amount{
-        font-size:15px;
+    table{
+        min-width:650px;
+    }
+
+    .section{
+        overflow-x:auto;
+    }
+
+    .topbar{
+        display:block;
+    }
+
+    .user{
+        display:inline-block;
+        margin-top:10px;
     }
 }
 </style>
@@ -577,441 +468,356 @@ body{
 <body>
 
 <!-- SIDEBAR -->
-<aside class="sidebar">
+<div class="sidebar">
 
     <div class="logo">
         Quick<span>Loan</span>
     </div>
 
-    <div class="menu-title">Menu</div>
+    <div class="menu">
+        <a href="#dashboard" class="active">Dashboard</a>
+        <a href="#payments">Payments</a>
+        <a href="#loan">Loan Details</a>
+        <a href="#foreclose">Foreclose Loan</a>
+        <a href="#profile">My Profile</a>
+    </div>
 
-    <ul class="menu">
-
-        <li>
-            <a href="#dashboard" class="active">
-                <span class="icon">⌂</span>
-                Dashboard
-            </a>
-        </li>
-
-        <li>
-            <a href="#payments">
-                <span class="icon">▣</span>
-                Payments
-            </a>
-        </li>
-
-        <li>
-            <a href="#loan">
-                <span class="icon">▤</span>
-                Loan Details
-            </a>
-        </li>
-
-        <li>
-            <a href="#foreclose">
-                <span class="icon">✓</span>
-                Foreclose Loan
-            </a>
-        </li>
-
-        <li>
-            <a href="#profile">
-                <span class="icon">●</span>
-                My Profile
-            </a>
-        </li>
-
-    </ul>
-
-</aside>
+</div>
 
 
 <!-- MAIN -->
-<main class="main" id="dashboard">
+<div class="main">
 
-    <!-- HEADER -->
-    <div class="header">
+    <div class="topbar">
+        <h1>Loan Dashboard</h1>
 
-        <div>
-            <h1>Good afternoon, Vikram</h1>
-            <p>Here's your loan account overview.</p>
+        <div class="user">
+            👤 Vikram Yadav
         </div>
-
-        <div class="profile-mini">
-            <div class="avatar">VY</div>
-            <strong>Vikram Yadav</strong>
-        </div>
-
     </div>
 
 
     <!-- HERO -->
-    <section class="hero">
+    <section class="hero" id="dashboard">
 
         <div class="hero-top">
 
             <div>
+                <small>Total Outstanding</small>
 
-                <div class="hero-label">
-                    Total Outstanding
-                </div>
-
-                <div class="hero-amount">
+                <div class="amount">
                     ₹1,08,600
                 </div>
 
-                <div class="hero-note">
+                <div class="remaining">
                     ₹1,03,600 remaining after today's ₹5,000 payment
                 </div>
 
-            </div>
-
-            <div class="loan-status">
-                ACTIVE
+                <div class="status">
+                    ACTIVE
+                </div>
             </div>
 
         </div>
 
+
+        <!-- PAY NOW -->
+        <div class="pay-area">
+
+            <button class="pay-btn" onclick="openPayment()">
+                💳 Pay Now
+            </button>
+
+        </div>
+
     </section>
-
-
-    <!-- PAY NOW -->
-    <div style="margin-bottom:20px;">
-        <button class="button"
-                onclick="openPaymentModal()"
-                style="max-width:220px;">
-            Pay Now
-        </button>
-    </div>
 
 
     <!-- SUMMARY -->
-    <section class="summary">
+    <div class="grid">
 
-        <div class="summary-card">
-            <small>Paid Today</small>
-            <strong>₹5,000</strong>
+        <div class="card">
+            <div class="card-title">Paid Today</div>
+            <div class="card-value">₹5,000</div>
         </div>
 
-        <div class="summary-card">
-            <small>7 Oct Due</small>
-            <strong>₹11,000</strong>
+        <div class="card">
+            <div class="card-title">7 October Due</div>
+            <div class="card-value">₹11,000</div>
         </div>
 
-        <div class="summary-card">
-            <small>10 Oct Due</small>
-            <strong>₹22,000</strong>
+        <div class="card">
+            <div class="card-title">10 October Due</div>
+            <div class="card-value">₹22,000</div>
         </div>
 
-        <div class="summary-card">
-            <small>Loan ID</small>
-            <strong style="font-size:16px;">QL-2026-001</strong>
+        <div class="card">
+            <div class="card-title">Loan ID</div>
+            <div class="card-value">QL-2026-001</div>
+        </div>
+
+    </div>
+
+
+    <!-- PAYMENTS -->
+    <section class="section" id="payments">
+
+        <h2>Payment Schedule</h2>
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>Payment Made</td>
+                    <td>5 October 2026</td>
+                    <td>₹5,000</td>
+                    <td>
+                        <span class="badge paid">
+                            PAID TODAY
+                        </span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Upcoming Payment</td>
+                    <td>7 October 2026</td>
+                    <td>₹11,000</td>
+                    <td>
+                        <span class="badge due">
+                            DUE ON 7 OCTOBER
+                        </span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Upcoming Payment</td>
+                    <td>10 October 2026</td>
+                    <td>₹22,000</td>
+                    <td>
+                        <span class="badge due">
+                            DUE ON 10 OCTOBER
+                        </span>
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </section>
+
+
+    <!-- LOAN DETAILS -->
+    <section class="section" id="loan">
+
+        <h2>Loan Details</h2>
+
+        <div class="details">
+
+            <div class="detail">
+                <label>Loan ID</label>
+                <strong>QL-2026-001</strong>
+            </div>
+
+            <div class="detail">
+                <label>Total Outstanding</label>
+                <strong>₹1,08,600</strong>
+            </div>
+
+            <div class="detail">
+                <label>Today's Payment</label>
+                <strong>₹5,000</strong>
+            </div>
+
+            <div class="detail">
+                <label>Upcoming Payments</label>
+                <strong>₹33,000</strong>
+            </div>
+
         </div>
 
     </section>
 
 
-    <div class="content-grid">
+    <!-- FORECLOSE -->
+    <section class="section foreclose" id="foreclose">
 
-        <!-- LEFT -->
-        <div>
-
-            <!-- PAYMENTS -->
-            <section class="card" id="payments">
-
-                <h2>Payment Schedule</h2>
-
-                <div class="payment">
-
-                    <div class="payment-icon paid">
-                        ✓
-                    </div>
-
-                    <div class="payment-info">
-
-                        <h3>Payment Made</h3>
-
-                        <p>5 October 2026</p>
-
-                        <div class="payment-status green">
-                            PAID TODAY
-                        </div>
-
-                    </div>
-
-                    <div class="payment-amount">
-                        ₹5,000
-                    </div>
-
-                </div>
-
-
-                <div class="payment">
-
-                    <div class="payment-icon due">
-                        !
-                    </div>
-
-                    <div class="payment-info">
-
-                        <h3>Upcoming Payment</h3>
-
-                        <p>7 October 2026</p>
-
-                        <div class="payment-status orange">
-                            DUE ON 7 OCTOBER
-                        </div>
-
-                    </div>
-
-                    <div class="payment-amount">
-                        ₹11,000
-                    </div>
-
-                </div>
-
-
-                <div class="payment">
-
-                    <div class="payment-icon due">
-                        !
-                    </div>
-
-                    <div class="payment-info">
-
-                        <h3>Upcoming Payment</h3>
-
-                        <p>10 October 2026</p>
-
-                        <div class="payment-status orange">
-                            DUE ON 10 OCTOBER
-                        </div>
-
-                    </div>
-
-                    <div class="payment-amount">
-                        ₹22,000
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- LOAN DETAILS -->
-            <section class="card" id="loan">
-
-                <h2>Loan Details</h2>
-
-                <div class="details">
-
-                    <div class="detail">
-                        <span>Loan ID</span>
-                        <strong>QL-2026-001</strong>
-                    </div>
-
-                    <div class="detail">
-                        <span>Total Outstanding</span>
-                        <strong>₹1,08,600</strong>
-                    </div>
-
-                    <div class="detail">
-                        <span>Today's Payment</span>
-                        <strong>₹5,000</strong>
-                    </div>
-
-                    <div class="detail">
-                        <span>Upcoming Total</span>
-                        <strong>₹33,000</strong>
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- FORECLOSE -->
-            <section class="card" id="foreclose">
-
-                <h2>Foreclose Loan</h2>
-
-                <div class="foreclose-box">
-
-                    <div class="foreclose-label">
-                        Current foreclosure amount
-                    </div>
-
-                    <div class="foreclose-amount">
-                        ₹1,08,600
-                    </div>
-
-                    <button class="button"
-                            onclick="alert('Personal demonstration only. No real payment or foreclosure processing is connected.')">
-                        View Foreclosure Details
-                    </button>
-
-                </div>
-
-            </section>
-
-        </div>
-
-
-        <!-- RIGHT -->
-        <div>
-
-            <!-- PROFILE -->
-            <section class="card" id="profile">
-
-                <h2>My Profile</h2>
-
-                <div class="profile-row">
-                    <span>Full Name</span>
-                    <strong>Vikram Yadav</strong>
-                </div>
-
-                <div class="profile-row">
-                    <span>Phone Number</span>
-                    <strong>90146XX138</strong>
-                </div>
-
-                <div class="profile-row">
-                    <span>PAN Number</span>
-                    <strong>CDXPTXX22</strong>
-                </div>
-
-                <div class="profile-row">
-                    <span>Customer Type</span>
-                    <strong>Personal</strong>
-                </div>
-
-            </section>
-
-
-            <!-- ACCOUNT -->
-            <section class="card">
-
-                <h2>Account</h2>
-
-                <div class="profile-row">
-                    <span>Account Status</span>
-                    <strong style="color:#16a34a;">
-                        Active
-                    </strong>
-                </div>
-
-                <div class="profile-row">
-                    <span>Loan Status</span>
-                    <strong>
-                        Running
-                    </strong>
-                </div>
-
-            </section>
-
-
-            <!-- NOTICE -->
-            <section class="card">
-
-                <div class="notice">
-                    This is a personal demonstration dashboard.
-                    It is not connected to any real financial
-                    institution, loan account, or payment system.
-                </div>
-
-            </section>
-
-        </div>
-
-    </div>
-
-
-    <div class="footer">
-        © 2026 QuickLoan — Personal Dashboard
-    </div>
-
-</main>
-
-
-<!-- DEMO PAYMENT POPUP -->
-<div class="pay-modal"
-     id="payModal"
-     onclick="closePaymentModal(event)">
-
-    <div class="pay-box"
-         onclick="event.stopPropagation()">
-
-        <h2>Choose Payment App</h2>
+        <h2>Foreclose Loan</h2>
 
         <p>
-            Demo only — no real payment is processed.
+            Current foreclosure amount
         </p>
 
+        <div style="font-size:30px;font-weight:800;margin-top:8px;">
+            ₹1,08,600
+        </div>
 
-        <!-- PAYMENT OPTIONS -->
-        <div class="pay-options">
+        <button class="foreclose-btn"
+                onclick="alert('Demo only — foreclosure details are not connected to any real loan account.')">
+            View Foreclosure Details
+        </button>
+
+    </section>
+
+
+    <!-- PROFILE -->
+    <section class="section" id="profile">
+
+        <h2>My Profile</h2>
+
+        <div class="profile-grid">
+
+            <div class="detail">
+                <label>Full Name</label>
+                <strong>Vikram Yadav</strong>
+            </div>
+
+            <div class="detail">
+                <label>Phone Number</label>
+                <strong>90146XX138</strong>
+            </div>
+
+            <div class="detail">
+                <label>PAN Number</label>
+                <strong>CDXPTXX22</strong>
+            </div>
+
+            <div class="detail">
+                <label>Customer Type</label>
+                <strong>Personal</strong>
+            </div>
+
+            <div class="detail">
+                <label>Account Status</label>
+                <strong>Active</strong>
+            </div>
+
+            <div class="detail">
+                <label>Loan Status</label>
+                <strong>Running</strong>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- NOTICE -->
+    <div class="notice">
+        This is a personal demonstration dashboard. It is not connected to any real financial institution, loan account, or payment system.
+    </div>
+
+
+    <footer>
+        © 2026 QuickLoan — Personal Dashboard
+    </footer>
+
+</div>
+
+
+<!-- PAYMENT MODAL -->
+<div class="modal" id="paymentModal">
+
+    <div class="modal-box">
+
+        <button class="close" onclick="closePayment()">
+            ×
+        </button>
+
+        <div class="modal-title">
+            Choose Payment Method
+        </div>
+
+        <div class="modal-sub">
+            Select a payment app for this demonstration.
+        </div>
+
+
+        <div class="payment-options">
+
 
             <!-- PHONEPE -->
-            <div class="pay-option"
+            <div class="payment-option"
                  onclick="demoPayment('PhonePe')">
 
-                <div class="pay-logo">
-
-                    <img
-                        src="https://upload.wikimedia.org/wikipedia/commons/7/71/PhonePe_Logo.svg"
-                        alt="PhonePe">
-
-                </div>
+                <img
+                    class="payment-logo"
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/PhonePe_Logo.svg/512px-PhonePe_Logo.svg.png"
+                    alt="PhonePe">
 
                 <div>
-
-                    <div class="pay-name">
+                    <div class="payment-name">
                         PhonePe
                     </div>
 
-                    <div class="pay-demo">
-                        Demo option
+                    <div class="payment-desc">
+                        Demo payment option
                     </div>
-
                 </div>
 
             </div>
 
 
             <!-- GOOGLE PAY -->
-            <div class="pay-option"
+            <div class="payment-option"
                  onclick="demoPayment('Google Pay')">
 
-                <div class="pay-logo">
-
-                    <img
-                        src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Google_Pay_Logo.svg"
-                        alt="Google Pay">
-
-                </div>
+                <img
+                    class="payment-logo"
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Google_Pay_Logo_%282020%29.svg/512px-Google_Pay_Logo_%282020%29.svg.png"
+                    alt="Google Pay">
 
                 <div>
-
-                    <div class="pay-name">
+                    <div class="payment-name">
                         Google Pay
                     </div>
 
-                    <div class="pay-demo">
-                        Demo option
+                    <div class="payment-desc">
+                        Demo payment option
                     </div>
-
                 </div>
 
             </div>
 
+
+            <!-- PAYTM -->
+            <div class="payment-option"
+                 onclick="demoPayment('Paytm')">
+
+                <img
+                    class="payment-logo"
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Paytm_logo.png/512px-Paytm_logo.png"
+                    alt="Paytm">
+
+                <div>
+                    <div class="payment-name">
+                        Paytm
+                    </div>
+
+                    <div class="payment-desc">
+                        Demo payment option
+                    </div>
+                </div>
+
+            </div>
+
+
         </div>
 
 
-        <button class="close-pay"
-                onclick="closePaymentModal()">
-            Close
-        </button>
+        <div class="demo-note">
+            ⚠️ Demo only — no real payment is processed.
+        </div>
 
     </div>
 
@@ -1020,62 +826,39 @@ body{
 
 <script>
 
-/* OPEN PAYMENT POPUP */
-function openPaymentModal(){
-
-    document
-        .getElementById("payModal")
-        .classList
-        .add("show");
-
+function openPayment(){
+    document.getElementById("paymentModal").classList.add("show");
 }
 
-
-/* CLOSE PAYMENT POPUP */
-function closePaymentModal(event){
-
-    if(
-        !event ||
-        event.target.id === "payModal"
-    ){
-
-        document
-            .getElementById("payModal")
-            .classList
-            .remove("show");
-
-    }
-
+function closePayment(){
+    document.getElementById("paymentModal").classList.remove("show");
 }
 
-
-/* DEMO PAYMENT */
 function demoPayment(app){
 
     alert(
         app +
-        " selected — Demo only. No real payment is processed."
+        " selected.\n\n" +
+        "Demo only — no real payment is processed."
     );
 
 }
 
+document.getElementById("paymentModal").addEventListener("click", function(e){
 
-/* ESC KEY CLOSE */
-document.addEventListener(
-    "keydown",
-    function(event){
-
-        if(event.key === "Escape"){
-
-            document
-                .getElementById("payModal")
-                .classList
-                .remove("show");
-
-        }
-
+    if(e.target === this){
+        closePayment();
     }
-);
+
+});
+
+document.addEventListener("keydown", function(e){
+
+    if(e.key === "Escape"){
+        closePayment();
+    }
+
+});
 
 </script>
 
