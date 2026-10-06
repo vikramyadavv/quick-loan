@@ -166,7 +166,7 @@ body{
 /* SUMMARY */
 .summary{
     display:grid;
-    grid-template-columns:repeat(4,1fr);
+    grid-template-columns:repeat(5,1fr);
     gap:16px;
     margin-bottom:20px;
 }
@@ -370,6 +370,36 @@ body{
 }
 
 /* MOBILE */
+
+.countdown-badge{
+    display:inline-block;
+    margin-top:7px;
+    padding:4px 8px;
+    border-radius:20px;
+    background:#fff7ed;
+    color:#c2410c;
+    font-size:10px;
+    font-weight:700;
+}
+
+.secondary-action{
+    background:#475569;
+}
+
+.secondary-action:hover{
+    background:#334155;
+}
+
+.mobile-nav{
+    display:none;
+}
+
+@media(max-width:1100px){
+    .summary{
+        grid-template-columns:repeat(3,1fr);
+    }
+}
+
 @media(max-width:900px){
 
     .sidebar{
@@ -949,6 +979,11 @@ body{
         </div>
 
         <div class="summary-card">
+            <small>Total Amount Paid</small>
+            <strong>₹5,000</strong>
+        </div>
+
+        <div class="summary-card">
             <small>7 Oct Due</small>
             <strong>₹11,000</strong>
         </div>
@@ -1011,6 +1046,7 @@ body{
                         <div class="payment-status orange">
                             DUE ON 7 OCTOBER
                         </div>
+                        <div class="countdown-badge">Due in 1 day</div>
                     </div>
 
                     <div class="payment-amount">
@@ -1040,6 +1076,7 @@ body{
                         <div class="payment-status orange">
                             DUE ON 10 OCTOBER
                         </div>
+                        <div class="countdown-badge">Due in 4 days</div>
                     </div>
 
                     <div class="payment-amount">
@@ -1050,6 +1087,58 @@ body{
                         class="payment-action"
                         onclick="openPayment()"
                         style="border:0;background:#1d4ed8;color:white;padding:9px 14px;border-radius:8px;font-weight:700;cursor:pointer;white-space:nowrap;">
+                        Pay Now
+                    </button>
+
+                </div>
+
+
+                <div class="payment">
+
+                    <div class="payment-icon due">
+                        !
+                    </div>
+
+                    <div class="payment-info">
+                        <h3>Upcoming Payment</h3>
+                        <p>11 October 2026</p>
+
+                        <div class="payment-status orange">
+                            DUE ON 11 OCTOBER
+                        </div>
+                    </div>
+
+                    <div class="payment-amount">
+                        ₹11,500
+                    </div>
+
+                    <button class="payment-action" onclick="openPayment('₹11,500', 'Payment due 11 October 2026')">
+                        Pay Now
+                    </button>
+
+                </div>
+
+
+                <div class="payment">
+
+                    <div class="payment-icon due">
+                        !
+                    </div>
+
+                    <div class="payment-info">
+                        <h3>Upcoming Payment</h3>
+                        <p>17 October 2026</p>
+
+                        <div class="payment-status orange">
+                            DUE ON 17 OCTOBER
+                        </div>
+                    </div>
+
+                    <div class="payment-amount">
+                        ₹12,000
+                    </div>
+
+                    <button class="payment-action" onclick="openPayment('₹12,000', 'Payment due 17 October 2026')">
                         Pay Now
                     </button>
 
@@ -1117,6 +1206,18 @@ body{
 
                     </div>
 
+                    <div class="detail">
+
+                        <span>
+                            Account Reference
+                        </span>
+
+                        <strong>
+                            QL-2026-001
+                        </strong>
+
+                    </div>
+
 
                     <div class="detail">
 
@@ -1151,7 +1252,31 @@ body{
                         </span>
 
                         <strong>
-                            ₹33,000
+                            ₹56,500
+                        </strong>
+
+                    </div>
+
+                    <div class="detail">
+
+                        <span>
+                            Loan Start Date
+                        </span>
+
+                        <strong>
+                            2026
+                        </strong>
+
+                    </div>
+
+                    <div class="detail">
+
+                        <span>
+                            Next Due Date
+                        </span>
+
+                        <strong>
+                            7 October 2026
                         </strong>
 
                     </div>
@@ -1354,6 +1479,13 @@ body{
 
     </div>
 
+
+    <nav class="mobile-nav">
+        <a href="#dashboard">⌂<span>Home</span></a>
+        <a href="#payments">₹<span>Payments</span></a>
+        <a href="#loan-details">▣<span>Loan</span></a>
+        <a href="#profile">●<span>Profile</span></a>
+    </nav>
 
     <div class="footer">
         © 2026 QuickLoan — Personal Dashboard
@@ -1667,6 +1799,19 @@ function closeReceipt(){
         .getElementById("receiptModal")
         .classList.remove("show");
 
+}
+
+function downloadReceipt(){
+    const receipt = `QuickLoan Personal Dashboard\n\nPayment Receipt\nPayment Date: 5 October 2026\nLoan ID: QL-2026-001\nPayment Type: Loan Payment\nPayment Status: Successful\nAmount Paid: ₹5,000`;
+    const blob = new Blob([receipt], {type:'text/plain;charset=utf-8'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'quickloan-payment-receipt.txt';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
 }
 
 
