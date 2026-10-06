@@ -14,75 +14,94 @@
 }
 
 body{
-    background:#f1f5f9;
-    color:#0f172a;
+    background:#f5f7fb;
+    color:#172033;
 }
 
-button{
-    font-family:inherit;
-}
-
+/* SIDEBAR */
 .sidebar{
     position:fixed;
     left:0;
     top:0;
-    bottom:0;
     width:245px;
+    height:100vh;
     background:#0f172a;
     color:white;
-    padding:25px 18px;
+    padding:28px 16px;
+    z-index:10;
 }
 
 .logo{
-    font-size:23px;
+    font-size:26px;
     font-weight:800;
-    padding:0 12px 30px;
+    padding:0 14px 35px;
 }
 
 .logo span{
     color:#60a5fa;
 }
 
-.nav{
+.menu-title{
+    color:#64748b;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    padding:0 14px 10px;
+}
+
+.menu{
+    list-style:none;
+}
+
+.menu li{
+    margin-bottom:6px;
+}
+
+.menu a{
     display:flex;
-    flex-direction:column;
-    gap:7px;
-}
-
-.nav a{
-    color:#cbd5e1;
-    text-decoration:none;
+    align-items:center;
+    gap:12px;
     padding:13px 14px;
-    border-radius:9px;
+    border-radius:10px;
+    text-decoration:none;
+    color:#cbd5e1;
     font-size:14px;
+    transition:.2s;
 }
 
-.nav a:hover,
-.nav a.active{
-    background:#1e293b;
+.menu a:hover,
+.menu a.active{
+    background:#1d4ed8;
     color:white;
 }
 
+.icon{
+    width:22px;
+    text-align:center;
+}
+
+/* MAIN */
 .main{
     margin-left:245px;
-    padding:30px;
-    min-height:100vh;
+    padding:32px;
+    max-width:1250px;
 }
 
 .header{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin-bottom:25px;
+    margin-bottom:28px;
 }
 
 .header h1{
-    font-size:27px;
+    font-size:28px;
+    margin-bottom:6px;
 }
 
 .header p{
     color:#64748b;
-    margin-top:5px;
+    font-size:14px;
 }
 
 .profile-mini{
@@ -94,9 +113,9 @@ button{
 .avatar{
     width:42px;
     height:42px;
-    background:#2563eb;
-    color:white;
     border-radius:50%;
+    background:#dbeafe;
+    color:#1d4ed8;
     display:flex;
     align-items:center;
     justify-content:center;
@@ -105,119 +124,57 @@ button{
 
 /* HERO */
 .hero{
-    background:linear-gradient(135deg,#1d4ed8,#2563eb);
+    background:linear-gradient(135deg,#111827,#1e3a8a);
     color:white;
     border-radius:18px;
-    padding:28px;
+    padding:30px;
     margin-bottom:20px;
-    box-shadow:0 10px 30px rgba(37,99,235,.18);
+    box-shadow:0 10px 30px rgba(15,23,42,.15);
 }
 
 .hero-top{
     display:flex;
     justify-content:space-between;
-    align-items:center;
+    align-items:flex-start;
 }
 
 .hero-label{
+    color:#bfdbfe;
     font-size:13px;
-    opacity:.85;
 }
 
 .hero-amount{
-    font-size:39px;
+    font-size:43px;
     font-weight:800;
     margin:8px 0;
 }
 
 .hero-note{
+    color:#cbd5e1;
     font-size:13px;
-    opacity:.9;
 }
 
 .loan-status{
-    background:rgba(255,255,255,.15);
+    background:#dcfce7;
+    color:#166534;
     padding:8px 13px;
     border-radius:20px;
     font-size:12px;
     font-weight:bold;
 }
 
-.pay-now{
-    margin-top:20px;
-    border:none;
-    background:white;
-    color:#1d4ed8;
-    padding:12px 24px;
-    border-radius:9px;
-    font-weight:800;
-    cursor:pointer;
-}
-
-.pay-now:hover{
-    background:#eff6ff;
-}
-
-/* PROGRESS */
-.loan-progress{
-    background:white;
-    border-radius:16px;
-    padding:22px;
-    margin-bottom:20px;
-    box-shadow:0 4px 18px rgba(15,23,42,.05);
-}
-
-.progress-head{
-    display:flex;
-    justify-content:space-between;
-    margin-bottom:13px;
-}
-
-.progress-head div{
-    display:flex;
-    flex-direction:column;
-    gap:4px;
-}
-
-.progress-head span{
-    font-size:12px;
-    color:#64748b;
-}
-
-.progress-track{
-    height:10px;
-    background:#e2e8f0;
-    border-radius:20px;
-    overflow:hidden;
-}
-
-.progress-fill{
-    height:100%;
-    width:4.6%;
-    background:#2563eb;
-    border-radius:20px;
-}
-
-.progress-foot{
-    display:flex;
-    justify-content:space-between;
-    margin-top:9px;
-    font-size:12px;
-    color:#64748b;
-}
-
 /* SUMMARY */
 .summary{
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    gap:15px;
+    gap:16px;
     margin-bottom:20px;
 }
 
 .summary-card{
     background:white;
-    padding:19px;
     border-radius:14px;
+    padding:20px;
     box-shadow:0 4px 18px rgba(15,23,42,.05);
 }
 
@@ -316,23 +273,6 @@ button{
     font-size:17px;
 }
 
-.payment-action{
-    margin-left:8px;
-    border:0;
-    background:#1d4ed8;
-    color:white;
-    padding:9px 14px;
-    border-radius:8px;
-    font-size:12px;
-    font-weight:700;
-    cursor:pointer;
-    white-space:nowrap;
-}
-
-.payment-action:hover{
-    background:#1e40af;
-}
-
 /* DETAILS */
 .details{
     display:grid;
@@ -402,95 +342,135 @@ button{
     border-bottom:none;
 }
 
-/* TRANSACTION */
-.transaction{
-    display:flex;
-    align-items:center;
-    gap:14px;
-    padding:14px 0;
-}
-
-.transaction-icon{
-    width:42px;
-    height:42px;
-    border-radius:50%;
-    background:#dcfce7;
-    color:#16a34a;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-weight:bold;
-}
-
-.transaction-info{
-    display:flex;
-    flex-direction:column;
-    gap:3px;
-}
-
-.transaction-info h3{
-    font-size:14px;
-}
-
-.transaction-info span{
-    font-size:12px;
+.profile-row span{
     color:#64748b;
+    font-size:13px;
 }
 
-.transaction-info strong{
-    color:#16a34a;
-}
-
-/* NOTIFICATION */
-.notification{
-    display:flex;
-    gap:12px;
-    padding:13px 0;
-    border-bottom:1px solid #edf0f4;
-}
-
-.notification:last-child{
-    border-bottom:none;
-}
-
-.notification-dot{
-    width:9px;
-    height:9px;
-    border-radius:50%;
-    background:#2563eb;
-    margin-top:6px;
-}
-
-.notification strong{
-    font-size:14px;
-}
-
-.notification p{
-    color:#64748b;
-    font-size:12px;
-    margin-top:4px;
+.profile-row strong{
+    font-size:13px;
 }
 
 /* NOTICE */
 .notice{
     background:#eff6ff;
-    border:1px solid #bfdbfe;
     color:#1e40af;
-    border-radius:10px;
     padding:14px;
+    border-radius:9px;
     font-size:12px;
-    line-height:1.6;
+    line-height:1.5;
+}
+
+/* FOOTER */
+.footer{
+    text-align:center;
+    color:#94a3b8;
+    font-size:11px;
+    padding:10px;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+
+    .sidebar{
+        position:relative;
+        width:100%;
+        height:auto;
+        padding:16px;
+    }
+
+    .logo{
+        padding:5px 10px 18px;
+    }
+
+    .menu-title{
+        display:none;
+    }
+
+    .menu{
+        display:flex;
+        gap:5px;
+        overflow-x:auto;
+    }
+
+    .menu li{
+        min-width:max-content;
+    }
+
+    .main{
+        margin-left:0;
+        padding:18px;
+    }
+
+    .summary{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .content-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:550px){
+
+    .header{
+        align-items:flex-start;
+    }
+
+    .header h1{
+        font-size:23px;
+    }
+
+    .profile-mini{
+        display:none;
+    }
+
+    .hero{
+        padding:22px;
+    }
+
+    .hero-amount{
+        font-size:34px;
+    }
+
+    .loan-status{
+        font-size:10px;
+    }
+
+    .summary{
+        grid-template-columns:1fr;
+    }
+
+    .details{
+        grid-template-columns:1fr;
+    }
+
+    .payment-amount{
+        font-size:15px;
+    }
 }
 
 /* PAYMENT MODAL */
+.pay-now{
+    margin-top:20px;
+    border:0;
+    background:#2563eb;
+    color:white;
+    padding:13px 24px;
+    border-radius:10px;
+    font-weight:800;
+    cursor:pointer;
+}
+
 .payment-modal{
+    display:none;
     position:fixed;
     inset:0;
-    background:rgba(15,23,42,.55);
-    display:none;
+    background:rgba(15,23,42,.65);
+    z-index:999;
     align-items:center;
     justify-content:center;
-    z-index:1000;
+    padding:20px;
 }
 
 .payment-modal.show{
@@ -498,53 +478,94 @@ button{
 }
 
 .payment-box{
+    width:100%;
+    max-width:430px;
     background:white;
-    width:390px;
-    max-width:92%;
-    border-radius:17px;
+    border-radius:18px;
     padding:25px;
     position:relative;
-    box-shadow:0 20px 50px rgba(0,0,0,.2);
-}
-
-.payment-box h2{
-    font-size:20px;
-    margin-bottom:6px;
-}
-
-.payment-box > p{
-    color:#64748b;
-    font-size:13px;
-    margin-bottom:20px;
+    box-shadow:0 20px 60px rgba(0,0,0,.25);
 }
 
 .payment-close{
     position:absolute;
-    right:17px;
-    top:14px;
-    border:none;
-    background:none;
-    font-size:27px;
-    color:#64748b;
+    right:15px;
+    top:12px;
+    width:34px;
+    height:34px;
+    border:0;
+    border-radius:50%;
+    background:#f1f5f9;
     cursor:pointer;
+    font-size:20px;
+}
+
+.payment-box h2{
+    margin-bottom:6px;
+}
+
+.payment-box p{
+    color:#64748b;
+    font-size:13px;
+    margin-bottom:18px;
 }
 
 .payment-method{
-    width:100%;
-    border:1px solid #e2e8f0;
-    background:white;
-    border-radius:12px;
-    padding:13px;
     display:flex;
     align-items:center;
-    gap:13px;
-    margin-top:10px;
+    gap:14px;
+    width:100%;
+    padding:13px;
+    margin:10px 0;
+    border:1px solid #e2e8f0;
+    border-radius:12px;
+    background:white;
     cursor:pointer;
     text-align:left;
 }
 
 .payment-method:hover{
-    background:#f8fafc;
+    border-color:#2563eb;
+    background:#f8fbff;
+}
+
+.payment-logo{
+    width:52px;
+    height:52px;
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:900;
+    flex-shrink:0;
+}
+
+.phonepe-logo{
+    background:#5f259f;
+    color:#fff;
+    font-size:23px;
+}
+
+.gpay-logo{
+    background:#fff;
+    border:1px solid #e5e7eb;
+    font-size:18px;
+}
+
+.gpay-logo .g{
+    color:#4285f4;
+}
+
+.gpay-logo .pay{
+    color:#34a853;
+    margin-left:2px;
+}
+
+.paytm-logo{
+    background:#00baf2;
+    color:#fff;
+    font-size:15px;
+    letter-spacing:-.7px;
 }
 
 .payment-method strong{
@@ -559,63 +580,149 @@ button{
     margin-top:3px;
 }
 
-/* LOGOS */
-.payment-logo{
-    width:43px;
-    height:43px;
-    border-radius:10px;
+/* LOAN PROGRESS */
+.loan-progress{
+    background:white;
+    border-radius:16px;
+    padding:20px 24px;
+    margin-bottom:20px;
+    box-shadow:0 4px 18px rgba(15,23,42,.05);
+}
+
+.progress-head,
+.progress-foot{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+}
+
+.progress-head strong{
+    font-size:14px;
+}
+
+.progress-head span{
+    display:block;
+    color:#64748b;
+    font-size:12px;
+    margin-top:4px;
+}
+
+.progress-track{
+    height:9px;
+    background:#e2e8f0;
+    border-radius:20px;
+    overflow:hidden;
+    margin:15px 0 8px;
+}
+
+.progress-fill{
+    width:4.6%;
+    height:100%;
+    background:#2563eb;
+    border-radius:20px;
+}
+
+.progress-foot{
+    color:#64748b;
+    font-size:11px;
+}
+
+/* TRANSACTION */
+.transaction{
+    display:flex;
+    align-items:center;
+    gap:13px;
+    padding:14px 0;
+}
+
+.transaction-icon{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    background:#dcfce7;
+    color:#16a34a;
     display:flex;
     align-items:center;
     justify-content:center;
-    font-weight:800;
+    font-weight:bold;
+}
+
+.transaction-info{
+    flex:1;
+}
+
+.transaction-info h3{
+    font-size:14px;
+    margin-bottom:4px;
+}
+
+.transaction-info p{
+    font-size:12px;
+    color:#64748b;
+}
+
+.transaction-right{
+    text-align:right;
+}
+
+.transaction-right strong{
+    display:block;
+    font-size:15px;
+}
+
+.receipt-btn{
+    margin-top:5px;
+    border:0;
+    background:none;
+    color:#2563eb;
+    font-size:11px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+/* NOTIFICATIONS */
+.notification{
+    display:flex;
+    gap:11px;
+    padding:12px 0;
+    border-bottom:1px solid #edf0f4;
+}
+
+.notification:last-child{
+    border-bottom:0;
+}
+
+.notification-dot{
+    width:9px;
+    height:9px;
+    border-radius:50%;
+    background:#2563eb;
+    margin-top:5px;
     flex-shrink:0;
 }
 
-.phonepe-logo{
-    background:#5f259f;
-    color:white;
-    font-size:22px;
+.notification strong{
+    font-size:13px;
 }
 
-.gpay-logo{
-    background:white;
-    border:1px solid #e2e8f0;
-    gap:2px;
-}
-
-.gpay-logo .g{
-    font-size:20px;
-    font-weight:800;
-}
-
-.gpay-logo .pay{
-    font-size:11px;
-    color:#111827;
-}
-
-.paytm-logo{
-    background:#00baf2;
-    color:white;
+.notification p{
+    color:#64748b;
     font-size:12px;
-}
-
-/* FOOTER */
-.footer{
-    text-align:center;
-    color:#94a3b8;
-    font-size:11px;
-    padding:20px;
+    margin-top:4px;
+    line-height:1.45;
 }
 
 /* RECEIPT */
 .receipt-modal{
+    display:none;
     position:fixed;
     inset:0;
-    background:rgba(15,23,42,.55);
-    display:none;
+    background:rgba(15,23,42,.65);
+    z-index:1000;
     align-items:center;
     justify-content:center;
-    z-index:1100;
+    padding:20px;
 }
 
 .receipt-modal.show{
@@ -623,36 +730,22 @@ button{
 }
 
 .receipt-box{
+    width:100%;
+    max-width:390px;
     background:white;
-    width:430px;
-    max-width:92%;
-    border-radius:16px;
-    padding:25px;
-    position:relative;
+    border-radius:18px;
+    padding:26px;
+    box-shadow:0 20px 60px rgba(0,0,0,.25);
 }
 
-.receipt-close{
-    position:absolute;
-    right:16px;
-    top:12px;
-    border:none;
-    background:none;
-    font-size:27px;
-    cursor:pointer;
+.receipt-box h2{
+    margin-bottom:4px;
 }
 
-.receipt-header{
-    text-align:center;
-    margin-bottom:20px;
-}
-
-.receipt-header h2{
-    margin-bottom:5px;
-}
-
-.receipt-header p{
+.receipt-sub{
     color:#64748b;
     font-size:12px;
+    margin-bottom:20px;
 }
 
 .receipt-row{
@@ -663,102 +756,48 @@ button{
     font-size:13px;
 }
 
-.receipt-row span{
-    color:#64748b;
-}
-
-.receipt-total{
-    margin-top:15px;
-    background:#f8fafc;
-    border-radius:10px;
-    padding:15px;
+.receipt-actions{
     display:flex;
-    justify-content:space-between;
-    font-weight:800;
+    gap:10px;
+    margin-top:20px;
 }
 
-.receipt-print{
-    margin-top:15px;
-    width:100%;
-    border:none;
-    background:#1d4ed8;
-    color:white;
-    padding:12px;
+.receipt-actions button{
+    flex:1;
+    padding:11px;
+    border:0;
     border-radius:9px;
     font-weight:bold;
     cursor:pointer;
 }
 
-@media(max-width:900px){
-
-    .sidebar{
-        width:200px;
-    }
-
-    .main{
-        margin-left:200px;
-    }
-
-    .summary{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .content-grid{
-        grid-template-columns:1fr;
-    }
-
+.receipt-close{
+    background:#f1f5f9;
 }
 
-@media(max-width:700px){
+.receipt-print{
+    background:#2563eb;
+    color:white;
+}
 
-    .sidebar{
-        position:static;
+@media(max-width:550px){
+
+    .pay-now{
         width:100%;
-        height:auto;
     }
 
-    .nav{
-        display:grid;
-        grid-template-columns:1fr 1fr;
+    .progress-foot{
+        font-size:10px;
     }
 
-    .main{
-        margin-left:0;
-        padding:18px;
+    .transaction-right strong{
+        font-size:14px;
     }
 
-    .header{
-        gap:15px;
+    .receipt-actions{
+        flex-direction:column;
     }
-
-    .header h1{
-        font-size:21px;
-    }
-
-    .profile-mini strong{
-        display:none;
-    }
-
-    .summary{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .hero-amount{
-        font-size:31px;
-    }
-
-    .payment{
-        align-items:flex-start;
-        flex-wrap:wrap;
-    }
-
-    .payment-action{
-        margin-left:58px;
-        margin-top:-5px;
-    }
-
 }
-
 </style>
 </head>
 
@@ -771,33 +810,53 @@ button{
         Quick<span>Loan</span>
     </div>
 
-    <nav class="nav">
+    <div class="menu-title">Menu</div>
 
-        <a href="#dashboard" class="active">
-            Dashboard
-        </a>
+    <ul class="menu">
 
-        <a href="#payments">
-            Payments
-        </a>
+        <li>
+            <a href="#dashboard" class="active">
+                <span class="icon">⌂</span>
+                Dashboard
+            </a>
+        </li>
 
-        <a href="#loan-details">
-            Loan Details
-        </a>
+        <li>
+            <a href="#payments">
+                <span class="icon">▣</span>
+                Payments
+            </a>
+        </li>
 
-        <a href="#foreclose">
-            Foreclose Loan
-        </a>
+        <li>
+            <a href="#loan">
+                <span class="icon">▤</span>
+                Loan Details
+            </a>
+        </li>
 
-        <a href="#profile">
-            My Profile
-        </a>
+        <li>
+            <a href="#foreclose">
+                <span class="icon">✓</span>
+                Foreclose Loan
+            </a>
+        </li>
 
-        <a href="#notifications">
-            Notifications
-        </a>
+        <li>
+            <a href="#profile">
+                <span class="icon">●</span>
+                My Profile
+            </a>
+        </li>
 
-    </nav>
+        <li>
+            <a href="#notifications">
+                <span class="icon">●</span>
+                Notifications
+            </a>
+        </li>
+
+    </ul>
 
 </aside>
 
@@ -837,10 +896,10 @@ button{
                 </div>
 
                 <div class="hero-note">
-                    ₹1,03,600 remaining after today's ₹5,000 payment
+                    ₹1,03,600 remaining after yesterday's ₹5,000 payment
                 </div>
 
-                <button class="pay-now" onclick="openPayment('₹1,08,600', 'Total Outstanding')">
+                <button class="pay-now" onclick="openPayment()">
                     Pay Now
                 </button>
 
@@ -862,7 +921,7 @@ button{
 
             <div>
                 <strong>Loan Progress</strong>
-                <span>₹5,000 paid today</span>
+                <span>₹5,000 paid yesterday</span>
             </div>
 
             <strong>4.6% paid</strong>
@@ -958,7 +1017,10 @@ button{
                         ₹11,000
                     </div>
 
-                    <button class="payment-action" onclick="openPayment('₹11,000', 'Payment due 7 October 2026')">
+                    <button
+                        class="payment-action"
+                        onclick="openPayment()"
+                        style="border:0;background:#1d4ed8;color:white;padding:9px 14px;border-radius:8px;font-weight:700;cursor:pointer;white-space:nowrap;">
                         Pay Now
                     </button>
 
@@ -984,7 +1046,10 @@ button{
                         ₹22,000
                     </div>
 
-                    <button class="payment-action" onclick="openPayment('₹22,000', 'Payment due 10 October 2026')">
+                    <button
+                        class="payment-action"
+                        onclick="openPayment()"
+                        style="border:0;background:#1d4ed8;color:white;padding:9px 14px;border-radius:8px;font-weight:700;cursor:pointer;white-space:nowrap;">
                         Pay Now
                     </button>
 
@@ -1008,21 +1073,25 @@ button{
 
                         <h3>Payment Received</h3>
 
-                        <span>
+                        <p>
                             5 October 2026 • Loan payment
-                        </span>
+                        </p>
+
+                    </div>
+
+                    <div class="transaction-right">
 
                         <strong>
                             ₹5,000
                         </strong>
 
-                    </div>
+                        <button
+                            class="receipt-btn"
+                            onclick="showReceipt()">
+                            View Receipt
+                        </button>
 
-                    <button
-                        class="payment-action"
-                        onclick="openReceipt()">
-                        View Receipt
-                    </button>
+                    </div>
 
                 </div>
 
@@ -1030,11 +1099,9 @@ button{
 
 
             <!-- LOAN DETAILS -->
-            <section class="card" id="loan-details">
+            <section class="card" id="loan">
 
-                <h2>
-                    Loan Details
-                </h2>
+                <h2>Loan Details</h2>
 
                 <div class="details">
 
@@ -1113,9 +1180,9 @@ button{
 
                     <button
                         class="button"
-                        onclick="openPayment('₹1,08,600', 'Foreclosure Amount')">
+                        onclick="openPayment()">
 
-                        Pay Now & Close Loan
+                        Pay Now / Close Loan
 
                     </button>
 
@@ -1256,6 +1323,7 @@ button{
 
                 </div>
 
+
                 <div class="profile-row">
 
                     <span>
@@ -1305,11 +1373,11 @@ button{
             ×
         </button>
 
-        <h2 id="paymentTitle">
+        <h2>
             Choose Payment Method
         </h2>
 
-        <p id="paymentSubtitle">
+        <p>
             Select a payment app.
         </p>
 
@@ -1400,13 +1468,7 @@ button{
 
 <script>
 
-function openPayment(amount = '', purpose = 'Loan Payment'){
-
-    document.getElementById("paymentTitle").textContent =
-        amount ? "Pay " + amount : "Choose Payment Method";
-
-    document.getElementById("paymentSubtitle").textContent =
-        purpose + " • Select a payment app.";
+function openPayment(){
 
     document
         .getElementById("paymentModal")
@@ -1426,16 +1488,11 @@ function closePayment(){
 
 function paymentSelected(app){
 
-    const title =
-        document.getElementById("paymentTitle").textContent;
-
     closePayment();
 
     alert(
         app +
         " selected.\n\n" +
-        title +
-        "\n\n" +
         "No payment is processed from this page."
     );
 
@@ -1454,14 +1511,112 @@ document
 
     });
 
+</script>
 
-/* GREETING */
 
-function updateGreeting(){
+<!-- RECEIPT -->
+<div
+    class="receipt-modal"
+    id="receiptModal">
+
+    <div
+        class="receipt-box"
+        id="receiptContent">
+
+        <h2>
+            Payment Receipt
+        </h2>
+
+        <div class="receipt-sub">
+            QuickLoan • Payment record
+        </div>
+
+
+        <div class="receipt-row">
+
+            <span>
+                Payment Date
+            </span>
+
+            <strong>
+                5 October 2026
+            </strong>
+
+        </div>
+
+
+        <div class="receipt-row">
+
+            <span>
+                Amount Paid
+            </span>
+
+            <strong>
+                ₹5,000
+            </strong>
+
+        </div>
+
+
+        <div class="receipt-row">
+
+            <span>
+                Loan ID
+            </span>
+
+            <strong>
+                QL-2026-001
+            </strong>
+
+        </div>
+
+
+        <div class="receipt-row">
+
+            <span>
+                Status
+            </span>
+
+            <strong style="color:#16a34a;">
+                PAID
+            </strong>
+
+        </div>
+
+
+        <div class="receipt-actions">
+
+            <button
+                class="receipt-close"
+                onclick="closeReceipt()">
+
+                Close
+
+            </button>
+
+
+            <button
+                class="receipt-print"
+                onclick="printReceipt()">
+
+                Print Receipt
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+(function(){
 
     const hour = new Date().getHours();
 
-    let greeting;
+    let greeting = "Good Evening";
 
     if(hour >= 5 && hour < 12){
 
@@ -1484,17 +1639,20 @@ function updateGreeting(){
 
     }
 
-    document.getElementById("greeting").textContent =
-        greeting + ", Vikram";
+    const el =
+        document.getElementById("greeting");
 
-}
+    if(el){
 
-updateGreeting();
+        el.textContent =
+            greeting + ", Vikram";
+
+    }
+
+})();
 
 
-/* RECEIPT */
-
-function openReceipt(){
+function showReceipt(){
 
     document
         .getElementById("receiptModal")
@@ -1511,113 +1669,95 @@ function closeReceipt(){
 
 }
 
-</script>
 
+function printReceipt(){
 
-<!-- RECEIPT -->
-<div
-    class="receipt-modal"
-    id="receiptModal">
+    const content =
+        document.getElementById("receiptContent").innerHTML;
 
-    <div
-        class="receipt-box"
-        id="receiptContent">
+    const w =
+        window.open(
+            "",
+            "_blank",
+            "width=500,height=650"
+        );
 
-        <button
-            class="receipt-close"
-            onclick="closeReceipt()">
-            ×
-        </button>
+    w.document.write(`
 
-        <div class="receipt-header">
+        <html>
 
-            <h2>
+        <head>
+
+            <title>
                 Payment Receipt
-            </h2>
+            </title>
 
-            <p>
-                QuickLoan Personal Dashboard
-            </p>
+            <style>
 
-        </div>
+                body{
+                    font-family:Arial,sans-serif;
+                    padding:35px;
+                    color:#172033;
+                }
 
+                h2{
+                    margin-bottom:5px;
+                }
 
-        <div class="receipt-row">
+                .receipt-sub{
+                    color:#64748b;
+                    font-size:12px;
+                    margin-bottom:20px;
+                }
 
-            <span>
-                Payment Date
-            </span>
+                .receipt-row{
+                    display:flex;
+                    justify-content:space-between;
+                    padding:12px 0;
+                    border-bottom:1px solid #ddd;
+                    font-size:14px;
+                }
 
-            <strong>
-                5 October 2026
-            </strong>
+                .receipt-actions{
+                    display:none;
+                }
 
-        </div>
+            </style>
 
+        </head>
 
-        <div class="receipt-row">
+        <body>
 
-            <span>
-                Loan ID
-            </span>
+            ${content}
 
-            <strong>
-                QL-2026-001
-            </strong>
+        </body>
 
-        </div>
+        </html>
 
+    `);
 
-        <div class="receipt-row">
+    w.document.close();
 
-            <span>
-                Payment Type
-            </span>
+    w.focus();
 
-            <strong>
-                Loan Payment
-            </strong>
+    w.print();
 
-        </div>
-
-
-        <div class="receipt-row">
-
-            <span>
-                Payment Status
-            </span>
-
-            <strong style="color:#16a34a;">
-                Successful
-            </strong>
-
-        </div>
+}
 
 
-        <div class="receipt-total">
+document
+    .getElementById("receiptModal")
+    .addEventListener("click", function(e){
 
-            <span>
-                Amount Paid
-            </span>
+        if(e.target === this){
 
-            <strong>
-                ₹5,000
-            </strong>
+            closeReceipt();
 
-        </div>
+        }
 
+    });
 
-        <button
-            class="receipt-print"
-            onclick="window.print()">
-
-            Print / Save Receipt
-
-        </button>
-
-    </div>
-
-</div>
+</script>
 
 </body>
 </html>
