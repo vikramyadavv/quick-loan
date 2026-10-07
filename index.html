@@ -371,6 +371,12 @@ body{
 
 /* MOBILE */
 
+.partial-payment{
+    margin-top:5px;
+    font-size:11px;
+    color:#64748b;
+}
+
 .countdown-badge{
     display:inline-block;
     margin-top:7px;
@@ -647,7 +653,7 @@ body{
 }
 
 .progress-fill{
-    width:4.6%;
+    width:6.4%;
     height:100%;
     background:#2563eb;
     border-radius:20px;
@@ -922,14 +928,14 @@ body{
                 </div>
 
                 <div class="hero-amount">
-                    ₹1,08,600
+                    ₹1,01,600
                 </div>
 
                 <div class="hero-note">
-                    ₹1,03,600 remaining after yesterday's ₹5,000 payment
+                    ₹1,01,600 remaining after ₹24,500 total paid
                 </div>
 
-                <button class="pay-now" onclick="openPayment()">
+                <button class="pay-now" onclick="openPayment('₹22,000', 'Payment due 10 October 2026')">
                     Pay Now
                 </button>
 
@@ -951,10 +957,10 @@ body{
 
             <div>
                 <strong>Loan Progress</strong>
-                <span>₹5,000 paid yesterday</span>
+                <span>₹24,500 total paid</span>
             </div>
 
-            <strong>4.6% paid</strong>
+            <strong>19.4% paid</strong>
 
         </div>
 
@@ -963,8 +969,8 @@ body{
         </div>
 
         <div class="progress-foot">
-            <span>Paid: ₹5,000</span>
-            <span>Remaining: ₹1,03,600</span>
+            <span>Paid: ₹24,500</span>
+            <span>Remaining: ₹1,01,600</span>
         </div>
 
     </section>
@@ -974,18 +980,18 @@ body{
     <section class="summary">
 
         <div class="summary-card">
-            <small>Paid Yesterday</small>
-            <strong>₹5,000</strong>
+            <small id="paidTimingSummary">Paid</small>
+            <strong>₹24,500</strong>
         </div>
 
         <div class="summary-card">
             <small>Total Amount Paid</small>
-            <strong>₹5,000</strong>
+            <strong>₹24,500</strong>
         </div>
 
         <div class="summary-card">
             <small>7 Oct Due</small>
-            <strong>₹11,000</strong>
+            <strong>₹9,000</strong>
         </div>
 
         <div class="summary-card">
@@ -1019,10 +1025,10 @@ body{
 
                     <div class="payment-info">
                         <h3>Payment Made</h3>
-                        <p>5 October 2026</p>
+                        <p id="payment5Date">5 October 2026</p>
 
-                        <div class="payment-status green">
-                            PAID YESTERDAY
+                        <div class="payment-status green" id="payment5Status">
+                            PAID
                         </div>
                     </div>
 
@@ -1041,21 +1047,22 @@ body{
 
                     <div class="payment-info">
                         <h3>Upcoming Payment</h3>
-                        <p>7 October 2026</p>
+                        <p id="payment7Date">7 October 2026</p>
 
-                        <div class="payment-status orange">
-                            DUE ON 7 OCTOBER
+                        <div class="payment-status orange" id="payment7Status">
+                            DUE
                         </div>
-                        <div class="countdown-badge">Due in 1 day</div>
+                        <div class="countdown-badge" id="payment7Countdown">Due</div>
+                        <div class="partial-payment" id="payment7Partial">₹2,000 paid • ₹9,000 remaining</div>
                     </div>
 
                     <div class="payment-amount">
-                        ₹11,000
+                        ₹9,000
                     </div>
 
                     <button
                         class="payment-action"
-                        onclick="openPayment()"
+                        onclick="openPayment('₹9,000', 'Remaining payment for 7 October 2026')"
                         style="border:0;background:#1d4ed8;color:white;padding:9px 14px;border-radius:8px;font-weight:700;cursor:pointer;white-space:nowrap;">
                         Pay Now
                     </button>
@@ -1071,12 +1078,12 @@ body{
 
                     <div class="payment-info">
                         <h3>Upcoming Payment</h3>
-                        <p>10 October 2026</p>
+                        <p id="payment10Date">10 October 2026</p>
 
-                        <div class="payment-status orange">
-                            DUE ON 10 OCTOBER
+                        <div class="payment-status orange" id="payment10Status">
+                            DUE
                         </div>
-                        <div class="countdown-badge">Due in 4 days</div>
+                        <div class="countdown-badge" id="payment10Countdown">Due</div>
                     </div>
 
                     <div class="payment-amount">
@@ -1085,7 +1092,7 @@ body{
 
                     <button
                         class="payment-action"
-                        onclick="openPayment()"
+                        onclick="openPayment('₹1,01,600', 'Loan foreclosure')"
                         style="border:0;background:#1d4ed8;color:white;padding:9px 14px;border-radius:8px;font-weight:700;cursor:pointer;white-space:nowrap;">
                         Pay Now
                     </button>
@@ -1101,11 +1108,12 @@ body{
 
                     <div class="payment-info">
                         <h3>Upcoming Payment</h3>
-                        <p>11 October 2026</p>
+                        <p id="payment11Date">11 October 2026</p>
 
-                        <div class="payment-status orange">
-                            DUE ON 11 OCTOBER
+                        <div class="payment-status orange" id="payment11Status">
+                            DUE
                         </div>
+                        <div class="countdown-badge" id="payment11Countdown">Due</div>
                     </div>
 
                     <div class="payment-amount">
@@ -1127,11 +1135,12 @@ body{
 
                     <div class="payment-info">
                         <h3>Upcoming Payment</h3>
-                        <p>17 October 2026</p>
+                        <p id="payment17Date">17 October 2026</p>
 
-                        <div class="payment-status orange">
-                            DUE ON 17 OCTOBER
+                        <div class="payment-status orange" id="payment17Status">
+                            DUE
                         </div>
+                        <div class="countdown-badge" id="payment17Countdown">Due</div>
                     </div>
 
                     <div class="payment-amount">
@@ -1153,35 +1162,56 @@ body{
                 <h2>Transaction History</h2>
 
                 <div class="transaction">
-
-                    <div class="transaction-icon">
-                        ✓
-                    </div>
-
+                    <div class="transaction-icon">✓</div>
                     <div class="transaction-info">
-
                         <h3>Payment Received</h3>
-
-                        <p>
-                            5 October 2026 • Loan payment
-                        </p>
-
+                        <p>3 October 2026 • Loan payment</p>
                     </div>
-
                     <div class="transaction-right">
-
-                        <strong>
-                            ₹5,000
-                        </strong>
-
-                        <button
-                            class="receipt-btn"
-                            onclick="showReceipt()">
-                            View Receipt
-                        </button>
-
+                        <strong>₹5,500</strong>
+                        <button class="receipt-btn" onclick="showReceipt()">View Receipt</button>
                     </div>
+                </div>
 
+                <div class="transaction">
+                    <div class="transaction-icon">✓</div>
+                    <div class="transaction-info">
+                        <h3>Payment Received</h3>
+                        <p>5 October 2026 • Loan payment</p>
+                    </div>
+                    <div class="transaction-right">
+                        <strong>₹12,000</strong>
+                        <button class="receipt-btn" onclick="showReceipt()">View Receipt</button>
+                    </div>
+                </div>
+
+                <div class="transaction">
+                    <div class="transaction-icon">✓</div>
+                    <div class="transaction-info">
+                        <h3>Payment Received</h3>
+                        <p>5 October 2026 • Loan payment</p>
+                    </div>
+                    <div class="transaction-right">
+                        <strong>₹5,000</strong>
+                        <button class="receipt-btn" onclick="showReceipt()">View Receipt</button>
+                    </div>
+                </div>
+
+                <div class="transaction">
+                    <div class="transaction-icon">✓</div>
+                    <div class="transaction-info">
+                        <h3>Payment Received</h3>
+                        <p>7 October 2026 • Loan payment</p>
+                    </div>
+                    <div class="transaction-right">
+                        <strong>₹2,000</strong>
+                        <button class="receipt-btn" onclick="showReceipt()">View Receipt</button>
+                    </div>
+                </div>
+
+                <div class="history-total" style="display:flex;justify-content:space-between;padding-top:15px;margin-top:8px;border-top:1px solid #edf0f4;font-weight:800;">
+                    <span>Total Paid</span>
+                    <strong>₹24,500</strong>
                 </div>
 
             </section>
@@ -1235,11 +1265,11 @@ body{
                     <div class="detail">
 
                         <span>
-                            Yesterday's Payment
+                            Total Amount Paid
                         </span>
 
                         <strong>
-                            ₹5,000
+                            ₹24,500
                         </strong>
 
                     </div>
@@ -1252,7 +1282,7 @@ body{
                         </span>
 
                         <strong>
-                            ₹56,500
+                            ₹54,500
                         </strong>
 
                     </div>
@@ -1300,7 +1330,7 @@ body{
                     </div>
 
                     <div class="foreclose-amount">
-                        ₹1,08,600
+                        ₹1,01,600
                     </div>
 
                     <button
@@ -1399,8 +1429,8 @@ body{
                             Upcoming payment
                         </strong>
 
-                        <p>
-                            ₹11,000 due on 7 October 2026.
+                        <p id="notification7Due">
+                            ₹9,000 remaining for 7 October 2026.
                         </p>
 
                     </div>
@@ -1593,41 +1623,188 @@ body{
 
         </button>
 
+
+        <!-- ANY UPI APP -->
+        <button
+            class="payment-method"
+            onclick="paymentSelected('Any UPI App')">
+
+            <div class="payment-logo" style="background:#0f172a;color:white;font-weight:800;font-size:13px;">
+                UPI
+            </div>
+
+            <div>
+                <strong>Other UPI App</strong>
+                <span>BHIM, Amazon Pay, bank apps...</span>
+            </div>
+
+        </button>
+
     </div>
 
 </div>
 
 
+
+<!-- FALLBACK PAYMENT PANEL -->
+<div class="payment-modal" id="fallbackModal">
+    <div class="payment-box">
+        <button class="payment-close" onclick="closeFallback()">×</button>
+        <h2>Pay Manually</h2>
+        <p>Could not open a UPI app automatically. Open PhonePe / Google Pay / Paytm and pay using these details:</p>
+
+        <div style="background:#f1f5f9;border-radius:12px;padding:14px;margin:14px 0;">
+            <div style="font-size:12px;color:#64748b;">Amount</div>
+            <div id="fbAmount" style="font-size:22px;font-weight:800;margin-bottom:10px;"></div>
+            <div style="font-size:12px;color:#64748b;">UPI ID</div>
+            <div id="fbUpi" style="font-size:16px;font-weight:700;word-break:break-all;"></div>
+        </div>
+
+        <button class="payment-method" onclick="copyText(RECEIVER_UPI_ID, this)" style="justify-content:center;">Copy UPI ID</button>
+        <button class="payment-method" onclick="copyText(cleanAmount(selectedPaymentAmount), this)" style="justify-content:center;">Copy Amount</button>
+        <button class="payment-method" onclick="closeFallback();paymentSelected('Any UPI App')" style="justify-content:center;">Try UPI Chooser Again</button>
+    </div>
+</div>
+
 <script>
 
-function openPayment(){
+let selectedPaymentAmount = "₹9,000";
+let selectedPaymentNote = "Loan payment";
 
-    document
-        .getElementById("paymentModal")
-        .classList.add("show");
+// ================= UPI SETTINGS =================
+const RECEIVER_UPI_ID = "9014674138@ybl";
+const RECEIVER_NAME = "Thummeti Vikram";
 
+// Each app: Android package + iOS/other scheme
+const UPI_APPS = {
+    "PhonePe":     { pkg: "com.phonepe.app",                        scheme: "phonepe://pay?" },
+    "Google Pay":  { pkg: "com.google.android.apps.nbu.paisa.user", scheme: "tez://upi/pay?" },
+    "Paytm":       { pkg: "net.one97.paytm",                        scheme: "paytmmp://pay?" },
+    "Any UPI App": { pkg: "",                                       scheme: "upi://pay?" }
+};
+
+function cleanAmount(amount){
+    const n = parseFloat(String(amount).replace(/[^0-9.]/g, ""));
+    return isNaN(n) ? "" : n.toFixed(2);          // 9000 -> "9000.00"
 }
 
+// encodeURIComponent -> spaces become %20 (not "+")
+function buildUpiQuery(){
+    const q = {
+        pa: RECEIVER_UPI_ID,
+        pn: RECEIVER_NAME,
+        am: cleanAmount(selectedPaymentAmount),
+        cu: "INR",
+        tn: selectedPaymentNote
+    };
+    return Object.keys(q).map(k => k + "=" + encodeURIComponent(q[k])).join("&");
+}
+
+// Open a link the most reliable way (anchor click works better than location.href on some browsers)
+function launchUrl(url){
+    const a = document.createElement("a");
+    a.href = url;
+    a.style.display = "none";
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function(){ a.remove(); }, 500);
+}
+
+// ================= FALLBACK PANEL =================
+function showFallback(){
+    document.getElementById("fbAmount").textContent = "₹" + cleanAmount(selectedPaymentAmount);
+    document.getElementById("fbUpi").textContent = RECEIVER_UPI_ID;
+    document.getElementById("fallbackModal").classList.add("show");
+}
+function closeFallback(){
+    document.getElementById("fallbackModal").classList.remove("show");
+}
+function copyText(text, btn){
+    function done(){
+        const old = btn.textContent;
+        btn.textContent = "Copied ✓";
+        setTimeout(function(){ btn.textContent = old; }, 1500);
+    }
+    if(navigator.clipboard && window.isSecureContext){
+        navigator.clipboard.writeText(text).then(done).catch(function(){ legacyCopy(text); done(); });
+    }else{
+        legacyCopy(text); done();
+    }
+}
+function legacyCopy(text){
+    const t = document.createElement("textarea");
+    t.value = text; t.style.position = "fixed"; t.style.opacity = "0";
+    document.body.appendChild(t); t.select();
+    try{ document.execCommand("copy"); }catch(e){}
+    t.remove();
+}
+
+function openPayment(amount = "₹9,000", note = "Loan payment"){
+    selectedPaymentAmount = amount;
+    selectedPaymentNote = note;
+    document.getElementById("paymentModal").classList.add("show");
+}
 
 function closePayment(){
-
-    document
-        .getElementById("paymentModal")
-        .classList.remove("show");
-
+    document.getElementById("paymentModal").classList.remove("show");
 }
 
-
+// ================= MAIN PAYMENT FLOW =================
+// Order tried:
+//  1. Selected app directly (Android intent / iOS scheme)
+//  2. Generic UPI chooser (upi://pay)
+//  3. Manual fallback panel (copy UPI ID + amount)
 function paymentSelected(app){
-
     closePayment();
 
-    alert(
-        app +
-        " selected.\n\n" +
-        "No payment is processed from this page."
-    );
+    const ua = navigator.userAgent;
+    const isAndroid = /Android/i.test(ua);
+    const isIOS = /iPhone|iPad|iPod/i.test(ua);
 
+    if(!isAndroid && !isIOS){
+        showFallback();          // laptop: show details to pay from phone
+        return;
+    }
+    if(!cleanAmount(selectedPaymentAmount)){
+        alert("Invalid amount.");
+        return;
+    }
+
+    const query = buildUpiQuery();
+    const info = UPI_APPS[app] || UPI_APPS["Any UPI App"];
+    const genericUrl = "upi://pay?" + query;
+
+    let firstUrl;
+    if(isAndroid && info.pkg){
+        firstUrl = "intent://pay?" + query + "#Intent;scheme=upi;package=" + info.pkg + ";end";
+    }else if(isIOS){
+        firstUrl = info.scheme + query;
+    }else{
+        firstUrl = genericUrl;
+    }
+
+    let appOpened = false;
+    function markOpened(){ appOpened = true; }
+    document.addEventListener("visibilitychange", function(){ if(document.hidden) markOpened(); });
+    window.addEventListener("pagehide", markOpened);
+    window.addEventListener("blur", markOpened);
+
+    // Step 1: chosen app
+    launchUrl(firstUrl);
+
+    // Step 2: generic chooser
+    setTimeout(function(){
+        if(appOpened || document.hidden) return;
+        if(firstUrl !== genericUrl){
+            launchUrl(genericUrl);
+        }
+
+        // Step 3: manual fallback
+        setTimeout(function(){
+            if(appOpened || document.hidden) return;
+            showFallback();
+        }, 2200);
+    }, 1800);
 }
 
 
@@ -1746,39 +1923,108 @@ document
 
 (function(){
 
-    const hour = new Date().getHours();
+    const TIME_ZONE = "Asia/Kolkata";
+
+    function indiaNow(){
+        const parts = new Intl.DateTimeFormat("en-CA", {
+            timeZone: TIME_ZONE,
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "2-digit",
+            hour12: false
+        }).formatToParts(new Date());
+
+        const get = type => parts.find(p => p.type === type)?.value;
+        return {
+            year: Number(get("year")),
+            month: Number(get("month")),
+            day: Number(get("day")),
+            hour: Number(get("hour"))
+        };
+    }
+
+    const now = indiaNow();
 
     let greeting = "Good Evening";
 
-    if(hour >= 5 && hour < 12){
-
+    if(now.hour >= 5 && now.hour < 12){
         greeting = "Good Morning";
-
     }
-    else if(hour >= 12 && hour < 17){
-
+    else if(now.hour >= 12 && now.hour < 17){
         greeting = "Good Afternoon";
-
     }
-    else if(hour >= 17 && hour < 21){
-
+    else if(now.hour >= 17 && now.hour < 21){
         greeting = "Good Evening";
-
     }
     else{
-
         greeting = "Good Night";
-
     }
 
-    const el =
-        document.getElementById("greeting");
-
+    const el = document.getElementById("greeting");
     if(el){
+        el.textContent = greeting + ", Vikram";
+    }
 
-        el.textContent =
-            greeting + ", Vikram";
+    function indiaDateKey(year, month, day){
+        return Date.UTC(year, month - 1, day);
+    }
 
+    const todayKey = indiaDateKey(now.year, now.month, now.day);
+
+    function relativeDue(year, month, day){
+        const diff = Math.round((indiaDateKey(year, month, day) - todayKey) / 86400000);
+
+        if(diff === 0) return {status:"DUE TODAY", badge:"Due Today"};
+        if(diff > 0) return {status:"DUE", badge:`Due in ${diff} day${diff === 1 ? "" : "s"}`};
+        const days = Math.abs(diff);
+        return {status:"OVERDUE", badge:`Overdue by ${days} day${days === 1 ? "" : "s"}`};
+    }
+
+    function relativePast(year, month, day){
+        const diff = Math.round((todayKey - indiaDateKey(year, month, day)) / 86400000);
+        if(diff === 0) return "PAID TODAY";
+        if(diff === 1) return "PAID YESTERDAY";
+        return `PAID ${diff} DAYS AGO`;
+    }
+
+    function updatePayment(id, year, month, day){
+        const info = relativeDue(year, month, day);
+        const status = document.getElementById(`payment${id}Status`);
+        const countdown = document.getElementById(`payment${id}Countdown`);
+        if(status) status.textContent = info.status;
+        if(countdown) countdown.textContent = info.badge;
+    }
+
+    const payment5Status = document.getElementById("payment5Status");
+    if(payment5Status) payment5Status.textContent = relativePast(2026, 10, 5);
+
+    updatePayment(7, 2026, 10, 7);
+    updatePayment(10, 2026, 10, 10);
+    updatePayment(11, 2026, 10, 11);
+    updatePayment(17, 2026, 10, 17);
+
+    const paidSummary = document.getElementById("paidTimingSummary");
+    if(paidSummary){
+        const diff = Math.round((todayKey - indiaDateKey(2026,10,5)) / 86400000);
+        paidSummary.textContent = diff === 0 ? "Paid Today" : diff === 1 ? "Paid Yesterday" : `Paid ${diff} Days Ago`;
+    }
+
+    const notification7 = document.getElementById("notification7Due");
+    if(notification7){
+        const due = relativeDue(2026, 10, 7);
+        notification7.textContent = due.status === "DUE TODAY"
+            ? "₹9,000 remaining — due today."
+            : due.status === "OVERDUE"
+                ? "₹9,000 remaining — payment is overdue."
+                : `₹9,000 remaining — due in ${due.badge.replace("Due in ", "")}.`;
+    }
+
+    const partial = document.getElementById("payment7Partial");
+    if(partial){
+        const diff = Math.round((todayKey - indiaDateKey(2026,10,7)) / 86400000);
+        const paidText = diff === 0 ? "₹2,000 paid today" : diff === 1 ? "₹2,000 paid yesterday" : diff > 1 ? `₹2,000 paid ${diff} days ago` : "₹2,000 paid";
+        partial.textContent = `${paidText} • ₹9,000 remaining`;
     }
 
 })();
