@@ -98,6 +98,28 @@ body{background:#f5f7fb;color:#172033}
 .receipt-actions{display:flex;gap:10px;margin-top:20px}
 .receipt-close,.receipt-print{flex:1;padding:12px;border:0;border-radius:9px;font-weight:bold;cursor:pointer}
 .receipt-close{background:#e2e8f0}.receipt-print{background:#2563eb;color:white}
+ 
+.trail-note{background:#eff6ff;color:#1e40af;padding:12px 14px;border-radius:9px;font-size:12px;line-height:1.5;margin-bottom:14px}
+.trail-row{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:10px;align-items:center;padding:12px 0;border-bottom:1px solid #edf0f4;font-size:13px}
+.trail-row.head{color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:.5px;padding-top:0}
+.trail-row .minus{color:#16a34a;font-weight:700}
+.trail-row .bal{text-align:right;font-weight:800}
+.trail-row .amt{text-align:right}
+.trail-row.final{background:#f8fafc;border-radius:10px;border-bottom:none;padding:14px 12px;margin-top:8px;font-size:14px}
+.trail-row.final .bal{color:#1d4ed8;font-size:16px}
+.trail-row small{display:block;color:#64748b;font-size:11px;margin-top:3px}
+ 
+.notification{display:flex;gap:12px;padding:13px 0;border-bottom:1px solid #edf0f4}.notification:last-child{border-bottom:none}
+.notification-dot{width:9px;height:9px;border-radius:50%;background:#2563eb;margin-top:5px;flex-shrink:0}
+.notification strong{font-size:13px;display:block;margin-bottom:3px}.notification p{color:#64748b;font-size:12px;line-height:1.5}
+.payment-status.red{color:#dc2626}
+.payment-icon.late{background:#fee2e2;color:#dc2626}
+.overdue-banner{display:none;align-items:center;gap:14px;background:#fef2f2;border:1px solid #fecaca;color:#991b1b;border-radius:14px;padding:16px 20px;margin-bottom:20px}
+.overdue-banner.show{display:flex}
+.overdue-banner .ob-icon{width:38px;height:38px;border-radius:50%;background:#fee2e2;display:flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0}
+.overdue-banner strong{display:block;font-size:14px;margin-bottom:3px}.overdue-banner span{font-size:12px;color:#b91c1c}
+.countdown-badge.overdue{background:#fef2f2;color:#dc2626}
+.receipt-download{flex:1;padding:12px;border:0;border-radius:9px;font-weight:bold;cursor:pointer;background:#16a34a;color:white}
 .transaction.clickable{cursor:pointer;border-radius:10px;transition:.2s}.transaction.clickable:hover{background:#f8fafc}
 .receipt-row strong{text-align:right;word-break:break-all;margin-left:12px}
 </style>
@@ -140,6 +162,11 @@ body{background:#f5f7fb;color:#172033}
 </div>
 </section>
  
+<div class="overdue-banner" id="overdueBanner">
+<div class="ob-icon">!</div>
+<div><strong id="overdueTitle"></strong><span id="overdueSub"></span></div>
+</div>
+ 
 <section class="summary">
 <div class="summary-card"><small>Total Outstanding</small><strong>₹1,05,600</strong></div>
 <div class="summary-card"><small>Total Paid</small><strong>₹27,500</strong></div>
@@ -151,9 +178,9 @@ body{background:#f5f7fb;color:#172033}
 <section class="loan-progress">
 <div class="progress-head">
 <div><strong>Loan Progress</strong><span>Amount paid toward the loan</span></div>
-<strong>21.8%</strong>
+<strong>20.7%</strong>
 </div>
-<div class="progress-track"><div class="progress-fill" style="width:21.8%"></div></div>
+<div class="progress-track"><div class="progress-fill" style="width:20.7%"></div></div>
 <div class="progress-foot"><span>₹27,500 paid</span><span>₹1,05,600 outstanding</span></div>
 </section>
  
@@ -232,40 +259,57 @@ body{background:#f5f7fb;color:#172033}
  
 <div class="transaction">
 <div class="transaction-icon">✓</div>
-<div class="transaction-info"><h3>3 October 2026</h3><p>Payment received</p></div>
+<div class="transaction-info"><h3>3 October 2026</h3><p>Payment received • Balance ₹1,27,600</p></div>
 <div class="transaction-right"><strong>₹5,500</strong><small>PAID</small></div>
 </div>
  
 <div class="transaction">
 <div class="transaction-icon">✓</div>
-<div class="transaction-info"><h3>5 October 2026</h3><p>Payment received</p></div>
+<div class="transaction-info"><h3>5 October 2026</h3><p>Payment received • Balance ₹1,15,600</p></div>
 <div class="transaction-right"><strong>₹12,000</strong><small>PAID</small></div>
 </div>
  
 <div class="transaction">
 <div class="transaction-icon">✓</div>
-<div class="transaction-info"><h3>5 October 2026</h3><p>Payment received</p></div>
+<div class="transaction-info"><h3>5 October 2026</h3><p>Payment received • Balance ₹1,10,600</p></div>
 <div class="transaction-right"><strong>₹5,000</strong><small>PAID</small></div>
 </div>
  
 <div class="transaction">
 <div class="transaction-icon">✓</div>
-<div class="transaction-info"><h3>7 October 2026</h3><p>Payment received</p></div>
+<div class="transaction-info"><h3>7 October 2026</h3><p>Payment received • Balance ₹1,08,600</p></div>
 <div class="transaction-right"><strong>₹2,000</strong><small>PAID</small></div>
 </div>
  
 <div class="transaction clickable" onclick="showReceipt('r1')">
 <div class="transaction-icon">✓</div>
-<div class="transaction-info"><h3>8 October 2026 • 12:09 PM</h3><p>Payment received • Tap to view receipt</p></div>
+<div class="transaction-info"><h3>8 October 2026 • 12:09 PM</h3><p>Balance ₹1,07,600 • Tap to view receipt</p></div>
 <div class="transaction-right"><strong>₹1,000</strong><small>PAID</small></div>
 </div>
  
 <div class="transaction clickable" onclick="showReceipt('r2')">
 <div class="transaction-icon">✓</div>
-<div class="transaction-info"><h3>8 October 2026 • 4:20 PM</h3><p>Payment received • Tap to view receipt</p></div>
+<div class="transaction-info"><h3>8 October 2026 • 4:20 PM</h3><p>Balance ₹1,05,600 • Tap to view receipt</p></div>
 <div class="transaction-right"><strong>₹2,000</strong><small>PAID</small></div>
 </div>
  
+</section>
+ 
+<section class="card" id="balance-trail">
+<h2>How Your Outstanding Changed</h2>
+<div class="trail-note">Total loan ₹1,33,100 − Total paid ₹27,500 = <strong>₹1,05,600</strong> outstanding</div>
+ 
+<div class="trail-row head"><span>Payment</span><span class="amt">Paid</span><span class="bal">Outstanding</span></div>
+ 
+<div class="trail-row"><span>Loan start<small>Total loan amount</small></span><span class="amt">—</span><span class="bal">₹1,33,100</span></div>
+<div class="trail-row"><span>3 Oct 2026</span><span class="amt minus">− ₹5,500</span><span class="bal">₹1,27,600</span></div>
+<div class="trail-row"><span>5 Oct 2026</span><span class="amt minus">− ₹12,000</span><span class="bal">₹1,15,600</span></div>
+<div class="trail-row"><span>5 Oct 2026</span><span class="amt minus">− ₹5,000</span><span class="bal">₹1,10,600</span></div>
+<div class="trail-row"><span>7 Oct 2026</span><span class="amt minus">− ₹2,000</span><span class="bal">₹1,08,600</span></div>
+<div class="trail-row"><span>8 Oct 2026 • 12:09 PM<small>PhonePe</small></span><span class="amt minus">− ₹1,000</span><span class="bal">₹1,07,600</span></div>
+<div class="trail-row"><span>8 Oct 2026 • 4:20 PM<small>PhonePe</small></span><span class="amt minus">− ₹2,000</span><span class="bal">₹1,05,600</span></div>
+ 
+<div class="trail-row final"><span><strong>Current outstanding</strong></span><span class="amt minus">₹27,500 paid</span><span class="bal">₹1,05,600</span></div>
 </section>
  
 <section class="card" id="loan-details">
@@ -311,6 +355,10 @@ body{background:#f5f7fb;color:#172033}
 <div class="notification">
 <div class="notification-dot"></div>
 <div><strong>Next payment</strong><p>₹22,000 due on 10 October 2026.</p></div>
+</div>
+<div class="notification">
+<div class="notification-dot" style="background:#16a34a"></div>
+<div><strong>Payments received</strong><p>₹3,000 received on 8 October 2026 (₹1,000 + ₹2,000).</p></div>
 </div>
 </section>
  
@@ -578,6 +626,7 @@ if(e.target===this)closePayment();
  
 <div class="receipt-actions">
 <button class="receipt-close" onclick="closeReceipt()">Close</button>
+<button class="receipt-download" onclick="downloadReceipt()">Download</button>
 <button class="receipt-print" onclick="printReceipt()">Print Receipt</button>
 </div>
 </div>
@@ -652,8 +701,9 @@ const info=relativeDue(year,month,day);
 const status=document.getElementById(`payment${id}Status`);
 const countdown=document.getElementById(`payment${id}Countdown`);
  
-if(status)status.textContent=info.status;
-if(countdown)countdown.textContent=info.badge;
+if(status){status.textContent=info.status;status.classList.toggle("red",info.status==="OVERDUE");}
+if(status){const ic=status.closest(".payment").querySelector(".payment-icon");if(ic)ic.classList.toggle("late",info.status==="OVERDUE");}
+if(countdown){countdown.textContent=info.badge;countdown.classList.toggle("overdue",info.status==="OVERDUE");}
 }
  
 updatePayment(7,2026,10,7);
@@ -670,8 +720,22 @@ notification7.textContent=
 due.status==="DUE TODAY"
 ?"₹6,000 remaining — due today."
 :due.status==="OVERDUE"
-?"₹6,000 remaining — payment is overdue."
+?`₹6,000 remaining — overdue by ${due.badge.replace("Overdue by ","")}.`
 :`₹6,000 remaining — due in ${due.badge.replace("Due in ","")}.`;
+}
+ 
+// Overdue banner: sums every unpaid instalment whose due date has passed
+const DUES=[{y:2026,m:10,d:7,amt:6000},{y:2026,m:10,d:10,amt:22000},{y:2026,m:10,d:11,amt:11500},{y:2026,m:10,d:17,amt:12000}];
+let overdueTotal=0,oldestDays=0;
+DUES.forEach(x=>{
+const diff=Math.round((todayKey-indiaDateKey(x.y,x.m,x.d))/86400000);
+if(diff>0){overdueTotal+=x.amt;if(diff>oldestDays)oldestDays=diff;}
+});
+const banner=document.getElementById("overdueBanner");
+if(banner&&overdueTotal>0){
+document.getElementById("overdueTitle").textContent="₹"+overdueTotal.toLocaleString("en-IN")+" overdue";
+document.getElementById("overdueSub").textContent="Oldest payment is overdue by "+oldestDays+" day"+(oldestDays===1?"":"s")+". Please pay as soon as possible.";
+banner.classList.add("show");
 }
  
 const partial=document.getElementById("payment7Partial");
