@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>QuickLoan | Personal Dashboard</title>
-
+ 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Inter,Arial,sans-serif}
 body{background:#f5f7fb;color:#172033}
@@ -50,7 +50,7 @@ body{background:#f5f7fb;color:#172033}
 .countdown-badge{display:inline-block;margin-top:7px;padding:4px 8px;border-radius:20px;background:#fff7ed;color:#c2410c;font-size:10px;font-weight:700}
 .secondary-action{background:#475569}.secondary-action:hover{background:#334155}
 .mobile-nav{display:none}
-
+ 
 @media(max-width:1100px){.summary{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:900px){
 .sidebar{position:relative;width:100%;height:auto;padding:16px}.logo{padding:5px 10px 18px}.menu-title{display:none}
@@ -62,7 +62,7 @@ body{background:#f5f7fb;color:#172033}
 .hero{padding:22px}.hero-amount{font-size:34px}.loan-status{font-size:10px}
 .summary{grid-template-columns:1fr}.details{grid-template-columns:1fr}.payment-amount{font-size:15px}
 }
-
+ 
 .pay-now{margin-top:20px;border:0;background:#2563eb;color:white;padding:13px 24px;border-radius:10px;font-weight:800;cursor:pointer}
 .payment-modal{display:none;position:fixed;inset:0;background:rgba(15,23,42,.65);z-index:999;align-items:center;justify-content:center;padding:20px}
 .payment-modal.show{display:flex}
@@ -77,7 +77,7 @@ body{background:#f5f7fb;color:#172033}
 .gpay-logo .g{color:#4285f4}.gpay-logo .pay{color:#34a853;margin-left:2px}
 .paytm-logo{background:#00baf2;color:#fff;font-size:15px;letter-spacing:-.7px}
 .payment-method strong{display:block;font-size:14px}.payment-method span{display:block;color:#64748b;font-size:12px;margin-top:3px}
-
+ 
 .loan-progress{background:white;border-radius:16px;padding:20px 24px;margin-bottom:20px;box-shadow:0 4px 18px rgba(15,23,42,.05)}
 .progress-head,.progress-foot{display:flex;justify-content:space-between;align-items:center;gap:15px}
 .progress-head strong{font-size:14px}.progress-head span{display:block;color:#64748b;font-size:12px;margin-top:4px}
@@ -98,9 +98,9 @@ body{background:#f5f7fb;color:#172033}
 .receipt-close{background:#e2e8f0}.receipt-print{background:#2563eb;color:white}
 </style>
 </head>
-
+ 
 <body>
-
+ 
 <aside class="sidebar">
 <div class="logo">Quick<span>Loan</span></div>
 <div class="menu-title">Menu</div>
@@ -111,9 +111,9 @@ body{background:#f5f7fb;color:#172033}
 <li><a href="#profile"><span class="icon">●</span>Profile</a></li>
 </ul>
 </aside>
-
+ 
 <main class="main">
-
+ 
 <header class="header">
 <div>
 <h1 id="greeting">Good Evening, Vikram</h1>
@@ -124,55 +124,55 @@ body{background:#f5f7fb;color:#172033}
 <div><strong>Vikram Yadav</strong><p>Personal Account</p></div>
 </div>
 </header>
-
+ 
 <section class="hero" id="dashboard">
 <div class="hero-top">
 <div>
 <div class="hero-label">Current Outstanding</div>
-<div class="hero-amount">₹1,08,600</div>
+<div class="hero-amount">₹1,05,600</div>
 <div class="hero-note">Loan ID: QL-2026-001</div>
 </div>
 <div class="loan-status">ACTIVE</div>
 </div>
 </section>
-
+ 
 <section class="summary">
-<div class="summary-card"><small>Total Outstanding</small><strong>₹1,08,600</strong></div>
-<div class="summary-card"><small>Total Paid</small><strong>₹24,500</strong></div>
-<div class="summary-card"><small>Upcoming Total</small><strong>₹54,500</strong></div>
+<div class="summary-card"><small>Total Outstanding</small><strong>₹1,05,600</strong></div>
+<div class="summary-card"><small>Total Paid</small><strong>₹27,500</strong></div>
+<div class="summary-card"><small>Upcoming Total</small><strong>₹51,500</strong></div>
 <div class="summary-card"><small>Next Due</small><strong>7 Oct 2026</strong></div>
 <div class="summary-card"><small>Loan Status</small><strong>Running</strong></div>
 </section>
-
+ 
 <section class="loan-progress">
 <div class="progress-head">
 <div><strong>Loan Progress</strong><span>Amount paid toward the loan</span></div>
-<strong>19.4%</strong>
+<strong>21.8%</strong>
 </div>
-<div class="progress-track"><div class="progress-fill" style="width:19.4%"></div></div>
-<div class="progress-foot"><span>₹24,500 paid</span><span>₹1,08,600 outstanding</span></div>
+<div class="progress-track"><div class="progress-fill" style="width:21.8%"></div></div>
+<div class="progress-foot"><span>₹27,500 paid</span><span>₹1,05,600 outstanding</span></div>
 </section>
-
+ 
 <div class="content-grid">
-
+ 
 <div>
-
+ 
 <section class="card" id="payments">
 <h2>Upcoming Payments</h2>
-
+ 
 <div class="payment">
 <div class="payment-icon due">₹</div>
 <div class="payment-info">
 <h3>7 October 2026</h3>
-<p>₹9,000 remaining</p>
+<p>₹6,000 remaining</p>
 <div class="payment-status orange" id="payment7Status">DUE</div>
 <div class="countdown-badge" id="payment7Countdown">Due</div>
-<div class="partial-payment" id="payment7Partial">₹2,000 paid • ₹9,000 remaining</div>
+<div class="partial-payment" id="payment7Partial">₹5,000 paid • ₹6,000 remaining</div>
 </div>
-<div class="payment-amount">₹9,000</div>
-<button class="pay-now" onclick="openPayment('₹9,000','Loan payment')">Pay Now</button>
+<div class="payment-amount">₹6,000</div>
+<button class="pay-now" onclick="openPayment('₹6,000','Loan payment')">Pay Now</button>
 </div>
-
+ 
 <div class="payment">
 <div class="payment-icon due">₹</div>
 <div class="payment-info">
@@ -184,7 +184,7 @@ body{background:#f5f7fb;color:#172033}
 <div class="payment-amount">₹22,000</div>
 <button class="pay-now" onclick="openPayment('₹22,000','Loan payment')">Pay Now</button>
 </div>
-
+ 
 <div class="payment">
 <div class="payment-icon due">₹</div>
 <div class="payment-info">
@@ -196,7 +196,7 @@ body{background:#f5f7fb;color:#172033}
 <div class="payment-amount">₹11,500</div>
 <button class="pay-now" onclick="openPayment('₹11,500','Loan payment')">Pay Now</button>
 </div>
-
+ 
 <div class="payment">
 <div class="payment-icon due">₹</div>
 <div class="payment-info">
@@ -208,7 +208,7 @@ body{background:#f5f7fb;color:#172033}
 <div class="payment-amount">₹12,000</div>
 <button class="pay-now" onclick="openPayment('₹12,000','Loan payment')">Pay Now</button>
 </div>
-
+ 
 <div class="payment">
 <div class="payment-icon due">₹</div>
 <div class="payment-info">
@@ -220,64 +220,70 @@ body{background:#f5f7fb;color:#172033}
 <div class="payment-amount">₹24,000</div>
 <button class="pay-now" onclick="openPayment('₹24,000','Loan payment')">Pay Now</button>
 </div>
-
+ 
 </section>
-
+ 
 <section class="card">
 <h2>Payment History</h2>
-
+ 
 <div class="transaction">
 <div class="transaction-icon">✓</div>
 <div class="transaction-info"><h3>3 October 2026</h3><p>Payment received</p></div>
 <div class="transaction-right"><strong>₹5,500</strong><small>PAID</small></div>
 </div>
-
+ 
 <div class="transaction">
 <div class="transaction-icon">✓</div>
 <div class="transaction-info"><h3>5 October 2026</h3><p>Payment received</p></div>
 <div class="transaction-right"><strong>₹12,000</strong><small>PAID</small></div>
 </div>
-
+ 
 <div class="transaction">
 <div class="transaction-icon">✓</div>
 <div class="transaction-info"><h3>5 October 2026</h3><p>Payment received</p></div>
 <div class="transaction-right"><strong>₹5,000</strong><small>PAID</small></div>
 </div>
-
+ 
 <div class="transaction">
 <div class="transaction-icon">✓</div>
 <div class="transaction-info"><h3>7 October 2026</h3><p>Payment received</p></div>
 <div class="transaction-right"><strong>₹2,000</strong><small>PAID</small></div>
 </div>
-
+ 
+<div class="transaction">
+<div class="transaction-icon">✓</div>
+<div class="transaction-info"><h3>8 October 2026</h3><p>Payment received</p></div>
+<div class="transaction-right"><strong>₹3,000</strong><small>PAID</small></div>
+</div>
+ 
 </section>
-
+ 
 <section class="card" id="loan-details">
 <h2>Loan Details</h2>
 <div class="details">
 <div class="detail"><span>Loan ID</span><strong>QL-2026-001</strong></div>
 <div class="detail"><span>Account Reference</span><strong>QL-2026-001</strong></div>
-<div class="detail"><span>Total Outstanding</span><strong>₹1,08,600</strong></div>
-<div class="detail"><span>Total Amount Paid</span><strong>₹24,500</strong></div>
-<div class="detail"><span>Upcoming Total</span><strong>₹54,500</strong></div>
+<div class="detail"><span>Total Outstanding</span><strong>₹1,05,600</strong></div>
+<div class="detail"><span>Total Amount Paid</span><strong>₹27,500</strong></div>
+<div class="detail"><span>Upcoming Total</span><strong>₹51,500</strong></div>
 <div class="detail"><span>Loan Start Date</span><strong>2026</strong></div>
 <div class="detail"><span>Next Due Date</span><strong>7 October 2026</strong></div>
 </div>
 </section>
-
+ 
 <section class="card" id="foreclose">
 <h2>Foreclose Loan</h2>
 <div class="foreclose-box">
 <div class="foreclose-label">Current foreclosure amount</div>
-<div class="foreclose-amount">₹1,01,600</div>
-<button class="button" onclick="openPayment('₹1,01,600','Loan foreclosure')">Pay Now / Close Loan</button>
+<div class="foreclose-amount">₹98,600</div>
+<button class="button" onclick="openPayment('₹98,600','Loan foreclosure')">Pay Now / Close Loan</button>
 </div>
 </section>
-
+ 
 </div>
-
+ 
 <div>
-
+ 
 <section class="card" id="profile">
 <h2>My Profile</h2>
 <div class="profile-row"><span>Full Name</span><strong>Vikram Yadav</strong></div>
@@ -285,70 +291,70 @@ body{background:#f5f7fb;color:#172033}
 <div class="profile-row"><span>PAN Number</span><strong>CDXPTXX22</strong></div>
 <div class="profile-row"><span>Customer Type</span><strong>Personal</strong></div>
 </section>
-
+ 
 <section class="card" id="notifications">
 <h2>Notifications</h2>
 <div class="notification">
 <div class="notification-dot"></div>
-<div><strong>Upcoming payment</strong><p id="notification7Due">₹9,000 remaining for 7 October 2026.</p></div>
+<div><strong>Upcoming payment</strong><p id="notification7Due">₹6,000 remaining for 7 October 2026.</p></div>
 </div>
 <div class="notification">
 <div class="notification-dot"></div>
 <div><strong>Next payment</strong><p>₹22,000 due on 10 October 2026.</p></div>
 </div>
 </section>
-
+ 
 <section class="card">
 <h2>Account</h2>
 <div class="profile-row"><span>Account Status</span><strong style="color:#16a34a;">Active</strong></div>
 <div class="profile-row"><span>Loan Status</span><strong>Running</strong></div>
 </section>
-
+ 
 <section class="card">
 <div class="notice">Personal account dashboard. It is not connected to any real financial institution, loan account, or payment system.</div>
 </section>
-
+ 
 </div>
 </div>
-
+ 
 <nav class="mobile-nav">
 <a href="#dashboard">⌂<span>Home</span></a>
 <a href="#payments">₹<span>Payments</span></a>
 <a href="#loan-details">▣<span>Loan</span></a>
 <a href="#profile">●<span>Profile</span></a>
 </nav>
-
+ 
 <div class="footer">© 2026 QuickLoan — Personal Dashboard</div>
 </main>
-
+ 
 <div class="payment-modal" id="paymentModal">
 <div class="payment-box">
 <button class="payment-close" onclick="closePayment()">×</button>
 <h2>Choose Payment Method</h2>
 <p>Select a payment app.</p>
-
+ 
 <button class="payment-method" onclick="paymentSelected('PhonePe')">
 <div class="payment-logo phonepe-logo">पे</div>
 <div><strong>PhonePe</strong><span>UPI payment</span></div>
 </button>
-
+ 
 <button class="payment-method" onclick="paymentSelected('Google Pay')">
 <div class="payment-logo gpay-logo"><span class="g">G</span><span class="pay">Pay</span></div>
 <div><strong>Google Pay</strong><span>UPI payment</span></div>
 </button>
-
+ 
 <button class="payment-method" onclick="paymentSelected('Paytm')">
 <div class="payment-logo paytm-logo">paytm</div>
 <div><strong>Paytm</strong><span>UPI payment</span></div>
 </button>
-
+ 
 <button class="payment-method" onclick="paymentSelected('Any UPI App')">
 <div class="payment-logo" style="background:#0f172a;color:white;font-weight:800;font-size:13px;">UPI</div>
 <div><strong>Other UPI App</strong><span>BHIM, Amazon Pay, bank apps...</span></div>
 </button>
 </div>
 </div>
-
+ 
 <div class="payment-modal" id="fallbackModal">
 <div class="payment-box">
 <button class="payment-close" onclick="closeFallback()">×</button>
@@ -365,14 +371,14 @@ body{background:#f5f7fb;color:#172033}
 <button class="payment-method" onclick="closeFallback();paymentSelected('Any UPI App')" style="justify-content:center;">Try UPI Chooser Again</button>
 </div>
 </div>
-
+ 
 <script>
-let selectedPaymentAmount="₹9,000";
+let selectedPaymentAmount="₹6,000";
 let selectedPaymentNote="Loan payment";
-
+ 
 const RECEIVER_UPI_ID="9014674138@ybl";
 const RECEIVER_NAME="Thummeti Vikram";
-
+ 
 const UPI_APPS={
 "PhonePe":{
 ios:"phonepe://pay?",
@@ -395,12 +401,12 @@ androidScheme:"upi",
 pkg:""
 }
 };
-
+ 
 function cleanAmount(amount){
 const n=parseFloat(String(amount).replace(/[^0-9.]/g,""));
 return Number.isFinite(n)?n.toFixed(2):"";
 }
-
+ 
 function buildUpiQuery(){
 const q={
 pa:RECEIVER_UPI_ID,
@@ -411,50 +417,50 @@ tn:selectedPaymentNote
 };
 return Object.keys(q).map(k=>k+"="+encodeURIComponent(q[k])).join("&");
 }
-
+ 
 function isIOS(){
 return /iPhone|iPad|iPod/i.test(navigator.userAgent)||
 (navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
 }
-
+ 
 function isAndroid(){
 return /Android/i.test(navigator.userAgent);
 }
-
+ 
 function buildIOSLink(app){
 const info=UPI_APPS[app]||UPI_APPS["Any UPI App"];
 return info.ios+buildUpiQuery();
 }
-
+ 
 function buildAndroidLink(app){
 const info=UPI_APPS[app]||UPI_APPS["Any UPI App"];
 const query=buildUpiQuery();
-
+ 
 if(!info.pkg)return "upi://pay?"+query;
-
+ 
 return "intent://pay?"+query+
 "#Intent;scheme="+info.androidScheme+
 ";package="+info.pkg+
 ";end";
 }
-
+ 
 function showFallback(){
 document.getElementById("fbAmount").textContent="₹"+cleanAmount(selectedPaymentAmount);
 document.getElementById("fbUpi").textContent=RECEIVER_UPI_ID;
 document.getElementById("fallbackModal").classList.add("show");
 }
-
+ 
 function closeFallback(){
 document.getElementById("fallbackModal").classList.remove("show");
 }
-
+ 
 function copyText(text,btn){
 function done(){
 const old=btn.textContent;
 btn.textContent="Copied ✓";
 setTimeout(()=>btn.textContent=old,1500);
 }
-
+ 
 if(navigator.clipboard&&window.isSecureContext){
 navigator.clipboard.writeText(text).then(done).catch(()=>{
 legacyCopy(text);done();
@@ -463,7 +469,7 @@ legacyCopy(text);done();
 legacyCopy(text);done();
 }
 }
-
+ 
 function legacyCopy(text){
 const t=document.createElement("textarea");
 t.value=text;
@@ -474,98 +480,98 @@ t.select();
 try{document.execCommand("copy")}catch(e){}
 t.remove();
 }
-
-function openPayment(amount="₹9,000",note="Loan payment"){
+ 
+function openPayment(amount="₹6,000",note="Loan payment"){
 selectedPaymentAmount=amount;
 selectedPaymentNote=note;
 document.getElementById("paymentModal").classList.add("show");
 }
-
+ 
 function closePayment(){
 document.getElementById("paymentModal").classList.remove("show");
 }
-
+ 
 function paymentSelected(app){
 closePayment();
-
+ 
 const amount=cleanAmount(selectedPaymentAmount);
-
+ 
 if(!amount){
 alert("Invalid amount.");
 return;
 }
-
+ 
 let paymentUrl;
-
+ 
 if(isIOS()){
-
+ 
 if(app==="PhonePe"){
 paymentUrl=buildIOSLink("PhonePe");
-
+ 
 const phonePeLink=document.createElement("a");
 phonePeLink.href=paymentUrl;
 phonePeLink.target="_self";
 phonePeLink.rel="noopener";
 phonePeLink.style.display="none";
-
+ 
 document.body.appendChild(phonePeLink);
 phonePeLink.click();
 phonePeLink.remove();
-
+ 
 setTimeout(function(){
 if(document.visibilityState==="visible"){
 showFallback();
 }
 },1800);
-
+ 
 return;
 }
-
+ 
 paymentUrl=buildIOSLink(app);
 window.location.href=paymentUrl;
 return;
 }
-
+ 
 if(isAndroid()){
 paymentUrl=buildAndroidLink(app);
 window.location.href=paymentUrl;
 return;
 }
-
+ 
 showFallback();
 }
-
+ 
 const paymentModal=document.getElementById("paymentModal");
-
+ 
 if(paymentModal){
 paymentModal.addEventListener("click",function(e){
 if(e.target===this)closePayment();
 });
 }
 </script>
-
+ 
 <div class="receipt-modal" id="receiptModal">
 <div class="receipt-box" id="receiptContent">
 <h2>Payment Receipt</h2>
 <div class="receipt-sub">QuickLoan • Payment record</div>
-
-<div class="receipt-row"><span>Payment Date</span><strong>5 October 2026</strong></div>
-<div class="receipt-row"><span>Amount Paid</span><strong>₹5,000</strong></div>
+ 
+<div class="receipt-row"><span>Payment Date</span><strong>8 October 2026</strong></div>
+<div class="receipt-row"><span>Amount Paid</span><strong>₹3,000</strong></div>
 <div class="receipt-row"><span>Loan ID</span><strong>QL-2026-001</strong></div>
 <div class="receipt-row"><span>Status</span><strong style="color:#16a34a;">PAID</strong></div>
-
+ 
 <div class="receipt-actions">
 <button class="receipt-close" onclick="closeReceipt()">Close</button>
 <button class="receipt-print" onclick="printReceipt()">Print Receipt</button>
 </div>
 </div>
 </div>
-
+ 
 <script>
 (function(){
-
+ 
 const TIME_ZONE="Asia/Kolkata";
-
+ 
 function indiaNow(){
 const parts=new Intl.DateTimeFormat("en-CA",{
 timeZone:TIME_ZONE,
@@ -575,9 +581,9 @@ day:"2-digit",
 hour:"2-digit",
 hour12:false
 }).formatToParts(new Date());
-
+ 
 const get=type=>parts.find(p=>p.type===type)?.value;
-
+ 
 return{
 year:Number(get("year")),
 month:Number(get("month")),
@@ -585,127 +591,128 @@ day:Number(get("day")),
 hour:Number(get("hour"))
 };
 }
-
+ 
 const now=indiaNow();
-
+ 
 let greeting="Good Evening";
-
+ 
 if(now.hour>=5&&now.hour<12)greeting="Good Morning";
 else if(now.hour>=12&&now.hour<17)greeting="Good Afternoon";
 else if(now.hour>=17&&now.hour<21)greeting="Good Evening";
 else greeting="Good Night";
-
+ 
 const el=document.getElementById("greeting");
-
+ 
 if(el)el.textContent=greeting+", Vikram";
-
+ 
 function indiaDateKey(year,month,day){
 return Date.UTC(year,month-1,day);
 }
-
+ 
 const todayKey=indiaDateKey(now.year,now.month,now.day);
-
+ 
 function relativeDue(year,month,day){
 const diff=Math.round((indiaDateKey(year,month,day)-todayKey)/86400000);
-
+ 
 if(diff===0)return{status:"DUE TODAY",badge:"Due Today"};
 if(diff>0)return{status:"DUE",badge:`Due in ${diff} day${diff===1?"":"s"}`};
-
+ 
 const days=Math.abs(diff);
 return{status:"OVERDUE",badge:`Overdue by ${days} day${days===1?"":"s"}`};
 }
-
+ 
 function relativePast(year,month,day){
 const diff=Math.round((todayKey-indiaDateKey(year,month,day))/86400000);
-
+ 
 if(diff===0)return"PAID TODAY";
 if(diff===1)return"PAID YESTERDAY";
-
+ 
 return`PAID ${diff} DAYS AGO`;
 }
-
+ 
 function updatePayment(id,year,month,day){
 const info=relativeDue(year,month,day);
-
+ 
 const status=document.getElementById(`payment${id}Status`);
 const countdown=document.getElementById(`payment${id}Countdown`);
-
+ 
 if(status)status.textContent=info.status;
 if(countdown)countdown.textContent=info.badge;
 }
-
+ 
 updatePayment(7,2026,10,7);
 updatePayment(10,2026,10,10);
 updatePayment(11,2026,10,11);
 updatePayment(17,2026,10,17);
-
+ 
 const notification7=document.getElementById("notification7Due");
-
+ 
 if(notification7){
 const due=relativeDue(2026,10,7);
-
+ 
 notification7.textContent=
 due.status==="DUE TODAY"
-?"₹9,000 remaining — due today."
+?"₹6,000 remaining — due today."
 :due.status==="OVERDUE"
-?"₹9,000 remaining — payment is overdue."
-:`₹9,000 remaining — due in ${due.badge.replace("Due in ","")}.`;
+?"₹6,000 remaining — payment is overdue."
+:`₹6,000 remaining — due in ${due.badge.replace("Due in ","")}.`;
 }
-
+ 
 const partial=document.getElementById("payment7Partial");
-
+ 
 if(partial){
-const diff=Math.round((todayKey-indiaDateKey(2026,10,7))/86400000);
-
+// ₹2,000 paid on 7 Oct + ₹3,000 paid on 8 Oct = ₹5,000 paid
+const diff=Math.round((todayKey-indiaDateKey(2026,10,8))/86400000);
+ 
 const paidText=
-diff===0?"₹2,000 paid today":
-diff===1?"₹2,000 paid yesterday":
-diff>1?`₹2,000 paid ${diff} days ago`:
-"₹2,000 paid";
-
-partial.textContent=`${paidText} • ₹9,000 remaining`;
+diff===0?"₹3,000 paid today":
+diff===1?"₹3,000 paid yesterday":
+diff>1?`₹3,000 paid ${diff} days ago`:
+"₹3,000 paid";
+ 
+partial.textContent=`₹2,000 paid on 7 Oct • ${paidText} • ₹6,000 remaining`;
 }
-
+ 
 })();
-
+ 
 function showReceipt(){
 document.getElementById("receiptModal").classList.add("show");
 }
-
+ 
 function closeReceipt(){
 document.getElementById("receiptModal").classList.remove("show");
 }
-
+ 
 function downloadReceipt(){
 const receipt=`QuickLoan Personal Dashboard
-
+ 
 Payment Receipt
-Payment Date: 5 October 2026
+Payment Date: 8 October 2026
 Loan ID: QL-2026-001
 Payment Type: Loan Payment
 Payment Status: Successful
-Amount Paid: ₹5,000`;
-
+Amount Paid: ₹3,000`;
+ 
 const blob=new Blob([receipt],{type:"text/plain;charset=utf-8"});
 const url=URL.createObjectURL(blob);
-
+ 
 const a=document.createElement("a");
 a.href=url;
 a.download="quickloan-payment-receipt.txt";
-
+ 
 document.body.appendChild(a);
 a.click();
 a.remove();
-
+ 
 URL.revokeObjectURL(url);
 }
-
+ 
 function printReceipt(){
-
+ 
 const content=document.getElementById("receiptContent").innerHTML;
-
+ 
 const w=window.open("","_blank","width=500,height=650");
-
+ 
 w.document.write(`
 <html>
 <head>
@@ -723,17 +730,18 @@ ${content}
 </body>
 </html>
 `);
-
+ 
 w.document.close();
 w.focus();
 w.print();
 }
-
+ 
 document.getElementById("receiptModal").addEventListener("click",function(e){
 if(e.target===this)closeReceipt();
 });
-
+ 
 </script>
-
+ 
 </body>
 </html>
+ 
